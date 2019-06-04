@@ -1,22 +1,9 @@
-import { INPUT_FOCUS_ACTION, INPUT_BLUR_ACTION } from './actionType';
+import { combineReducers } from 'redux';
 
+import { reducer as headerReducer} from '../common/header/store';
 
-const defaultState = {
-  focused: false
-};
+const rootReducer = combineReducers({
+  headerReducer,
+});
 
-const reducer = (state = defaultState, action) => {
-  if (action.type === INPUT_FOCUS_ACTION) {
-    const newState = JSON.parse(JSON.stringify(state));
-    newState.focused = true;
-    return newState;
-  }
-  if (action.type === INPUT_BLUR_ACTION) {
-    const newState = JSON.parse(JSON.stringify(state));
-    newState.focused = false;
-    return newState;
-  }
-  return state;
-};
-
-export default reducer;
+export default rootReducer;

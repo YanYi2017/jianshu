@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import { getInputFocuseAction, getInputBlurAction } from '../../store/actionCreators';
+import { actionCreators } from './store';
 
 import { CSSTransition } from 'react-transition-group';
 
@@ -70,17 +70,15 @@ const Header = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  focused: state.focused
+  focused: state.headerReducer.focused
 });
 
 const mapDispatchToProps = (dispatch) => ({
   handleInputFocus() {
-    const action = getInputFocuseAction();
-    dispatch(action);
+    dispatch(actionCreators.searchFocus());
   },
   handleInputBlur() {
-    const action = getInputBlurAction();
-    dispatch(action);
+    dispatch(actionCreators.searchBlur());
   }
 });
 
