@@ -70,7 +70,8 @@ const Header = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  focused: state.headerReducer.get('focused')
+  focused: state.getIn(['headerReducer', 'focused'])
+  // 等价于 state.get('headerReducer').get('focused')
 });
 
 const mapDispatchToProps = (dispatch) => ({
