@@ -1,4 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
+
+import { connect } from 'react-redux';
+import { getInputFocuseAction, getInputBlurAction } from '../../store/actionCreators';
+
 import { CSSTransition } from 'react-transition-group';
 
 import {
@@ -13,18 +17,9 @@ import {
   Button
 } from './style';
 
-class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      focused: false
-    };
-  }
-
-  render() {
-    const { focused } = this.state;
-
-    return (
+const Header = (props) => {
+  const { focused, handleInputFocus, handleInputBlur } = props;
+  return (
       <HeaderWraper>
         <WidthLimit>
           <Logo href='/' />
@@ -56,32 +51,40 @@ class Header extends Component {
               >
                 <NavSearch 
                   placeholder='搜索'
-                  onFocus={this.handleInputFocus}
-                  onBlur={this.handleInputBlur}
+                  onFocus={handleInputFocus}
+                  onBlur={handleInputBlur}
                 />
               </CSSTransition>
-              <CSSTransition>
+              <CSSTransition
+                in={focused}
+                timeout={50}
+                classNames='focused'
+              >
                 <span className='iconfont'>&#xe653;</span>
               </CSSTransition>
             </SearchWraper>
           </Nav>
         </WidthLimit>
       </HeaderWraper>
-    );
+  );
+};
+
+const mapStateToProps = (state) => ({
+  focused: state.focused
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  handleInputFocus() {
+    const action = getInputFocuseAction();
+    dispatch(action);
+  },
+  handleInputBlur() {
+    const action = getInputBlurAction();
+    dispatch(action);
   }
+});
 
-  handleInputFocus = () => {
-    this.setState({
-      focused: true
-    });
-  };
-  
-  handleInputBlur = () => {
-    this.setState({
-      focused: false
-    });
-  };
-
-}
-
-export default Header;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Header);
