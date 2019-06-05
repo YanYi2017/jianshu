@@ -22,7 +22,7 @@ import {
 
 class Header extends Component {
   render() {
-    const { focused, handleInputFocus, handleInputBlur } = this.props;
+    const { focused, list, handleInputFocus, handleInputBlur } = this.props;
     return (
       <HeaderWraper>
         <WidthLimit>
@@ -55,7 +55,7 @@ class Header extends Component {
               >
                 <NavSearch
                   placeholder='搜索'
-                  onFocus={handleInputFocus}
+                  onFocus={() => handleInputFocus(list)}
                   onBlur={handleInputBlur}
                 />
               </CSSTransition>
@@ -101,7 +101,7 @@ class Header extends Component {
               <span
                 ref={(spin) => { this.spin = spin }}
                 className='iconfont ic-search-change'
-                style={{ transform: 'rotate(0deg)' }}
+                style={{ transform: 'rotate(90deg)' }}
               >
                 &#xe61b;
               </span>
@@ -130,8 +130,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  handleInputFocus() {
-    dispatch(actionCreators.getSearchTrendingList());
+  handleInputFocus(list) {
+    list.size === 0 && dispatch(actionCreators.getSearchTrendingList());
     dispatch(actionCreators.searchFocus());
   },
   handleInputBlur() {
