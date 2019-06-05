@@ -45,7 +45,7 @@ export const NavItem = styled.a`
 `;
 
 export const SearchWraper = styled.div`
-  .iconfont {
+  & .ic-search {
     position: absolute;
     margin-top: 10px;
     margin-left: -38px;
@@ -88,6 +88,66 @@ export const NavSearch = styled.input`
   }
   &.focused-exit-done {
     width: 160px;
+  }
+`;
+
+export const SearchTrending = styled.div`
+  position: absolute;
+  margin-left: 215px; margin-top: 10px;
+  padding: 20px;
+  width: 250px; height: 160px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .2);
+  border-radius: 4px;
+  background: #fff;
+  &::before {
+    content: '';
+    position: absolute;
+    margin-top: -44px;
+    width: 0; height: 0;
+    border: 12px solid transparent;
+    border-bottom-color: #fff;
+  }
+`;
+
+export const SearchTrendingHeader = styled.div`
+  overflow:hidden;
+  line-height: 20px;
+  margin-bottom: 10px;
+  & > span {
+    float: left;
+    font-size: 14px;
+    color: #969696;
+  }
+  & > a {
+    float: right;
+    font-size: 13px;
+    color: #969696;
+  }
+  & > a:hover {
+    color: #2f2f2f;
+  }
+  & > a .ic-search-change {
+    margin-right: 3px;
+    transform: rotate(180deg);
+  }
+`;
+
+export const SearchTrendingTag = styled.ul`
+  & li {
+    display: inline-block;
+    margin-right: 10px;
+    line-height: 28px;
+  }
+  & li a {
+    padding: 2px 6px;
+    font-size: 12px;
+    color: #787878;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+  }
+  & li a:hover {
+    color: #333;
+    border-color: #b4b4b4;
   }
 `;
 

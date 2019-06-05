@@ -50,6 +50,10 @@ export const GlobalStyle = createGlobalStyle`
     border-spacing: 0;
   }
 
+  a {
+    cursor: pointer;
+  }
+
   /* 设置盒模型 */ 
   * {
     box-sizing: border-box;
