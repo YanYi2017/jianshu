@@ -94,7 +94,7 @@ export const NavSearch = styled.input`
 export const SearchTrending = styled.div`
   position: absolute;
   margin-left: 215px; margin-top: 10px;
-  width: 250px; height: 160px;
+  width: 250px;
   padding: 20px;
   box-shadow: 0 0 8px rgba(0, 0, 0, .2);
   border-radius: 4px;
