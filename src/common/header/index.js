@@ -29,23 +29,23 @@ class Header extends Component {
           <Logo href='/' />
           <Addition>
             <Button className='writing'>
-              <span className="iconfont">&#xe616;</span>  
+              <span className="iconfont">&#xe616;</span>
               <span>写文章</span>
             </Button>
             <Button className='register'>注册</Button>
           </Addition>
           <Nav>
             <NavItem className='left homepage'>
-              <span className="iconfont">&#xe64e;</span>  
+              <span className="iconfont">&#xe64e;</span>
               <span>首页</span>
             </NavItem>
             <NavItem className='left'>
-              <span className="iconfont">&#xe62d;</span>  
+              <span className="iconfont">&#xe62d;</span>
               <span>下载App</span>
             </NavItem>
             <NavItem className='right'>登录</NavItem>
             <NavItem className='right'>
-              <span className="iconfont">&#xe607;</span>  
+              <span className="iconfont">&#xe607;</span>
             </NavItem>
             <SearchWraper>
               <CSSTransition
@@ -53,7 +53,7 @@ class Header extends Component {
                 timeout={500}
                 classNames='focused'
               >
-                <NavSearch 
+                <NavSearch
                   placeholder='搜索'
                   onFocus={handleInputFocus}
                   onBlur={handleInputBlur}
@@ -75,29 +75,41 @@ class Header extends Component {
   }
 
   getListArea() {
-    const { focused, mouseIn, list, handleMouseEnter, handleMouseLeave } = this.props;
+    const { focused, list, mouseIn, page, totalPage, handleMouseEnter, handleMouseLeave, handleChangePage } = this.props;
+
+    const newList = list.toJS();
+    const pageList = [];
+    for (let i = (page - 1) * 10; i < page * 10; i++) {
+      if (newList[i]) {
+        pageList.push(
+          <li key={newList[i]}><a target='_blank'>{newList[i]}</a></li>
+        );
+      }
+    }
 
     if (focused || mouseIn) {
       return (
-        <SearchTrending 
+        <SearchTrending
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
           <SearchTrendingHeader>
             <span>热门搜索</span>
-            <a>
-              <span className='iconfont ic-search-change'>&#xe61b;</span>                    
+            <a
+              onClick={() => handleChangePage(page, totalPage, this.spin)}
+            >
+              <span
+                ref={(spin) => { this.spin = spin }}
+                className='iconfont ic-search-change'
+                style={{ transform: 'rotate(0deg)' }}
+              >
+                &#xe61b;
+              </span>
               <span>换一批</span>
             </a>
           </SearchTrendingHeader>
           <SearchTrendingTag>
-            { 
-              list.map((item) => {
-                return (
-                  <li key={item}><a target='_blank'>{item}</a></li>
-                );
-              }) 
-            }
+            {pageList}
           </SearchTrendingTag>
         </SearchTrending>
       );
@@ -111,8 +123,10 @@ class Header extends Component {
 const mapStateToProps = (state) => ({
   // 等价于 state.get('headerReducer').get('focused')
   focused: state.getIn(['headerReducer', 'focused']),
+  mouseIn: state.getIn(['headerReducer', 'mouseIn']),
   list: state.getIn(['headerReducer', 'list']),
-  mouseIn: state.getIn(['headerReducer', 'mouseIn'])
+  page: state.getIn(['headerReducer', 'page']),
+  totalPage: state.getIn(['headerReducer', 'totalPage'])
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -128,6 +142,16 @@ const mapDispatchToProps = (dispatch) => ({
   },
   handleMouseLeave() {
     dispatch(actionCreators.mouseLeave());
+  },
+  handleChangePage(page, totalPage, spin) {
+    const rotate = Number(spin.style.transform.match(/[0-9]+/)[0]);
+    spin.style.transform = `rotate(${rotate + 360}deg)`;
+
+    if (page < totalPage) {
+      dispatch(actionCreators.changePage(page + 1));
+    } else {
+      dispatch(actionCreators.changePage(1));
+    }
   }
 });
 

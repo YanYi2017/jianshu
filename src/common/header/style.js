@@ -127,8 +127,9 @@ export const SearchTrendingHeader = styled.div`
     color: #2f2f2f;
   }
   & > a .ic-search-change {
+    display: inline-block;
     margin-right: 3px;
-    transform: rotate(180deg);
+    transition: all 0.2s ease;
   }
 `;
 
