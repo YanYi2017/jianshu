@@ -66,7 +66,7 @@ class Header extends Component {
               >
                 <span className='iconfont ic-search'>&#xe653;</span>
               </CSSTransition>
-              {this.getListArea(focused)}
+              {this.getListArea()}
             </SearchWraper>
           </Nav>
         </WidthLimit>
@@ -74,8 +74,10 @@ class Header extends Component {
     );
   }
 
-  getListArea(show) {
-    if (show) {
+  getListArea() {
+    const { focused, list } = this.props;
+
+    if (focused) {
       return (
         <SearchTrending>
           <SearchTrendingHeader>
@@ -87,7 +89,7 @@ class Header extends Component {
           </SearchTrendingHeader>
           <SearchTrendingTag>
             { 
-              this.props.list.map((item) => {
+              list.map((item) => {
                 return (
                   <li key={item}><a target='_blank'>{item}</a></li>
                 );

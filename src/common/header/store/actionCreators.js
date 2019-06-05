@@ -1,18 +1,18 @@
-import { SEARCH_FOCUS, SEARCH_BLUR, CHANGE_LIST } from './actionTypes';
+import * as actionTypes from './actionTypes';
 import { fromJS } from 'immutable';
 import axios from 'axios';
 
+const changeList = (data) => ({
+  type: actionTypes.CHANGE_LIST,
+  data: fromJS(data)
+});
+
 export const searchFocus = () => ({
-  type: SEARCH_FOCUS
+  type: actionTypes.SEARCH_FOCUS
 });
 
 export const searchBlur = () => ({
-  type: SEARCH_BLUR
-});
-
-const changeList = (data) => ({
-  type: CHANGE_LIST,
-  data: fromJS(data)
+  type: actionTypes.SEARCH_BLUR
 });
 
 export const getSearchTrendingList = () => {

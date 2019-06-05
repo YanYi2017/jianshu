@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 
-import { SEARCH_FOCUS, SEARCH_BLUR, CHANGE_LIST } from './actionTypes';
+import * as actionTypes from './actionTypes';
 
 const defaultState = fromJS({
   focused: false,
@@ -8,17 +8,17 @@ const defaultState = fromJS({
 });
 
 const reducer = (state = defaultState, action) => {
-  if (action.type === SEARCH_FOCUS) {
-    return state.set('focused', true);
+  switch (action.type) {
+    case actionTypes.SEARCH_FOCUS:
+      return state.set('focused', true);
+    case actionTypes.SEARCH_BLUR:
+      return state.set('focused', false);
+    case actionTypes.CHANGE_LIST:
+      const data = action.data.splice(10);    // 挑选前10的关键词
+      return state.set('list', data);
+    default:
+      return state;
   }
-  if (action.type === SEARCH_BLUR) {
-    return state.set('focused', false);
-  }
-  if (action.type === CHANGE_LIST) {
-    const data = action.data.splice(10);    // 挑选前10的关键词
-    return state.set('list', data);
-  }
-  return state;
 };
 
 export default reducer;
