@@ -15,6 +15,14 @@ export const searchBlur = () => ({
   type: actionTypes.SEARCH_BLUR
 });
 
+export const mouseEnter = () => ({
+  type: actionTypes.MOUSE_ENTER
+});
+
+export const mouseLeave = () => ({
+  type: actionTypes.MOUSE_LEAVE
+});
+
 export const getSearchTrendingList = () => {
   return (dispatch) => {
     axios.get('/api/searchTrending.json')
