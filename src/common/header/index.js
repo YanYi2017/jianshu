@@ -65,52 +65,62 @@ const Header = (props) => {
               >
                 <span className='iconfont ic-search'>&#xe653;</span>
               </CSSTransition>
-              <SearchTrending>
-                <SearchTrendingHeader>
-                  <span>热门搜索</span>
-                  <a>
-                    <span className='iconfont ic-search-change'>&#xe61b;</span>                    
-                    <span>换一批</span>
-                  </a>
-                </SearchTrendingHeader>
-                <SearchTrendingTag>
-                  <li>
-                    <a target='_blank'>区块链</a>
-                  </li>
-                  <li>
-                    <a target='_blank'>小程序</a>
-                  </li>
-                  <li>
-                    <a target='_blank'>vue</a>
-                  </li>
-                  <li>
-                    <a target='_blank'>毕业</a>
-                  </li>
-                  <li>
-                    <a target='_blank'>PHP</a>
-                  </li>
-                  <li>
-                    <a target='_blank'>故事</a>
-                  </li>
-                  <li>
-                    <a target='_blank'>flutter</a>
-                  </li>
-                  <li>
-                    <a target='_blank'>理财</a>
-                  </li>
-                  <li>
-                    <a target='_blank'>美食</a>
-                  </li>
-                  <li>
-                    <a target='_blank'>投稿</a>
-                  </li>
-                </SearchTrendingTag>
-              </SearchTrending>
+              {getListArea(focused)}
             </SearchWraper>
           </Nav>
         </WidthLimit>
       </HeaderWraper>
   );
+};
+
+const getListArea = (show) => {
+  if (show) {
+    return (
+      <SearchTrending>
+        <SearchTrendingHeader>
+          <span>热门搜索</span>
+          <a>
+            <span className='iconfont ic-search-change'>&#xe61b;</span>                    
+            <span>换一批</span>
+          </a>
+        </SearchTrendingHeader>
+        <SearchTrendingTag>
+          <li>
+            <a target='_blank'>区块链</a>
+          </li>
+          <li>
+            <a target='_blank'>小程序</a>
+          </li>
+          <li>
+            <a target='_blank'>vue</a>
+          </li>
+          <li>
+            <a target='_blank'>毕业</a>
+          </li>
+          <li>
+            <a target='_blank'>PHP</a>
+          </li>
+          <li>
+            <a target='_blank'>故事</a>
+          </li>
+          <li>
+            <a target='_blank'>flutter</a>
+          </li>
+          <li>
+            <a target='_blank'>理财</a>
+          </li>
+          <li>
+            <a target='_blank'>美食</a>
+          </li>
+          <li>
+            <a target='_blank'>投稿</a>
+          </li>
+        </SearchTrendingTag>
+      </SearchTrending>
+    );
+  } else {
+    return null;
+  }
 };
 
 const mapStateToProps = (state) => ({

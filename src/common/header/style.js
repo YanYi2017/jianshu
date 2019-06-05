@@ -61,7 +61,7 @@ export const SearchWraper = styled.div`
 export const NavSearch = styled.input`
   margin: 9px 0 0 20px;
   padding: 0 40px 0 20px;
-  width: 160px; height: 38px;
+  width: 240px; height: 38px;
   border-radius: 19px;
   border: 1px solid #eee; outline: none;
   font-size: 14px;
@@ -70,32 +70,32 @@ export const NavSearch = styled.input`
     color: #999;
   }
   &.focused-enter {
-    width: 160px;
+    width: 240px;
   }
   &.focused-enter-active {
-    width: 240px;
+    width: 320px;
     transition: width 500ms ease;
   }
   &.focused-enter-done {
-    width: 240px;
+    width: 320px;
   }
   &.focused-exit {
-    width: 240px;
+    width: 320px;
   }
   &.focused-exit-active {
-    width: 160px;
+    width: 240px;
     transition: width 500ms ease;
   }
   &.focused-exit-done {
-    width: 160px;
+    width: 240px;
   }
 `;
 
 export const SearchTrending = styled.div`
   position: absolute;
   margin-left: 215px; margin-top: 10px;
-  padding: 20px;
   width: 250px; height: 160px;
+  padding: 20px;
   box-shadow: 0 0 8px rgba(0, 0, 0, .2);
   border-radius: 4px;
   background: #fff;
