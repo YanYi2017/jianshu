@@ -7,6 +7,7 @@ export const HeaderWraper = styled.header`
   left: 0; right: 0;
   height: 58px;
   border-bottom: 1px solid #f0f0f0;
+  background: #fff;
 `;
 
 export const WidthLimit = styled.div`
