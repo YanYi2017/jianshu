@@ -10,12 +10,21 @@ export const HomeWraper = styled.div`
 
 export const HomeLeft = styled.div`
   float: left;
-  width: 80%; height: 500px;
+  width: 640px; height: 500px;
+  padding-left: 15px;
   background: blue;
 `;
 
 export const HomeRight = styled.div`
   float: left;
-  width: 20%; height: 200px;
+  width: 280px; height: 200px;
+  margin-left: 40px;
   background: red;
+`;
+
+export const CarouselWraper = styled.div`
+  & img {
+    width: 100%; height: 270px;
+    border-radius: 6px;
+  }
 `;
