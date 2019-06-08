@@ -113,3 +113,13 @@ export const ArticleListWraper = styled.ul`
     margin-right: 10px;
   }
 `;
+
+
+export const BoardWraper = styled.div`
+  margin-top: -5px;
+  & img {
+    width: 100%; min-height: 50px;
+    margin-bottom: 6px;
+    border-radius: 4px;
+  }
+`;
