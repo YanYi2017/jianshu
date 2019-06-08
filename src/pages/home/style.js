@@ -9,7 +9,7 @@ export const HomeWraper = styled.div`
 
 export const HomeLeft = styled.div`
   float: left;
-  width: 640px; height: 500px;
+  width: 640px;
   padding-left: 15px;
 `;
 
@@ -51,5 +51,65 @@ export const PopularTopicsWraper = styled.div`
     border: none;
     color: #787878;
     background: none;
+  }
+`;
+
+export const ArticleListWraper = styled.ul`
+  list-style: none;
+  & li {
+    position: relative;
+    min-height: 140px;
+    margin: 0 0 15px 0;
+    padding: 15px 2px 20px 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  & li > a {
+    position: absolute;
+    top: 50%; right: 0;
+    margin-top: -60px;
+  }
+  & li img {
+    width: 150px; height: 100px;
+    border: 1px solid #f0f0f0;
+    border-radius: 4px;
+  }
+  & li > div {
+    padding-right: 165px;
+  }
+  .title {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 18px; font-weight: 700;
+    line-height: 1.5;
+    color: #333;
+  }
+  .title:visited {
+    color: #969696;
+  }
+  .title:hover {
+    text-decoration: underline;
+  }
+  .abstract {
+    margin-bottom: 8px;
+    font-size: 13px;
+    line-height: 24px;
+    color: #999;
+  }
+  .meta {
+    font-size: 12px; font-weight: 400;
+    color: #b4b4b4;
+  }
+  .meta .jsd-meta {
+    margin-right: 10px;
+    color: #ea6f5a;
+  }
+  .meta a {
+    margin-right: 10px;
+  }
+  .meta a:hover {
+    color: #787878;
+  }
+  .meta > span {
+    margin-right: 10px;
   }
 `;

@@ -52,6 +52,7 @@ export const GlobalStyle = createGlobalStyle`
 
   a {
     cursor: pointer;
+    text-decoration: none;
   }
 
   /* 设置盒模型 */ 

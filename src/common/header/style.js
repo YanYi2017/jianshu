@@ -5,6 +5,7 @@ import logoPic from '../../statics/logo.png';
 export const HeaderWraper = styled.header`
   position: fixed;
   left: 0; right: 0;
+  z-index: 999;
   height: 58px;
   border-bottom: 1px solid #f0f0f0;
   background: #fff;
