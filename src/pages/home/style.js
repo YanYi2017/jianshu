@@ -115,6 +115,23 @@ export const ArticleListWraper = styled.ul`
   }
 `;
 
+export const AddMore = styled.button`
+  display: block;
+  width: 100%;
+  margin: 30px auto 60px;
+  padding: 10px 15px;
+  font-size: 15px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  background: #a5a5a5;
+  color: #fff;
+  cursor: pointer;
+  
+  &:hover {
+    background: #9b9b9b;
+  }
+`;
 
 export const BoardWraper = styled.div`
   margin: -5px 0 20px 0;

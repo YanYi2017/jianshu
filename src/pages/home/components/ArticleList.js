@@ -1,14 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { ArticleListWraper } from '../style';
+import { actionCreators } from '../store';
+
+import { ArticleListWraper, AddMore } from '../style';
 
 const ArticleList = (props) => {
+  const { articleList, articlePage, getMoreList } = props;
   return (
     <ArticleListWraper>
-      { props.articleList.map((item) => {
+      {articleList.map((item, index) => {
         return (
-          <li key={item.get('id')}>
+          <li key={index}>
             {
               item.get('imgURL') ? (
                 <a href={item.get('href')} className="title">
@@ -50,13 +53,22 @@ const ArticleList = (props) => {
             </div>
           </li>
         );
-      }) }
+      })}
+      <AddMore onClick={() => getMoreList(articlePage)}>阅读更多</AddMore>
     </ArticleListWraper>
   );
 }
 
 const mapStateToProps = (state) => ({
-  articleList: state.getIn(['homeReducer', 'articleList'])
+  articleList: state.getIn(['homeReducer', 'articleList']),
+  articlePage: state.getIn(['homeReducer', 'articlePage']),
 });
 
-export default connect(mapStateToProps, null)(ArticleList);
+const mapDispatchToprops = (dispatch) => ({
+  getMoreList(articlePage) {
+    const action = actionCreators.getMoreList(articlePage);
+    dispatch(action);
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToprops)(ArticleList);

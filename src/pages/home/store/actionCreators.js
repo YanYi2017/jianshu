@@ -8,7 +8,12 @@ const changeHomeData = (result) => ({
   morePopularTopics: result.morePopularTopics,
   popularTopics: result.popularTopics,
   recommendedAuthors: result.recommendedAuthors,
+});
 
+const addAtricleList = (result, nextPage) => ({
+  type: actionTypes.ADD_ARTICLE_LIST,
+  articleList: result.articleList,
+  nextPage
 });
 
 export const getHomeInfo = () => {
@@ -19,3 +24,12 @@ export const getHomeInfo = () => {
     });
   }
 };
+
+export const getMoreList = (articlePage) => {
+  return (dispatch) => {
+    axios.get(`/api/homeList.json?page=${articlePage}`).then((res) => {
+      const result = res.data;
+      dispatch(addAtricleList(result, articlePage + 1));
+    });
+  }
+}

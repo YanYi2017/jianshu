@@ -6,7 +6,8 @@ const defaultState = fromJS({
   'morePopularTopics': {},
   'articleList': [],
   'boardList': [],
-  'recommendedAuthors': []
+  'recommendedAuthors': [],
+  'articlePage': 1
 });
 
 const reducer = (state = defaultState, action) => {
@@ -19,6 +20,12 @@ const reducer = (state = defaultState, action) => {
         'boardList': fromJS(action.boardList),
         'recommendedAuthors': fromJS(action.recommendedAuthors)
       })
+    case actionTypes.ADD_ARTICLE_LIST:
+      const newData = state.get('articleList').concat(fromJS(action.articleList));
+      return state.merge({
+        'articleList': newData,
+        'articlePage': action.nextPage
+      });
     default:
       return state
   }
