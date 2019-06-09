@@ -1,7 +1,7 @@
 import { fromJS } from 'immutable';
 
 const defaultState = fromJS({
-  popularTopics : [
+  "popularTopics": [
     {
       id: 1,
       title: '摄影',
@@ -45,11 +45,11 @@ const defaultState = fromJS({
       href: '/c/cc7808b775b4?utm_medium=index-collections&utm_source=desktop'
     },
   ],
-  morePopularTopics: {
+  "morePopularTopics": {
     title: '更多热门专题',
     href: '/recommendations/collections?utm_medium=index-collections&utm_source=desktop'
   },
-  boardList: [
+  "boardList": [
     {
       id: 1,
       href: '/mobile/club',
@@ -74,11 +74,28 @@ const defaultState = fromJS({
       imgURL: '//cdn2.jianshu.io/assets/web/banner-s-6-c4d6335bfd688f2ca1115b42b04c28a7.png',
       alt: 'course'
     },
+  ],
+  "recommendedAuthors": [
+    {
+      "id": 5565867, "slug": "e4aec3c9fc3f", "nickname": "小万PPT", "avatar_source": "http://upload.jianshu.io/users/upload_avatars/5565867/eead6b83-452b-42a7-b77e-5dc9109d8a71.jpg", "total_likes_count": 22596, "total_wordage": 113917, "is_following_user": false
+    },
+    {
+      "id": 3136195, "slug": "6810a6332de9", "nickname": "梅拾璎", "avatar_source": "http://upload.jianshu.io/users/upload_avatars/3136195/484e32c3504a.jpg", "total_likes_count": 24777, "total_wordage": 265798, "is_following_user": false
+    },
+    {
+      "id": 3343569, "slug": "b3b2c03354f3", "nickname": "吴晓布", "avatar_source": "http://upload.jianshu.io/users/upload_avatars/3343569/6940ee65-036f-4b7a-9935-5915d9b67d14.jpg", "total_likes_count": 21387, "total_wordage": 674576, "is_following_user": false
+    },
+    {
+      "id": 1835526, "slug": "55b597320c4e", "nickname": "行距版君", "avatar_source": "http://upload.jianshu.io/users/upload_avatars/1835526/83d24e1a-0a0f-43f6-8a1d-289be6101e73.png", "total_likes_count": 54113, "total_wordage": 505937, "is_following_user": false
+    },
+    {
+      "id": 3950651, "slug": "ca5b9d6f94dc", "nickname": "三儿王屿", "avatar_source": "http://upload.jianshu.io/users/upload_avatars/3950651/acfaa0ce-42fe-424a-b7c8-9a0136fb96ec.jpg", "total_likes_count": 3388, "total_wordage": 212422, "is_following_user": false
+    }
   ]
 });
 
 const reducer = (state = defaultState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     default:
       return state
   }
