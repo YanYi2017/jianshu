@@ -82,7 +82,7 @@ class Header extends Component {
     for (let i = (page - 1) * 10; i < page * 10; i++) {
       if (newList[i]) {
         pageList.push(
-          <li key={newList[i]}><a target='_blank'>{newList[i]}</a></li>
+          <li key={newList[i]}><a target="_blank" rel="noopener noreferrer" href={encodeURI(`/search?q=${newList[i]}&utm_source=desktop&utm_medium=search-trending`)}>{newList[i]}</a></li>
         );
       }
     }

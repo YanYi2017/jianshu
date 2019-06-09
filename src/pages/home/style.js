@@ -105,6 +105,7 @@ export const ArticleListWraper = styled.ul`
   }
   .meta a {
     margin-right: 10px;
+    color: #b4b4b4;
   }
   .meta a:hover {
     color: #787878;
