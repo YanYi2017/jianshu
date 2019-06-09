@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 
-import { RecommendedAuthorsWraper } from '../style';
+import { RecommendedAuthorsWrapper } from '../style';
 
-class RecommendedAuthors extends Component {
+class RecommendedAuthors extends PureComponent {
   render() {
     return (
-      <RecommendedAuthorsWraper>
+      <RecommendedAuthorsWrapper>
         <div className="title">
           <span>推荐作者</span>
           <a className="page-change">
@@ -32,7 +32,7 @@ class RecommendedAuthors extends Component {
           }) }
         </ul>
         <a href="/recommendations/users?utm_source=desktop&utm_medium=index-users" className="find-more">查看全部 ></a>
-      </RecommendedAuthorsWraper>
+      </RecommendedAuthorsWrapper>
     );
   }
 }

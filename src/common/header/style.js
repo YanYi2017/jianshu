@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import logoPic from '../../statics/logo.png';
 
-export const HeaderWraper = styled.header`
+export const HeaderWrapper = styled.header`
   position: fixed;
   left: 0; right: 0;
   z-index: 999;
@@ -46,7 +46,7 @@ export const NavItem = styled.a`
   }
 `;
 
-export const SearchWraper = styled.div`
+export const SearchWrapper = styled.div`
   & .ic-search {
     position: absolute;
     margin-top: 10px;

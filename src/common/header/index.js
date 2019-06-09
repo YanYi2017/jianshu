@@ -6,12 +6,12 @@ import { actionCreators } from './store';
 import { CSSTransition } from 'react-transition-group';
 
 import {
-  HeaderWraper,
+  HeaderWrapper,
   WidthLimit,
   Logo,
   Nav,
   NavItem,
-  SearchWraper,
+  SearchWrapper,
   NavSearch,
   SearchTrending,
   SearchTrendingHeader,
@@ -24,7 +24,7 @@ class Header extends Component {
   render() {
     const { focused, list, handleInputFocus, handleInputBlur } = this.props;
     return (
-      <HeaderWraper>
+      <HeaderWrapper>
         <WidthLimit>
           <Logo href='/' />
           <Addition>
@@ -47,7 +47,7 @@ class Header extends Component {
             <NavItem className='right'>
               <span className="iconfont">&#xe607;</span>
             </NavItem>
-            <SearchWraper>
+            <SearchWrapper>
               <CSSTransition
                 in={focused}
                 timeout={500}
@@ -67,10 +67,10 @@ class Header extends Component {
                 <span className='iconfont ic-search'>&#xe653;</span>
               </CSSTransition>
               {this.getListArea()}
-            </SearchWraper>
+            </SearchWrapper>
           </Nav>
         </WidthLimit>
-      </HeaderWraper>
+      </HeaderWrapper>
     );
   }
 

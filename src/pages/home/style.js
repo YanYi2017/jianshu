@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const HomeWraper = styled.div`
+export const HomeWrapper = styled.div`
   overflow: hidden;
   width: 960px;
   margin: 0 auto;
@@ -19,7 +19,7 @@ export const HomeRight = styled.div`
   margin-left: 40px;
 `;
 
-export const CarouselWraper = styled.div`
+export const CarouselWrapper = styled.div`
   margin-bottom: 35px;
   & img {
     width: 100%; height: 270px;
@@ -27,7 +27,7 @@ export const CarouselWraper = styled.div`
   }
 `;
 
-export const PopularTopicsWraper = styled.div`
+export const PopularTopicsWrapper = styled.div`
   margin-bottom: 20px;
   & a {
     display: inline-block;
@@ -54,7 +54,7 @@ export const PopularTopicsWraper = styled.div`
   }
 `;
 
-export const ArticleListWraper = styled.ul`
+export const ArticleListWrapper = styled.ul`
   list-style: none;
   & li {
     position: relative;
@@ -133,7 +133,7 @@ export const AddMore = styled.button`
   }
 `;
 
-export const BoardWraper = styled.div`
+export const BoardWrapper = styled.div`
   margin: -5px 0 20px 0;
   & img {
     width: 100%; min-height: 50px;
@@ -142,7 +142,7 @@ export const BoardWraper = styled.div`
   }
 `;
 
-export const RecommendedAuthorsWraper = styled.div`
+export const RecommendedAuthorsWrapper = styled.div`
   font-size: 13px;
   .title {
     line-height: 20px;

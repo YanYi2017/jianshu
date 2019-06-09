@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 
-import { BoardWraper } from '../style';
+import { BoardWrapper } from '../style';
 
-class Board extends Component {
+class Board extends PureComponent {
   render() {
     return (
-      <BoardWraper>
+      <BoardWrapper>
         {this.props.boardList.map((item) => {
           return (
             <a href={item.get('href')} target="_blank" rel="noopener noreferrer" key={item.get('id')}>
@@ -14,7 +14,7 @@ class Board extends Component {
             </a>
           );
         })}
-      </BoardWraper>
+      </BoardWrapper>
     );
   }
 }

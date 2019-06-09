@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { actionCreators } from './store';
 
@@ -8,12 +8,12 @@ import ArticleList from './components/ArticleList';
 import Board from './components/Board';
 import RecommendedAuthors from './components/RecommendedAuthors';
 
-import { HomeWraper, HomeLeft, HomeRight, BackTop } from './style';
+import { HomeWrapper, HomeLeft, HomeRight, BackTop } from './style';
 
-class Home extends Component {
+class Home extends PureComponent {
   render() {
     return (
-      <HomeWraper>
+      <HomeWrapper>
         <HomeLeft>
           <Carousel />
           <PopularTopics />
@@ -30,7 +30,7 @@ class Home extends Component {
             </BackTop>
           ) : null
         }
-      </HomeWraper>
+      </HomeWrapper>
     );
   }
   componentDidMount() {
