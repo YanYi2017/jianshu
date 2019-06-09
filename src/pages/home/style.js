@@ -201,3 +201,15 @@ export const RecommendedAuthorsWraper = styled.div`
     background: #f7f7f7;
   }
 `;
+
+export const BackTop = styled.button`
+  position: fixed;
+  right: 40px; bottom: 40px;
+  width: 52px; height: 52px;
+  border: 1px solid #dcdcdc;
+  background: transparent;
+  outline: none;
+  padding: 0;
+  z-index: 1040;
+  cursor: pointer;
+`;

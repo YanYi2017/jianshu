@@ -8,7 +8,7 @@ import ArticleList from './components/ArticleList';
 import Board from './components/Board';
 import RecommendedAuthors from './components/RecommendedAuthors';
 
-import { HomeWraper, HomeLeft, HomeRight } from './style';
+import { HomeWraper, HomeLeft, HomeRight, BackTop } from './style';
 
 class Home extends Component {
   render() {
@@ -23,19 +23,43 @@ class Home extends Component {
           <Board />
           <RecommendedAuthors />
         </HomeRight>
+        {
+          this.props.showBackTop ? (
+            <BackTop onClick={this.handleScrollTop}>
+              <span className="iconfont">&#xe671;</span>
+            </BackTop>
+          ) : null
+        }
       </HomeWraper>
     );
   }
   componentDidMount() {
     this.props.changeHomeData();
+    window.addEventListener('scroll', this.props.changeShowBackTop)
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.props.changeShowBackTop)
+  }
+  handleScrollTop() {
+    window.scrollTo(0, 0);
   }
 }
 
+const mapStateToProps = (state) => ({
+  showBackTop: state.getIn(['homeReducer', 'showBackTop'])
+});
+
 const mapDispatchToProps = (dispatch) => ({
   changeHomeData() {
-    const action = actionCreators.getHomeInfo();
-    dispatch(action);
+    dispatch(actionCreators.getHomeInfo());
+  },
+  changeShowBackTop() {
+    if (document.documentElement.scrollTop > 300) {
+      dispatch(actionCreators.toggleTopShow(true));
+    } else {
+      dispatch(actionCreators.toggleTopShow(false));
+    }
   }
 });
 
-export default connect(null, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -33,3 +33,8 @@ export const getMoreList = (articlePage) => {
     });
   }
 }
+
+export const toggleTopShow = (show) => ({
+  type: actionTypes.TOGGLE_TOP_SHOW,
+  show
+});

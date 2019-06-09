@@ -7,25 +7,36 @@ const defaultState = fromJS({
   'articleList': [],
   'boardList': [],
   'recommendedAuthors': [],
-  'articlePage': 1
+  'articlePage': 1,
+  'showBackTop': false
 });
+
+const getInitialData = (state, action) => {
+  return state.merge({
+    'popularTopics': fromJS(action.popularTopics),
+    'morePopularTopics': fromJS(action.morePopularTopics),
+    'articleList': fromJS(action.articleList),
+    'boardList': fromJS(action.boardList),
+    'recommendedAuthors': fromJS(action.recommendedAuthors)
+  });
+};
+
+const addArticleList = (state, action) => {
+  const newData = state.get('articleList').concat(fromJS(action.articleList));
+  return state.merge({
+    'articleList': newData,
+    'articlePage': action.nextPage
+  });
+};
 
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
     case actionTypes.GET_INITIAL_DATA:
-      return state.merge({
-        'popularTopics': fromJS(action.popularTopics),
-        'morePopularTopics': fromJS(action.morePopularTopics),
-        'articleList': fromJS(action.articleList),
-        'boardList': fromJS(action.boardList),
-        'recommendedAuthors': fromJS(action.recommendedAuthors)
-      })
+      return getInitialData(state, action);
     case actionTypes.ADD_ARTICLE_LIST:
-      const newData = state.get('articleList').concat(fromJS(action.articleList));
-      return state.merge({
-        'articleList': newData,
-        'articlePage': action.nextPage
-      });
+      return addArticleList(state, action);
+    case actionTypes.TOGGLE_TOP_SHOW:
+      return state.set('showBackTop', fromJS(action.show));
     default:
       return state
   }
