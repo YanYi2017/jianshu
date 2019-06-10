@@ -1,11 +1,47 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import axios from 'axios';
+import { actionCreators } from './store';
+
+import Author from './components/Author';
+
+import {
+  DetailWrapper,
+  ArticleWrapper,
+  Header,
+  Content
+} from './style';
 
 class Detail extends Component {
   render() {
+    const { title, content } = this.props;
     return (
-      <div>detail</div>
+      <DetailWrapper>
+        <ArticleWrapper>
+          <Header>
+            <h1>{title}</h1>
+          </Header>
+          <Author />
+          <Content dangerouslySetInnerHTML={{ __html: content }} />
+        </ArticleWrapper>
+      </DetailWrapper>
     );
+  }
+
+  componentDidMount() {
+    this.props.getDetail();
   }
 }
 
-export default Detail;
+const mapStateToProps = (state) => ({
+  title: state.getIn(['detailReducer', 'title']),
+  content: state.getIn(['detailReducer', 'content'])
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getDetail() {
+    dispatch(actionCreators.getDetail());
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Detail);
