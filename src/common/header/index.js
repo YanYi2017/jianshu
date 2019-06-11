@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { actionCreators } from './store';
 
@@ -26,7 +26,9 @@ class Header extends Component {
     return (
       <HeaderWrapper>
         <WidthLimit>
-          <Logo href='/' />
+          <Link to="/">
+            <Logo />
+          </Link>
           <Addition>
             <Button className='writing'>
               <span className="iconfont">&#xe616;</span>
@@ -35,15 +37,19 @@ class Header extends Component {
             <Button className='register'>注册</Button>
           </Addition>
           <Nav>
-            <NavItem className='left homepage'>
-              <span className="iconfont">&#xe64e;</span>
-              <span>首页</span>
-            </NavItem>
+            <Link to="/">
+              <NavItem className='left homepage'>
+                <span className="iconfont">&#xe64e;</span>
+                <span>首页</span>
+              </NavItem>
+            </Link>
             <NavItem className='left'>
               <span className="iconfont">&#xe62d;</span>
               <span>下载App</span>
             </NavItem>
-            <NavItem className='right'>登录</NavItem>
+            <Link to="/login">
+              <NavItem className='right'>登录</NavItem>
+            </Link>
             <NavItem className='right'>
               <span className="iconfont">&#xe607;</span>
             </NavItem>
@@ -82,7 +88,11 @@ class Header extends Component {
     for (let i = (page - 1) * 10; i < page * 10; i++) {
       if (newList[i]) {
         pageList.push(
-          <li key={newList[i]}><a target="_blank" rel="noopener noreferrer" href={encodeURI(`/search?q=${newList[i]}&utm_source=desktop&utm_medium=search-trending`)}>{newList[i]}</a></li>
+          <li key={newList[i]}>
+            <Link to={encodeURI(`/search?q=${newList[i]}`)}>
+              {newList[i]}
+            </Link>
+          </li>
         );
       }
     }

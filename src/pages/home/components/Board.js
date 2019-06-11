@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { BoardWrapper } from '../style';
@@ -9,9 +10,9 @@ class Board extends PureComponent {
       <BoardWrapper>
         {this.props.boardList.map((item) => {
           return (
-            <a href={item.get('href')} target="_blank" rel="noopener noreferrer" key={item.get('id')}>
+            <Link to={item.get('href')} key={item.get('id')}>
               <img src={item.get('imgURL')} alt={item.get('alt')}/>
-            </a>
+            </Link>
           );
         })}
       </BoardWrapper>

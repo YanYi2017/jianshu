@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 
+import { Link } from 'react-router-dom';
+
 import { actionCreators } from '../store';
 
 import { ArticleListWrapper, AddMore } from '../style';
@@ -15,13 +17,13 @@ class ArticleList extends PureComponent {
             <li key={index}>
               {
                 item.get('imgURL') ? (
-                  <a href={item.get('href')} className="title">
+                  <Link to={`/detail/${item.get('id')}`}>
                     <img src={item.get('imgURL')} alt={item.get('title')} />
-                  </a>
+                  </Link>
                 ) : ''
               }
               <div>
-                <a href={item.get('href')} className="title" target="_blank" rel="noopener noreferrer">{item.get('title')}</a>
+                <Link to={`/detail/${item.get('id')}`} className="title">{item.get('title')}</Link>
                 <p className="abstract">{item.get('abstract')}</p>
   
                 <div className="meta">
@@ -33,11 +35,12 @@ class ArticleList extends PureComponent {
                       </span>
                     ) : ''
                   }
-                  <a href={item.get('authorURL')} target="_blank" rel="noopener noreferrer">{item.get('nickname')}</a>
-                  <a href={item.get('commentsURL')} target="_blank" rel="noopener noreferrer">
+                  <Link to={`/author/${item.get('authorID')}`}>{item.get('nickname')}</Link>
+                  <Link to={`/detail/${item.get('id') + '#comments'}`}>
                     <span className="iconfont">&#xe609;</span>
                     <span> {item.get('comments')} </span>
-                  </a>
+                  </Link>
+                  
                   <span>
                     <span className="iconfont">&#xe622;</span>
                     <span> {item.get('like')} </span>

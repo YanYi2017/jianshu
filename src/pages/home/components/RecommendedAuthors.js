@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { RecommendedAuthorsWrapper } from '../style';
@@ -18,20 +19,20 @@ class RecommendedAuthors extends PureComponent {
           { this.props.recommendedAuthors.map((item) => {
             return (
               <li key={item.get('id')}>
-                <a className="avatar" href={`/u/${item.get('slug')}?utm_source=desktop&utm_medium=index-users`} target="_blank" rel="noopener noreferrer">
+                <Link to={`/author/${item.get('slug')}`} className="avatar">
                   <img src={item.get('avatar_source')} alt={item.get('nickname')} />
-                </a>
+                </Link>
                 <a className="follow">
                   <span>+</span>
                   关注
                 </a>
-                <a className="name" href={`/u/${item.get('slug')}?utm_source=desktop&utm_medium=index-users`} target="_blank" rel="noopener noreferrer">{item.get('nickname')}</a>
+                <Link to={`/author/${item.get('slug')}`} className="name">{item.get('nickname')}</Link>
                 <p>写了{(item.get('total_wordage') / 1000).toFixed(1)}k字 · {(item.get('total_likes_count') / 100).toFixed(1)}k喜欢</p>
               </li>
             );
           }) }
         </ul>
-        <a href="/recommendations/users?utm_source=desktop&utm_medium=index-users" className="find-more">查看全部 ></a>
+        <Link to={'/recommendations/users'} className="find-more">查看全部 ></Link>
       </RecommendedAuthorsWrapper>
     );
   }

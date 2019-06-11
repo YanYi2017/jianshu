@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-
 import { PopularTopicsWrapper } from '../style.js';
 
 class PopularTopics extends PureComponent {
@@ -11,16 +11,16 @@ class PopularTopics extends PureComponent {
           {
             popularTopics.map((item) => {
               return (
-                <a target='_blank' rel='noopener noreferrer' href={item.get('href')} key={item.get('id')}>
+                <Link to={item.get('href')} key={item.get('id')}>
                   <img src={item.get('imgURL')} alt={item.get('title')}/>
                   <span>{item.get('title')}</span>
-                </a>
+                </Link>
               );
             })
           }
-          <a target='_blank' rel='noopener noreferrer' className='more-hot-topics' href={morePopularTopics.get('href')}>
+          <Link to={morePopularTopics.get('href')} className="more-hot-topics">
             <span>{morePopularTopics.get('title')} ></span>
-          </a>
+          </Link>
         </PopularTopicsWrapper>
       );
     }

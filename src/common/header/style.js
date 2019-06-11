@@ -16,7 +16,7 @@ export const WidthLimit = styled.div`
   margin: 0 auto;
 `;
 
-export const Logo = styled.a`
+export const Logo = styled.div`
   float:left;
   width: 100px; height: 58px;
   background: url(${logoPic});
@@ -29,11 +29,12 @@ export const Nav = styled.div`
   margin: 0 auto;
 `;
 
-export const NavItem = styled.a`
+export const NavItem = styled.div`
   line-height: 28px;
   font-size: 17px;
   padding: 15px;
   color: #333;
+  cursor: pointer;
   &.left {
     float: left;
   }

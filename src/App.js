@@ -13,10 +13,10 @@ function App() {
       <div>
         <GlobalStyle />
         <GlobalIconFont />
-        <Header />
         <BrowserRouter>
+          <Header />
           <Route exact path="/" component={Home} />
-          <Route exact path="/detail" component={Detail} />
+          <Route exact path="/detail/:id" component={Detail} />
         </BrowserRouter>
       </div>
   );
