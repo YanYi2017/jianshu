@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { actionCreators } from './store';
+import { actionCreators as loginActionCreators } from '../../pages/login/store';
 
 import { CSSTransition } from 'react-transition-group';
 
@@ -20,9 +21,9 @@ import {
   Button
 } from './style';
 
-class Header extends Component {
+class Header extends PureComponent {
   render() {
-    const { focused, list, handleInputFocus, handleInputBlur } = this.props;
+    const { focused, list, login, handleLogout, handleInputFocus, handleInputBlur } = this.props;
     return (
       <HeaderWrapper>
         <WidthLimit>
@@ -47,9 +48,15 @@ class Header extends Component {
               <span className="iconfont">&#xe62d;</span>
               <span>下载App</span>
             </NavItem>
-            <Link to="/login">
-              <NavItem className='right'>登录</NavItem>
-            </Link>
+            {
+              login ? (
+                <NavItem className='right' onClick={handleLogout}>退出</NavItem>
+              ) : (
+                <Link to="/login">
+                  <NavItem className='right'>登录</NavItem>
+                </Link>
+              )
+            }
             <NavItem className='right'>
               <span className="iconfont">&#xe607;</span>
             </NavItem>
@@ -136,7 +143,8 @@ const mapStateToProps = (state) => ({
   mouseIn: state.getIn(['headerReducer', 'mouseIn']),
   list: state.getIn(['headerReducer', 'list']),
   page: state.getIn(['headerReducer', 'page']),
-  totalPage: state.getIn(['headerReducer', 'totalPage'])
+  totalPage: state.getIn(['headerReducer', 'totalPage']),
+  login: state.getIn(['loginReducer', 'login'])
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -162,6 +170,10 @@ const mapDispatchToProps = (dispatch) => ({
     } else {
       dispatch(actionCreators.changePage(1));
     }
+  },
+  handleLogout() {
+    console.log('handleLogout');
+    dispatch(loginActionCreators.logout());
   }
 });
 

@@ -6,9 +6,18 @@ export const LoginWrapper = styled.div`
   background: #f1f1f1;
 `;
 
+export const Logo = styled.div`
+  position: absolute;
+  top: 56px;
+  left: 50px;
+  img {
+    width: 100px;
+  }
+`;
+
 export const LoginBox = styled.div`
   width: 400px; height: 500px;
-  margin: 60px auto;
+  margin: 110px auto;
   padding: 50px 50px 30px 50px;
   background: #fff;
   border-radius: 4px;
@@ -31,6 +40,10 @@ export const Title = styled.div`
   span {
     padding: 10px;
   }
+  .active {
+    color: #ea6f5a;
+    border-bottom: 2px solid #ea6f5a;
+  }
 `;
 
 export const LoginInput = styled.form`
@@ -40,7 +53,7 @@ export const LoginInput = styled.form`
     background: hsla(0,0%,71%,.1);
     outline: none;
   }
-  .ic-user, .ic-password {
+  .ic-account, .ic-password {
     position: absolute;
     top: 15px; left: 10px;
     font-size: 20px;
@@ -72,6 +85,12 @@ export const Others = styled.div`
   input {
     vertical-align: -1px;
   }
+  label {
+    cursor: pointer;
+    input {
+      cursor: pointer;
+    }
+  }
 `;
 
 export const SupportButton = styled.button`
@@ -81,6 +100,8 @@ export const SupportButton = styled.button`
   color: #999;
   padding: 0;
   font-size: 14px;
+  outline: none;
+  cursor: pointer;
 `;
 
 export const SubmitButton = styled.button`
