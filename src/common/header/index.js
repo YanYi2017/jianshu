@@ -23,7 +23,7 @@ import {
 
 class Header extends PureComponent {
   render() {
-    const { focused, list, login, handleLogout, handleInputFocus, handleInputBlur } = this.props;
+    const { focused, list, loginStatus, handleLogout, handleInputFocus, handleInputBlur } = this.props;
     return (
       <HeaderWrapper>
         <WidthLimit>
@@ -49,7 +49,7 @@ class Header extends PureComponent {
               <span>下载App</span>
             </NavItem>
             {
-              login ? (
+              loginStatus ? (
                 <NavItem className='right' onClick={handleLogout}>退出</NavItem>
               ) : (
                 <Link to="/login">
@@ -144,7 +144,7 @@ const mapStateToProps = (state) => ({
   list: state.getIn(['headerReducer', 'list']),
   page: state.getIn(['headerReducer', 'page']),
   totalPage: state.getIn(['headerReducer', 'totalPage']),
-  login: state.getIn(['loginReducer', 'login'])
+  loginStatus: state.getIn(['loginReducer', 'loginStatus'])
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -172,7 +172,6 @@ const mapDispatchToProps = (dispatch) => ({
     }
   },
   handleLogout() {
-    console.log('handleLogout');
     dispatch(loginActionCreators.logout());
   }
 });

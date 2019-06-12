@@ -3,12 +3,12 @@ import * as actionTypes from './actionTypes';
 
 const changeLogin = () => ({
   type: actionTypes.CHANGE_LOGIN,
-  login: true
+  loginStatus: true
 });
 
 const changeLogout = () => ({
   type: actionTypes.CHANGE_LOGOUT,
-  login: false
+  loginStatus: false
 });
 
 export const login = (account, password) => {
@@ -27,7 +27,6 @@ export const login = (account, password) => {
 
 export const logout = () => {
   return (dispatch) => {
-    console.log('logout');
     axios.get(`/api/logout.json`)
       .then((res) => {
         const success = res.data.success;
@@ -39,3 +38,13 @@ export const logout = () => {
       });
   };
 };
+
+export const changeAccount = account => ({
+  type: actionTypes.CHANGE_ACCOUNT,
+  account
+});
+
+export const changePassword = password => ({
+  type: actionTypes.CHANGE_PASSWORD,
+  password
+});

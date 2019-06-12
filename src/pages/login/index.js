@@ -16,7 +16,7 @@ import {
 
 class Login extends PureComponent {
   render() {
-    const { loginStatus } = this.props;
+    const { loginStatus, account, password, handleLogin, handleAccountChange, handlePasswordChange } = this.props;
     if (!loginStatus) {
       return (
         <LoginWrapper>
@@ -37,8 +37,7 @@ class Login extends PureComponent {
                   type="text"
                   name="account"
                   placeholder="手机号或邮箱"
-                  ref={input => this.accountElem = input}
-                  required
+                  onBlur={handleAccountChange}
                 />
                 <span className="iconfont ic-account">&#xe81f;</span>
               </UserName>
@@ -46,9 +45,8 @@ class Login extends PureComponent {
                 <input 
                   type="password"
                   name="password" 
-                  placeholder="密码" 
-                  ref={input => this.passwordElem = input} 
-                  required
+                  placeholder="密码"
+                  onBlur={handlePasswordChange}
                 />
                 <span className="iconfont ic-password">&#xe619;</span>
               </UserPassword>
@@ -59,7 +57,7 @@ class Login extends PureComponent {
                 </label>
                 <SupportButton type="button">登录遇到问题？</SupportButton>
               </Others>
-              <SubmitButton type="button" onClick={() => this.props.login(this.accountElem, this.passwordElem)}>登录</SubmitButton>
+              <SubmitButton type="button" onClick={() => handleLogin(account, password)}>登录</SubmitButton>
               <MoreSignWrapper>
                 <h6>社交账号登录</h6>
                 <MoreSignWay>
@@ -96,12 +94,24 @@ class Login extends PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  loginStatus: state.getIn(['loginReducer', 'login'])
+  loginStatus: state.getIn(['loginReducer', 'loginStatus']),
+  account: state.getIn(['loginReducer', 'account']),
+  password: state.getIn(['loginReducer', 'password']),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  login(accountElem, passwordElem) {
-    dispatch(actionCreators.login(accountElem.value, passwordElem.value));
+  handleLogin(account, password) {
+    if (account && password) {
+      dispatch(actionCreators.login(account, password));
+    } else {
+      alert('手机号码/邮箱地址或密码不能为空');
+    }
+  },
+  handleAccountChange(e) {
+    dispatch(actionCreators.changeAccount(e.target.value));
+  },
+  handlePasswordChange(e) {
+    dispatch(actionCreators.changePassword(e.target.value));
   }
 });
 
