@@ -44,7 +44,22 @@ export const changeAccount = account => ({
   account
 });
 
+export const changeNickname = nickname => ({
+  type: actionTypes.CHANGE_NICKNAME,
+  nickname
+});
+
+export const changePhone = phone => ({
+  type: actionTypes.CHANGE_PHONE,
+  phone
+});
+
 export const changePassword = password => ({
   type: actionTypes.CHANGE_PASSWORD,
   password
+});
+
+export const changeVerification = verification => ({
+  type: actionTypes.CHANGE_VERIFICATION,
+  verification
 });

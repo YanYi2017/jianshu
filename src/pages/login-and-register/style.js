@@ -16,7 +16,7 @@ export const Logo = styled.div`
 `;
 
 export const InnerBox = styled.div`
-  width: 400px; height: 500px;
+  width: 400px;
   margin: 110px auto;
   padding: 50px 50px 30px 50px;
   background: #fff;
