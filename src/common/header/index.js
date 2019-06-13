@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { actionCreators } from './store';
-import { actionCreators as loginActionCreators } from '../../pages/login/store';
+import { actionCreators as loginActionCreators } from '../../pages/login-and-register/store';
 
 import { CSSTransition } from 'react-transition-group';
 
