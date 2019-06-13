@@ -11,6 +11,16 @@ const changeLogout = () => ({
   loginStatus: false
 });
 
+const changeNicknameAction = (nickname) => ({
+  type: actionTypes.CHANGE_NICKNAME,
+  nickname
+});
+
+const changeNicknameCheckMsgAction = (nicknameCheckMsg) => ({
+  type: actionTypes.CHANGE_NICKNAME_CHECK_MSG,
+  nicknameCheckMsg
+});
+
 export const login = (account, password) => {
   return (dispatch) => {
     axios.get(`/api/login.json?account=${account}&password=${password}`)
@@ -44,10 +54,24 @@ export const changeAccount = account => ({
   account
 });
 
-export const changeNickname = nickname => ({
-  type: actionTypes.CHANGE_NICKNAME,
-  nickname
-});
+export const changeNickname = nickname => {
+  return (dispatch) => {
+    axios.post('https://www.easy-mock.com/mock/5d03a12f2c12171b16c11917/jianshu/check_nickname', {
+      nickname: nickname
+    })
+    .then((res) => {
+        const success = res.data.success;
+        if (success) {
+          dispatch(changeNicknameAction(nickname));
+        } else {
+          dispatch(changeNicknameCheckMsgAction(res.data.msg));
+        }
+    })
+    .catch((err) => {
+      console.log('出错了，请刷新后重试');
+    });
+  };
+};
 
 export const changePhone = phone => ({
   type: actionTypes.CHANGE_PHONE,

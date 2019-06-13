@@ -4,6 +4,7 @@ import * as actionTypes from './actionTypes';
 const defaultState = fromJS({
   loginStatus: false,
   nickname: '',
+  nicknameCheckMsg: '',
   phone: '',
   verification: '',
   account: '',
@@ -18,6 +19,8 @@ const reducer = (state = defaultState, action) => {
       return state.set('loginStatus', fromJS(action.loginStatus))
     case actionTypes.CHANGE_NICKNAME:
       return state.set('nickname', fromJS(action.nickname))
+    case actionTypes.CHANGE_NICKNAME_CHECK_MSG:
+      return state.set('nicknameCheckMsg', fromJS(action.nicknameCheckMsg))
     case actionTypes.CHANGE_PHONE:
       return state.set('phone', fromJS(action.phone))
     case actionTypes.CHANGE_VERIFICATION:

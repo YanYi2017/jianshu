@@ -11,7 +11,7 @@ import {
 class ReBox extends PureComponent {
   render() {
     const { 
-      nickname, phone, password, 
+      nickname, phone, verification, password, 
       handleRegister, handleNicknameChange, handlePhoneChange, 
       handleVerificationChange, handlePasswordChange 
     } = this.props;
@@ -19,43 +19,67 @@ class ReBox extends PureComponent {
     return (
       <RegisterInput>
         <Nickname className="text-input">
+          <span className="iconfont ic-account">&#xe81f;</span>
           <input 
             type="text"
             name="nickname"
             placeholder="你的昵称"
             onBlur={handleNicknameChange}
           />
-          <span className="iconfont ic-account">&#xe81f;</span>
+          <span className="err-tips">
+            <span className="err-arrow-border"></span>
+            <span className="err-arrow-bg"></span>
+            <span className="err-inner">
+              <span className="iconfont ic-error">&#xe63f;</span>
+              昵称已被使用换一个吧
+            </span>
+          </span>
         </Nickname>
         <MobilePhone className="text-input">
+          <span className="iconfont ic-phone">&#xe60d;</span>
           <input 
             type="text"
             name="phone" 
             placeholder="手机号"
             onBlur={handlePhoneChange}
           />
-          <span className="iconfont ic-password">&#xe60d;</span>
+          <span className="err-tips">
+            <span className="err-arrow-border"></span>
+            <span className="err-arrow-bg"></span>
+            <span className="err-inner">
+              <span className="iconfont ic-error">&#xe63f;</span>
+              请输入正确的手机号
+            </span>
+          </span>
         </MobilePhone>
         <Verification className="text-input">
+          <span className="iconfont ic-verification">&#xe743;</span>
           <input 
             type="text"
             name="verification" 
             placeholder="手机验证码"
             onBlur={handleVerificationChange}
           />
-          <span className="iconfont ic-password">&#xe743;</span>
           <button>发送验证码</button>
         </Verification>
         <UserPassword className="text-input">
+          <span className="iconfont ic-password">&#xe619;</span>
           <input 
             type="password"
             name="password" 
             placeholder="设置密码"
             onBlur={handlePasswordChange}
           />
-          <span className="iconfont ic-password">&#xe619;</span>
+          <span className="err-tips">
+            <span className="err-arrow-border"></span>
+            <span className="err-arrow-bg"></span>
+            <span className="err-inner">
+              <span className="iconfont ic-error">&#xe63f;</span>
+              密码不能少于6个字符
+            </span>
+          </span>
         </UserPassword>
-        <SubmitButton type="button" onClick={() => handleRegister(nickname, password)}>注册</SubmitButton>
+        <SubmitButton type="button" onClick={() => handleRegister({nickname, phone, verification, password})}>注册</SubmitButton>
         <RegisterMsg>
           <p>点击 “注册” 即表示您同意并愿意遵守简书</p>
           <p>
@@ -82,6 +106,15 @@ class ReBox extends PureComponent {
   }
 }
 
+const formValidate = (formData) => {
+  const result = {
+    status: false,
+    msg: ''
+  };
+  
+  // 对用户名进行非空验证
+};
+
 const mapStateToProps = (state) => ({
   nickname: state.getIn(['loginReducer', 'nickname']),
   phone: state.getIn(['loginReducer', 'phone']),
@@ -90,8 +123,13 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  handleRegister(nickname, phone, verification, password) {
-
+  handleRegister(formData) {
+    const validateResult = formValidate(formData);
+    if (validateResult.status) {
+      dispatch(actionCreators.register(formData));    
+    } else {
+      alert(validateResult.msg);
+    }
   },
   handleNicknameChange(e) {
     dispatch(actionCreators.changeNickname(e.target.value));

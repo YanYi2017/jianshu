@@ -7,16 +7,44 @@ export const RegisterInput = styled.form`
     background: hsla(0,0%,71%,.1);
     outline: none;
   }
-  .ic-account, .ic-password {
+  .ic-account, .ic-phone, .ic-verification, .ic-password {
     position: absolute;
-    top: 15px; left: 10px;
+    margin-top: 15px; margin-left: 8px;
     font-size: 20px;
     color: #969696;
+  }
+  .err-tips {
+    position: absolute;
+    margin-left: 8px; margin-top: 7px;
+    padding: 5px 10px;
+    line-height: 25px;
+    border-radius: 4px;
+    border: 1px solid #ea6f5a;
+    background: #fff;
+    opacity: .9;
+    z-index: 1070;
+  }
+  .err-tips .err-arrow-border {
+    position: absolute;
+    margin-left: -17px; margin-top: 5px;
+    border: 6px solid transparent;
+    border-left: none;
+    border-right-color: #ea6f5a;
+  }
+  .err-tips .err-arrow-bg {
+    position: absolute;
+    margin-left: -16px; margin-top: 5px;
+    border: 6px solid transparent;
+    border-left: none;
+    border-right-color: #fff;
+  }
+  .err-tips .ic-error {
+    color: #ea6f5a;
+    margin-right: 5px;
   }
 `;
 
 export const Nickname = styled.div`
-  position: relative;
   input {
     border: 1px solid #c8c8c8;
     border-radius: 4px 4px 0 0;
@@ -25,7 +53,6 @@ export const Nickname = styled.div`
 `;
 
 export const MobilePhone = styled.div`
-  position: relative;
   input {
     border: 1px solid #c8c8c8;
     border-radius: 0;
@@ -34,7 +61,6 @@ export const MobilePhone = styled.div`
 `;
 
 export const Verification = styled.div`
-  position: relative;
   input {
     border: 1px solid #c8c8c8;
     border-radius: 0;
@@ -42,7 +68,7 @@ export const Verification = styled.div`
   }
   button {
     position: absolute;
-    top: 7px; right: 7px;
+    margin-top: 7px; margin-left: -106px;
     width: 100px; height: 36px;
     color: #fff;
     background: #42c02e;
@@ -52,7 +78,6 @@ export const Verification = styled.div`
 `;
 
 export const UserPassword = styled.div`
-  position: relative;
   input {
     border: 1px solid #c8c8c8;
     border-radius: 0 0 4px 4px;
