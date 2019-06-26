@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { actionCreators } from '../../store';
 
 import {
+  ErrorTip,
   RegisterInput, Nickname, MobilePhone, Verification, UserPassword, SubmitButton, RegisterMsg,
   MoreSignWrapper, MoreSignWay
 } from './style';
@@ -24,9 +25,17 @@ class ReBox extends PureComponent {
             type="text"
             name="nickname"
             placeholder="你的昵称"
-            value={nickname}
+            value={nickname.get('value')}
             onChange={handleNicknameChange}
           />
+          <ErrorTip>
+            <div className="errorTip-arrow errorTip-arrow-border"></div>
+            <div className="errorTip-arrow errorTip-arrow-bg"></div>
+            <div className="errorTip-inner">
+              <span className="iconfont ic-error">&#xe63f;</span>
+              <span className="err-msg">昵称 昵称已被使用，换一个吧</span>
+            </div>
+          </ErrorTip>
         </Nickname>
         <MobilePhone className="text-input">
           <span className="iconfont ic-phone">&#xe60d;</span>

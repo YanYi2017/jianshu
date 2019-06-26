@@ -1,5 +1,44 @@
 import styled from 'styled-components';
 
+export const ErrorTip = styled.span`
+  position: absolute;
+  margin-top: 7px; margin-left: 13px;
+  font-size: 14px;
+  opacity: 0.9;
+  .errorTip-arrow {
+    position: absolute;
+    margin-top: 12px;
+    width: 0; height: 0;
+    border: 5px solid transparent;
+    border-left: none;
+    border-right: 5px solid;
+  }
+  .errorTip-arrow.errorTip-arrow-border {
+    margin-left: -5px;
+    border-right-color: #ea6f5a;
+  }
+  .errorTip-arrow.errorTip-arrow-bg {
+    margin-left: -3px;
+    border-right-color: #fff;
+  }
+  .errorTip-inner {
+    border: 1px solid #ea6f5a;
+    border-radius: 4px;
+    padding: 5px 10px;
+    line-height: 25px;
+    background: #fff;
+    .ic-error {
+      vertical-align: middle;
+      margin-right: 5px;
+      color: #ea6f5a;
+      font-size: 20px;
+    }
+    .err-msg {
+      vertical-align: middle;
+    }
+  }
+`;
+
 export const RegisterInput = styled.form`
   .text-input input {
     width: 100%; height: 50px;
@@ -22,6 +61,7 @@ export const Nickname = styled.div`
     border-bottom: none;
   }
 `;
+
 
 export const MobilePhone = styled.div`
   position: relative;
