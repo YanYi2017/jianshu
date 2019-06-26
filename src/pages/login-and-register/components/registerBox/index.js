@@ -13,7 +13,7 @@ class ReBox extends PureComponent {
   render() {
     const { 
       nickname, phone,verification, password, 
-      handleRegister, handleNicknameChange, handlePhoneChange, 
+      handleRegister, handleNicknameChange, handleNicknameBlur, handlePhoneChange, 
       handleVerificationChange, handlePasswordChange 
     } = this.props;
 
@@ -27,13 +27,16 @@ class ReBox extends PureComponent {
             placeholder="你的昵称"
             value={nickname.get('value')}
             onChange={handleNicknameChange}
+            onBlur={handleNicknameBlur}
           />
           <ErrorTip>
             <div className="errorTip-arrow errorTip-arrow-border"></div>
             <div className="errorTip-arrow errorTip-arrow-bg"></div>
             <div className="errorTip-inner">
               <span className="iconfont ic-error">&#xe63f;</span>
-              <span className="err-msg">昵称 昵称已被使用，换一个吧</span>
+              <span className="err-msg">
+                {nickname.getIn(['validateResult', 'msg'])}
+              </span>
             </div>
           </ErrorTip>
         </Nickname>
@@ -108,6 +111,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   handleNicknameChange(e) {
     dispatch(actionCreators.changeNickname(e.target.value));
+  },
+  handleNicknameBlur(e) {
+    dispatch(actionCreators.testNickname(e.target.value));
   },
   handlePhoneChange(e) {
     dispatch(actionCreators.changePhone(e.target.value));

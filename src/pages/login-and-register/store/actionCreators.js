@@ -11,6 +11,11 @@ const changeLogout = () => ({
   loginStatus: false
 });
 
+const changeNicknameAction = (nickname) => ({
+  type: actionTypes.CHANGE_NICKNAME,
+  nickname
+});
+
 export const login = (account, password) => {
   return (dispatch) => {
     axios.get(`/api/login.json?account=${account}&password=${password}`)
@@ -44,10 +49,37 @@ export const changeAccount = account => ({
   account
 });
 
-export const changeNickname = nickname => ({
-  type: actionTypes.CHANGE_NICKNAME,
-  nickname
-});
+export const changeNickname = nicknameValue => {
+  return (dispatch) => {
+    const nickname = {
+      value: nicknameValue.trim(),
+      validateResult: {
+        status: false,
+        msg: ''
+      }
+    };
+    dispatch(changeNicknameAction(nickname));
+  };
+};
+
+export const testNickname = nicknameValue => {
+  return (dispatch) => {
+    const nickname = {
+      value: nicknameValue.trim(),
+      validateResult: {
+        status: false,
+        msg: ''
+      }
+    };
+
+    // 非空验证
+    if (!nickname.value) {
+      nickname.validateResult.msg = '请输入昵称';
+    }
+
+    dispatch(changeNicknameAction(nickname));
+  };
+};
 
 export const changePhone = phone => ({
   type: actionTypes.CHANGE_PHONE,

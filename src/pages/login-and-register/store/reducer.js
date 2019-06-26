@@ -3,11 +3,17 @@ import * as actionTypes from './actionTypes';
 
 const defaultState = fromJS({
   loginStatus: false,
-  nickname: 'hhh',
-  phone: 1112344,
-  verification: 2222,
+  nickname: {
+    value: '',
+    validateResult: {
+      status: false,
+      msg: '错误提示'
+    }
+  },
+  phone: '',
+  verification: '',
   account: '',
-  password: 134914
+  password: ''
 });
 
 const reducer = (state = defaultState, action) => {
