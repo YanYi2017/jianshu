@@ -19,16 +19,17 @@ class ReBox extends PureComponent {
     return (
       <RegisterInput>
         <Nickname className="text-input">
-          <input 
+          <span className="iconfont ic-account">&#xe81f;</span>
+          <input
             type="text"
             name="nickname"
             placeholder="你的昵称"
             value={nickname}
             onChange={handleNicknameChange}
           />
-          <span className="iconfont ic-account">&#xe81f;</span>
         </Nickname>
         <MobilePhone className="text-input">
+          <span className="iconfont ic-phone">&#xe60d;</span>
           <input 
             type="text"
             name="phone" 
@@ -36,9 +37,9 @@ class ReBox extends PureComponent {
             value={phone}
             onChange={handlePhoneChange}
           />
-          <span className="iconfont ic-password">&#xe60d;</span>
         </MobilePhone>
         <Verification className="text-input">
+          <span className="iconfont ic-verification">&#xe743;</span>
           <input 
             type="text"
             name="verification" 
@@ -46,10 +47,10 @@ class ReBox extends PureComponent {
             value={verification}
             onChange={handleVerificationChange}
           />
-          <span className="iconfont ic-password">&#xe743;</span>
           <button>发送验证码</button>
         </Verification>
         <UserPassword className="text-input">
+          <span className="iconfont ic-password">&#xe619;</span>
           <input 
             type="password"
             name="password" 
@@ -57,7 +58,6 @@ class ReBox extends PureComponent {
             value={password}
             onChange={handlePasswordChange}
           />
-          <span className="iconfont ic-password">&#xe619;</span>
         </UserPassword>
         <SubmitButton type="button" onClick={() => handleRegister(nickname, password)}>注册</SubmitButton>
         <RegisterMsg>

@@ -7,16 +7,15 @@ export const RegisterInput = styled.form`
     background: hsla(0,0%,71%,.1);
     outline: none;
   }
-  .ic-account, .ic-password {
+  .ic-account, .ic-phone, .ic-verification, .ic-password {
     position: absolute;
-    top: 15px; left: 10px;
+    margin-top: 15px; margin-left: 7px;
     font-size: 20px;
     color: #969696;
   }
 `;
 
 export const Nickname = styled.div`
-  position: relative;
   input {
     border: 1px solid #c8c8c8;
     border-radius: 4px 4px 0 0;
