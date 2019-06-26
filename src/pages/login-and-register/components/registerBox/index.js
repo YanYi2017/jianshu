@@ -11,7 +11,7 @@ import {
 class ReBox extends PureComponent {
   render() {
     const { 
-      nickname, phone, password, 
+      nickname, phone,verification, password, 
       handleRegister, handleNicknameChange, handlePhoneChange, 
       handleVerificationChange, handlePasswordChange 
     } = this.props;
@@ -23,7 +23,8 @@ class ReBox extends PureComponent {
             type="text"
             name="nickname"
             placeholder="你的昵称"
-            onBlur={handleNicknameChange}
+            value={nickname}
+            onChange={handleNicknameChange}
           />
           <span className="iconfont ic-account">&#xe81f;</span>
         </Nickname>
@@ -32,7 +33,8 @@ class ReBox extends PureComponent {
             type="text"
             name="phone" 
             placeholder="手机号"
-            onBlur={handlePhoneChange}
+            value={phone}
+            onChange={handlePhoneChange}
           />
           <span className="iconfont ic-password">&#xe60d;</span>
         </MobilePhone>
@@ -41,7 +43,8 @@ class ReBox extends PureComponent {
             type="text"
             name="verification" 
             placeholder="手机验证码"
-            onBlur={handleVerificationChange}
+            value={verification}
+            onChange={handleVerificationChange}
           />
           <span className="iconfont ic-password">&#xe743;</span>
           <button>发送验证码</button>
@@ -51,7 +54,8 @@ class ReBox extends PureComponent {
             type="password"
             name="password" 
             placeholder="设置密码"
-            onBlur={handlePasswordChange}
+            value={password}
+            onChange={handlePasswordChange}
           />
           <span className="iconfont ic-password">&#xe619;</span>
         </UserPassword>
