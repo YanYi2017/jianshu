@@ -29,16 +29,20 @@ class ReBox extends PureComponent {
             onChange={handleNicknameChange}
             onBlur={handleNicknameBlur}
           />
-          <ErrorTip>
-            <div className="errorTip-arrow errorTip-arrow-border"></div>
-            <div className="errorTip-arrow errorTip-arrow-bg"></div>
-            <div className="errorTip-inner">
-              <span className="iconfont ic-error">&#xe63f;</span>
-              <span className="err-msg">
-                {nickname.getIn(['validateResult', 'msg'])}
-              </span>
-            </div>
-          </ErrorTip>
+          {
+            nickname.getIn(['validateResult', 'msg']) ? (
+              <ErrorTip>
+                <div className="errorTip-arrow errorTip-arrow-border"></div>
+                <div className="errorTip-arrow errorTip-arrow-bg"></div>
+                <div className="errorTip-inner">
+                  <span className="iconfont ic-error">&#xe63f;</span>
+                  <span className="err-msg">
+                    {nickname.getIn(['validateResult', 'msg'])}
+                  </span>
+                </div>
+              </ErrorTip>
+            ) : null
+          }
         </Nickname>
         <MobilePhone className="text-input">
           <span className="iconfont ic-phone">&#xe60d;</span>

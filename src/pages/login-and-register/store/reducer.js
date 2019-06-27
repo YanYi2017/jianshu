@@ -7,7 +7,7 @@ const defaultState = fromJS({
     value: '',
     validateResult: {
       status: false,
-      msg: '错误提示'
+      msg: ''
     }
   },
   phone: '',
