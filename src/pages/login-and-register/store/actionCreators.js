@@ -77,6 +77,11 @@ export const testNickname = nicknameValue => {
       nickname.validateResult.msg = '请输入昵称';
       dispatch(changeNicknameAction(nickname));
     }
+    // 格式验证
+    else if (!validate(nickname.value, 'nickname')) {
+      nickname.validateResult.msg = '昵称 昵称格式不正确，需要是2-15个字符，只能包含英文中文数字和下划线，不能包含空格。';
+      dispatch(changeNicknameAction(nickname));
+    }
     else {
       // 验证昵称是否已存在
       axios.post('http://127.0.0.1:7300/mock/5d130b34bbc69c047c619b06/jianshu/check_nickname', {
@@ -118,3 +123,13 @@ export const changeVerification = verification => ({
   type: actionTypes.CHANGE_VERIFICATION,
   verification
 });
+
+const validate = (value, type) => {
+  const valueTrimmed = value.trim();
+
+  const nicknameRegExp = /^[\u4E00-\u9FA5A-za-z0-9_]{2,15}$/;
+  
+  if ('nickname' === type) {
+    return nicknameRegExp.test(valueTrimmed);
+  }
+};
