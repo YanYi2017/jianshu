@@ -15,7 +15,8 @@ class ReBox extends PureComponent {
       nickname, phone,verification, password, 
       handleRegister, handleNicknameChange, handleNicknameBlur,
       handlePhoneChange, handlePhoneFocus, handlePhoneBlur,
-      handleVerificationChange, handlePasswordChange 
+      handleVerificationChange,
+      handlePasswordChange, handlePasswordFocus, handlePasswordBlur
     } = this.props;
 
     return (
@@ -90,9 +91,11 @@ class ReBox extends PureComponent {
             placeholder="设置密码"
             value={password.get('result')}
             onChange={handlePasswordChange}
+            onFocus={handlePasswordFocus}
+            onBlur={handlePasswordBlur}
           />
           {
-            password.getIn(['validateResult', 'msg']) ? (
+            (!password.get('focused') && password.getIn(['validateResult', 'msg'])) ? (
                 <ErrorTip>
                   <div className="errorTip-arrow errorTip-arrow-border"></div>
                   <div className="errorTip-arrow errorTip-arrow-bg"></div>
@@ -162,8 +165,15 @@ const mapDispatchToProps = (dispatch) => ({
   handleVerificationChange(e) {
     dispatch(actionCreators.changeVerification(e.target.value));
   },
+
   handlePasswordChange(e) {
     dispatch(actionCreators.changePassword(e.target.value));
+  },
+  handlePasswordFocus() {
+    dispatch(actionCreators.focusPassword());
+  },
+  handlePasswordBlur() {
+    dispatch(actionCreators.blurPassword());
   }
 });
 

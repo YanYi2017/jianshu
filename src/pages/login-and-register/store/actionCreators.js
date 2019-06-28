@@ -112,10 +112,16 @@ export const blurPhone = () => ({
   type: actionTypes.BLUR_PHONE
 });
 
+export const changeVerification = verification => ({
+  type: actionTypes.CHANGE_VERIFICATION,
+  verification
+});
+
 export const changePassword = passwordValue => {
   return (dispatch) => {
     const password = {
       value: passwordValue,
+      focused: true,
       validateResult: {
         status: false,
         msg: ''
@@ -135,10 +141,17 @@ export const changePassword = passwordValue => {
   };
 }
 
-export const changeVerification = verification => ({
-  type: actionTypes.CHANGE_VERIFICATION,
-  verification
-});
+export const focusPassword = () => (
+  {
+    type: actionTypes.FOCUS_PASSWORD
+  }
+);
+
+export const blurPassword = () => (
+  {
+    type: actionTypes.BLUR_PASSWORD
+  }
+);
 
 // 验证昵称，返回值为Promise
 const validateNickname = async function (value) {

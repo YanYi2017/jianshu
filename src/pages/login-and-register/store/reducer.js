@@ -22,6 +22,7 @@ const defaultState = fromJS({
   account: '',
   password: {
     value: '',
+    focused: false,
     validateResult: {
       status: false,
       msg: ''
@@ -49,8 +50,14 @@ const reducer = (state = defaultState, action) => {
       return state.set('verification', fromJS(action.verification))
     case actionTypes.CHANGE_ACCOUNT:
       return state.set('account', fromJS(action.account))
+
     case actionTypes.CHANGE_PASSWORD:
       return state.set('password', fromJS(action.password))
+    case actionTypes.FOCUS_PASSWORD:
+      return state.setIn(['password', 'focused'], fromJS(true))
+    case actionTypes.BLUR_PASSWORD:
+      return state.setIn(['password', 'focused'], fromJS(false))
+
     default:
       return state;
   }

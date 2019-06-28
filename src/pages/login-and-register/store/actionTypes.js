@@ -11,4 +11,7 @@ export const FOCUS_PHONE = 'login/FOCUS_PHONE';
 export const BLUR_PHONE = 'login/BLUR_PHONE';
 
 export const CHANGE_VERIFICATION = 'login/CHANGE_VERIFICATION';
+
 export const CHANGE_PASSWORD = 'login/CHANGE_PASSWORD';
+export const FOCUS_PASSWORD = 'login/FOCUS_PASSWORD';
+export const BLUR_PASSWORD = 'login/BLUR_PASSWORD';
