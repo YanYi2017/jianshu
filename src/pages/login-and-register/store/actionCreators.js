@@ -1,6 +1,8 @@
 import axios from 'axios';
 import * as actionTypes from './actionTypes';
 
+import { validate } from '../../../util';
+
 const changeLogin = () => ({
   type: actionTypes.CHANGE_LOGIN,
   loginStatus: true
@@ -64,48 +66,12 @@ export const changeNickname = nicknameValue => {
 
 export const testNickname = nicknameValue => {
   return (dispatch) => {
-    const nickname = {
-      value: nicknameValue.trim(),
-      validateResult: {
-        status: false,
-        msg: ''
-      }
-    };
-
-    // 非空验证
-    if (!nickname.value) {
-      nickname.validateResult.msg = '请输入昵称';
-      dispatch(changeNicknameAction(nickname));
-    }
-    // 格式验证
-    else if (!validate(nickname.value, 'nickname')) {
-      nickname.validateResult.msg = '昵称 昵称格式不正确，需要是2-15个字符，只能包含英文中文数字和下划线，不能包含空格。';
-      dispatch(changeNicknameAction(nickname));
-    }
-    else {
-      // 验证昵称是否已存在
-      axios.post('http://127.0.0.1:7300/mock/5d130b34bbc69c047c619b06/jianshu/check_nickname', {
-        nickname: nickname.value
-      })
-        .then((res) => {
-          // 若昵称不存在
-          if (res.data.success) {
-            nickname.validateResult.status = true;
-          }
-          // 若昵称已存在
-          else {
-            nickname.validateResult.status = false;
-            nickname.validateResult.msg = res.data.msg;
-          }
-        })
-        .catch((err) => {
-          nickname.validateResult.msg = '出错了，请刷新后重试';
-        })
-        .finally(() => {
-          // 修改并保存nickname
-          dispatch(changeNicknameAction(nickname));
-        });
-    }
+    validateNickname(nicknameValue).then((validateResult) => {
+      dispatch({
+        type: actionTypes.CHANGE_NICKNAME_VALIDATERESULT,
+        validateResult
+      });
+    });
   };
 };
 
@@ -124,12 +90,39 @@ export const changeVerification = verification => ({
   verification
 });
 
-const validate = (value, type) => {
-  const valueTrimmed = value.trim();
-
-  const nicknameRegExp = /^[\u4E00-\u9FA5A-za-z0-9_]{2,15}$/;
-  
-  if ('nickname' === type) {
-    return nicknameRegExp.test(valueTrimmed);
+// 验证昵称，返回值为Promise
+const validateNickname = async function (value) {
+  const result = {
+    status: false,
+    msg: ''
+  };
+  // 非空验证
+  if (!validate(value, 'required')) {
+    result.msg = '请输入昵称';
+    return result;
   }
+  // 验证格式
+  if (!validate(value, 'nickname')) {
+    result.msg = '昵称 昵称格式不正确，需要是2-15个字符，只能包含英文中文数字和下划线，不能包含空格。';
+    return result;
+  }
+  // 验证昵称是否已存在
+  try {
+    // 使用await等待异步验证结果
+    const res = await axios.post('http://127.0.0.1:7300/mock/5d130b34bbc69c047c619b06/jianshu/check_nickname', {
+      nickname: value
+    });
+    // 若昵称已存在
+    if (!res.data.success) {
+      result.msg = '昵称 昵称已被使用，换一个吧';
+      return result;
+    }
+  } catch (err) {
+    console.error(err);
+    result.msg = '出错了，请刷新后重试';
+    return result;
+  }
+  // 验证都通过
+  result.status = true;
+  return result;
 };

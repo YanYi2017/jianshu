@@ -24,6 +24,8 @@ const reducer = (state = defaultState, action) => {
       return state.set('loginStatus', fromJS(action.loginStatus))
     case actionTypes.CHANGE_NICKNAME:
       return state.set('nickname', fromJS(action.nickname))
+    case actionTypes.CHANGE_NICKNAME_VALIDATERESULT:
+      return state.setIn(['nickname', 'validateResult'], fromJS(action.validateResult))
     case actionTypes.CHANGE_PHONE:
       return state.set('phone', fromJS(action.phone))
     case actionTypes.CHANGE_VERIFICATION:
