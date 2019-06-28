@@ -39,7 +39,7 @@ export const ErrorTip = styled.span`
   }
 `;
 
-export const RegisterInput = styled.form`
+export const RegisterInput = styled.div`
   .text-input input {
     width: 100%; height: 50px;
     padding: 4px 12px 4px 35px;
