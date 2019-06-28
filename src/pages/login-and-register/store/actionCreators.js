@@ -112,10 +112,28 @@ export const blurPhone = () => ({
   type: actionTypes.BLUR_PHONE
 });
 
-export const changePassword = password => ({
-  type: actionTypes.CHANGE_PASSWORD,
-  password
-});
+export const changePassword = passwordValue => {
+  return (dispatch) => {
+    const password = {
+      value: passwordValue,
+      validateResult: {
+        status: false,
+        msg: ''
+      }
+    };
+
+    if (password.value.length < 6) {
+      password.validateResult.msg = '密码不能少于6个字符';
+    } else {
+      password.validateResult.status = true;
+    }
+
+    dispatch({
+      type: actionTypes.CHANGE_PASSWORD,
+      password
+    });
+  };
+}
 
 export const changeVerification = verification => ({
   type: actionTypes.CHANGE_VERIFICATION,

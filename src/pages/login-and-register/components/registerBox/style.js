@@ -90,7 +90,6 @@ export const Verification = styled.div`
 `;
 
 export const UserPassword = styled.div`
-  position: relative;
   input {
     border: 1px solid #c8c8c8;
     border-radius: 0 0 4px 4px;

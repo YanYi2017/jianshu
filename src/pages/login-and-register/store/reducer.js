@@ -20,7 +20,13 @@ const defaultState = fromJS({
   },
   verification: '',
   account: '',
-  password: ''
+  password: {
+    value: '',
+    validateResult: {
+      status: false,
+      msg: ''
+    }
+  }
 });
 
 const reducer = (state = defaultState, action) => {

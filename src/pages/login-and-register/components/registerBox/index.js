@@ -88,9 +88,23 @@ class ReBox extends PureComponent {
             type="password"
             name="password" 
             placeholder="设置密码"
-            value={password}
+            value={password.get('result')}
             onChange={handlePasswordChange}
           />
+          {
+            password.getIn(['validateResult', 'msg']) ? (
+                <ErrorTip>
+                  <div className="errorTip-arrow errorTip-arrow-border"></div>
+                  <div className="errorTip-arrow errorTip-arrow-bg"></div>
+                  <div className="errorTip-inner">
+                    <span className="iconfont ic-error">&#xe63f;</span>
+                    <span className="err-msg">
+                      {password.getIn(['validateResult', 'msg'])}
+                    </span>
+                  </div>
+                </ErrorTip>
+            ) : null
+          }
         </UserPassword>
         <SubmitButton type="button" onClick={() => handleRegister(nickname, password)}>注册</SubmitButton>
         <RegisterMsg>
