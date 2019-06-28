@@ -12,4 +12,9 @@ export const validate = (value, type) => {
   if ('nickname' === type) {
     return nicknameRegExp.test(valueTrimmed);
   }
+
+  // 手机号验证
+  if ('phone' === type) {
+    return /^1\d{10}$/.test(value);
+  }
 };

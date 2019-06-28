@@ -7,5 +7,8 @@ export const CHANGE_NICKNAME = 'login/CHANGE_NICKNAME';
 export const CHANGE_NICKNAME_VALIDATERESULT = 'login/CHANGE_NICKNAME_VALIDATERESULT';
 
 export const CHANGE_PHONE = 'login/CHANGE_PHONE';
+export const FOCUS_PHONE = 'login/FOCUS_PHONE';
+export const BLUR_PHONE = 'login/BLUR_PHONE';
+
 export const CHANGE_VERIFICATION = 'login/CHANGE_VERIFICATION';
 export const CHANGE_PASSWORD = 'login/CHANGE_PASSWORD';

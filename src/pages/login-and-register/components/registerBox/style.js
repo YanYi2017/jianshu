@@ -64,7 +64,6 @@ export const Nickname = styled.div`
 
 
 export const MobilePhone = styled.div`
-  position: relative;
   input {
     border: 1px solid #c8c8c8;
     border-radius: 0;

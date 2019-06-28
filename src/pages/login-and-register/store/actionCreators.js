@@ -75,9 +75,41 @@ export const testNickname = nicknameValue => {
   };
 };
 
-export const changePhone = phone => ({
-  type: actionTypes.CHANGE_PHONE,
-  phone
+export const changePhone = phoneValue => {
+  return (dispatch) => {
+    const phone = {
+      value: phoneValue,
+      focused: true,
+      validateResult: {
+        status: false,
+        msg: ''
+      }
+    };
+
+    // 验证输入的手机格式
+    if (!validate(phone.value, 'phone')) {
+      if (phone.value) {
+        phone.validateResult.msg = '手机号码格式不正确，请重新输入';
+      } else {
+        phone.validateResult.msg = '请输入手机号';
+      }
+    } else {
+      phone.validateResult.status = true;
+    }
+
+    dispatch({
+      type: actionTypes.CHANGE_PHONE,
+      phone
+    });
+  }
+};
+
+export const focusPhone = () => ({
+  type: actionTypes.FOCUS_PHONE
+});
+
+export const blurPhone = () => ({
+  type: actionTypes.BLUR_PHONE
 });
 
 export const changePassword = password => ({

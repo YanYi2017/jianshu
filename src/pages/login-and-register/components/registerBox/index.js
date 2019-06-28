@@ -13,7 +13,8 @@ class ReBox extends PureComponent {
   render() {
     const { 
       nickname, phone,verification, password, 
-      handleRegister, handleNicknameChange, handleNicknameBlur, handlePhoneChange, 
+      handleRegister, handleNicknameChange, handleNicknameBlur,
+      handlePhoneChange, handlePhoneFocus, handlePhoneBlur,
       handleVerificationChange, handlePasswordChange 
     } = this.props;
 
@@ -50,9 +51,25 @@ class ReBox extends PureComponent {
             type="text"
             name="phone" 
             placeholder="手机号"
-            value={phone}
+            value={phone.get('value')}
             onChange={handlePhoneChange}
+            onFocus={handlePhoneFocus}
+            onBlur={handlePhoneBlur}
           />
+          {
+            (!phone.get('focused') && phone.getIn(['validateResult', 'msg'])) ? (
+              <ErrorTip>
+                <div className="errorTip-arrow errorTip-arrow-border"></div>
+                <div className="errorTip-arrow errorTip-arrow-bg"></div>
+                <div className="errorTip-inner">
+                  <span className="iconfont ic-error">&#xe63f;</span>
+                  <span className="err-msg">
+                    {phone.getIn(['validateResult', 'msg'])}
+                  </span>
+                </div>
+              </ErrorTip>
+            ) : null
+          }
         </MobilePhone>
         <Verification className="text-input">
           <span className="iconfont ic-verification">&#xe743;</span>
@@ -121,6 +138,12 @@ const mapDispatchToProps = (dispatch) => ({
   },
   handlePhoneChange(e) {
     dispatch(actionCreators.changePhone(e.target.value));
+  },
+  handlePhoneFocus(e) {
+    dispatch(actionCreators.focusPhone());
+  },
+  handlePhoneBlur(e) {
+    dispatch(actionCreators.blurPhone());
   },
   handleVerificationChange(e) {
     dispatch(actionCreators.changeVerification(e.target.value));
