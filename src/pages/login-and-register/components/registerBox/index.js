@@ -10,6 +10,18 @@ import {
 } from './style';
 
 class ReBox extends PureComponent {
+
+  componentDidMount() {
+    window.handleCaptcha = function(res){
+        console.log(res)
+        // res（用户主动关闭验证码）= {ret: 2, ticket: null}
+        // res（验证成功） = {ret: 0, ticket: "String", randstr: "String"}
+        if(res.ret === 0){
+            alert(res.ticket)   // 票据
+        }
+    }
+  }
+
   render() {
     const { 
       nickname, phone,verification, password, 
@@ -72,21 +84,24 @@ class ReBox extends PureComponent {
             ) : null
           }
         </MobilePhone>
-        {
-          phone.get('value') ? (
-            <Verification>
-              <span className="iconfont ic-verification">&#xe743;</span>
-              <input 
-                type="text"
-                name="verification"
-                placeholder="手机验证码"
-                value={verification}
-                onChange={handleVerificationChange}
-              />
-              <button className={phone.getIn(['validateResult', 'status']) ? null : 'disable'}>发送验证码</button>
-            </Verification>
-          ) : null
-        }
+        <Verification>
+          <span className="iconfont ic-verification">&#xe743;</span>
+          <input 
+            type="text"
+            name="verification"
+            placeholder="手机验证码"
+            value={verification}
+            onChange={handleVerificationChange}
+          />
+          <button 
+            className={phone.getIn(['validateResult', 'status']) ? null : 'disable'}
+            id="TencentCaptcha"
+            data-appid="2083658602"
+            data-cbfn="handleCaptcha"
+          >
+            发送验证码
+          </button>
+        </Verification>
         <UserPassword>
           <span className="iconfont ic-password">&#xe619;</span>
           <input 
