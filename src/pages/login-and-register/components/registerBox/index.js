@@ -72,17 +72,21 @@ class ReBox extends PureComponent {
             ) : null
           }
         </MobilePhone>
-        <Verification className="text-input">
-          <span className="iconfont ic-verification">&#xe743;</span>
-          <input 
-            type="text"
-            name="verification" 
-            placeholder="手机验证码"
-            value={verification}
-            onChange={handleVerificationChange}
-          />
-          <button>发送验证码</button>
-        </Verification>
+        {
+          phone.get('value') ? (
+            <Verification className="text-input">
+              <span className="iconfont ic-verification">&#xe743;</span>
+              <input 
+                type="text"
+                name="verification" 
+                placeholder="手机验证码"
+                value={verification}
+                onChange={handleVerificationChange}
+              />
+              <button className={phone.getIn(['validateResult', 'status']) ? null : 'disable'}>发送验证码</button>
+            </Verification>
+          ) : null
+        }
         <UserPassword className="text-input">
           <span className="iconfont ic-password">&#xe619;</span>
           <input 

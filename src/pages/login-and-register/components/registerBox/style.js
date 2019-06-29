@@ -83,9 +83,15 @@ export const Verification = styled.div`
     top: 7px; right: 7px;
     width: 100px; height: 36px;
     color: #fff;
+    outline: none;
+    cursor: pointer;
     background: #42c02e;
     border: none;
     border-radius: 20px;
+  }
+  .disable {
+    opacity: .5;
+    pointer-events: none;
   }
 `;
 
