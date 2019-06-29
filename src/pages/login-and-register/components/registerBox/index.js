@@ -21,7 +21,7 @@ class ReBox extends PureComponent {
 
     return (
       <RegisterInput>
-        <Nickname className="text-input">
+        <Nickname>
           <span className="iconfont ic-account">&#xe81f;</span>
           <input
             type="text"
@@ -46,7 +46,7 @@ class ReBox extends PureComponent {
             ) : null
           }
         </Nickname>
-        <MobilePhone className="text-input">
+        <MobilePhone>
           <span className="iconfont ic-phone">&#xe60d;</span>
           <input 
             type="text"
@@ -74,11 +74,11 @@ class ReBox extends PureComponent {
         </MobilePhone>
         {
           phone.get('value') ? (
-            <Verification className="text-input">
+            <Verification>
               <span className="iconfont ic-verification">&#xe743;</span>
               <input 
                 type="text"
-                name="verification" 
+                name="verification"
                 placeholder="手机验证码"
                 value={verification}
                 onChange={handleVerificationChange}
@@ -87,7 +87,7 @@ class ReBox extends PureComponent {
             </Verification>
           ) : null
         }
-        <UserPassword className="text-input">
+        <UserPassword>
           <span className="iconfont ic-password">&#xe619;</span>
           <input 
             type="password"

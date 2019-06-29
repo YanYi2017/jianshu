@@ -40,7 +40,7 @@ export const ErrorTip = styled.span`
 `;
 
 export const RegisterInput = styled.div`
-  .text-input input {
+  input {
     width: 100%; height: 50px;
     padding: 4px 12px 4px 35px;
     background: hsla(0,0%,71%,.1);
@@ -74,6 +74,7 @@ export const MobilePhone = styled.div`
 export const Verification = styled.div`
   position: relative;
   input {
+    padding-right: 115px;
     border: 1px solid #c8c8c8;
     border-radius: 0;
     border-bottom: none;
