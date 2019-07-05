@@ -9,14 +9,13 @@ export const LoginInput = styled.form`
   }
   .ic-account, .ic-password {
     position: absolute;
-    top: 15px; left: 10px;
+    margin-top: 13px; margin-left: 9px;
     font-size: 20px;
     color: #969696;
   }
 `;
 
 export const UserName = styled.div`
-  position: relative;
   input {
     border: 1px solid #c8c8c8;
     border-radius: 4px 4px 0 0;
@@ -25,7 +24,6 @@ export const UserName = styled.div`
 `;
 
 export const UserPassword = styled.div`
-  position: relative;
   input {
     border: 1px solid #c8c8c8;
     border-radius: 0 0 4px 4px;

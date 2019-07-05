@@ -14,22 +14,22 @@ class LoginBox extends PureComponent {
     return (
       <LoginInput>
         <UserName className="text-input">
+          <span className="iconfont ic-account">&#xe81f;</span>
           <input 
             type="text"
             name="account"
             placeholder="手机号或邮箱"
             onBlur={handleAccountChange}
           />
-          <span className="iconfont ic-account">&#xe81f;</span>
         </UserName>
         <UserPassword className="text-input">
+          <span className="iconfont ic-password">&#xe619;</span>
           <input 
             type="password"
             name="password" 
             placeholder="密码"
             onBlur={handlePasswordChange}
           />
-          <span className="iconfont ic-password">&#xe619;</span>
         </UserPassword>
         <Others>
           <label>
