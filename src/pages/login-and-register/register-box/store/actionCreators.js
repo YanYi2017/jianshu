@@ -1,54 +1,11 @@
 import axios from 'axios';
 import * as actionTypes from './actionTypes';
 
-import { validate } from '../../../util';
-
-const changeLogin = () => ({
-  type: actionTypes.CHANGE_LOGIN,
-  loginStatus: true
-});
-
-const changeLogout = () => ({
-  type: actionTypes.CHANGE_LOGOUT,
-  loginStatus: false
-});
+import { validate } from '../../../../util';
 
 const changeNicknameAction = (nickname) => ({
   type: actionTypes.CHANGE_NICKNAME,
   nickname
-});
-
-export const login = (account, password) => {
-  return (dispatch) => {
-    axios.get(`/api/login.json?account=${account}&password=${password}`)
-      .then((res) => {
-        const success = res.data.success;
-        if (success) {
-          dispatch(changeLogin());
-        } else {
-          alert('登录失败');
-        }
-      });
-  };
-};
-
-export const logout = () => {
-  return (dispatch) => {
-    axios.get(`/api/logout.json`)
-      .then((res) => {
-        const success = res.data.success;
-        if (success) {
-          dispatch(changeLogout());
-        } else {
-          alert('登录失败');
-        }
-      });
-  };
-};
-
-export const changeAccount = account => ({
-  type: actionTypes.CHANGE_ACCOUNT,
-  account
 });
 
 export const changeNickname = nicknameValue => {

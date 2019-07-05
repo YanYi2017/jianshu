@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import { Link, Redirect, Route } from 'react-router-dom';
-import { actionCreators } from './store';
 import { connect } from 'react-redux';
 
-import { LoginBox, RegisterBox } from './components';
+import LoginBox from './login-box';
+import RegisterBox from './register-box';
 
 import {
   OuterWrapper,

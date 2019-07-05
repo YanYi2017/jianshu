@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { actionCreators } from '../../store';
+import { actionCreators } from './store';
 
 import {
   LoginInput, UserName, UserPassword, SubmitButton, Others, SupportButton,

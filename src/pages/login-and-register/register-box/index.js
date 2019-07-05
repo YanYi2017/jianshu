@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { actionCreators } from '../../store';
+import { actionCreators } from './store';
 
 import axios from 'axios';
 
@@ -173,10 +173,10 @@ class ReBox extends PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  nickname: state.getIn(['loginReducer', 'nickname']),
-  phone: state.getIn(['loginReducer', 'phone']),
-  verification: state.getIn(['loginReducer', 'verification']),
-  password: state.getIn(['loginReducer', 'password'])
+  nickname: state.getIn(['registerReducer', 'nickname']),
+  phone: state.getIn(['registerReducer', 'phone']),
+  verification: state.getIn(['registerReducer', 'verification']),
+  password: state.getIn(['registerReducer', 'password'])
 });
 
 const mapDispatchToProps = (dispatch) => ({
