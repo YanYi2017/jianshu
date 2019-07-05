@@ -18,7 +18,14 @@ const defaultState = fromJS({
       msg: ''
     }
   },
-  verification: '',
+  verification: {
+    value: '',
+    buttonDisable: false,
+    validateResult: {
+      status: false,
+      msg: ''
+    }
+  },
   account: '',
   password: {
     value: '',
@@ -46,8 +53,10 @@ const reducer = (state = defaultState, action) => {
       return state.setIn(['phone', 'focused'], fromJS(true))
     case actionTypes.BLUR_PHONE:
       return state.setIn(['phone', 'focused'], fromJS(false))
-    case actionTypes.CHANGE_VERIFICATION:
-      return state.set('verification', fromJS(action.verification))
+    case actionTypes.CHANGE_VERIFICATION_VALUE:
+      return state.setIn(['verification', 'value'], fromJS(action.value))
+    case actionTypes.CHANGE_VERIFICATION_DISABLE:
+      return state.setIn(['verification', 'buttonDisable'], fromJS(action.value))
     case actionTypes.CHANGE_ACCOUNT:
       return state.set('account', fromJS(action.account))
 

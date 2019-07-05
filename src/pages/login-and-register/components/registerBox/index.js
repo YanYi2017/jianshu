@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { actionCreators } from '../../store';
 
+import axios from 'axios';
+
 import {
   ErrorTip,
   RegisterInput, Nickname, MobilePhone, Verification, UserPassword, SubmitButton, RegisterMsg,
@@ -10,14 +12,29 @@ import {
 } from './style';
 
 class ReBox extends PureComponent {
-
   componentDidMount() {
+    // 处理验证码
+    const { handleVerificationDisableChange } = this.props;
+
     window.handleCaptcha = function(res){
-        console.log(res)
-        // res（用户主动关闭验证码）= {ret: 2, ticket: null}
-        // res（验证成功） = {ret: 0, ticket: "String", randstr: "String"}
+        // 若拼图成功
         if(res.ret === 0){
-            alert(res.ticket)   // 票据
+            // 请求服务端处理返回的验证票据
+            axios.post('http://127.0.0.1:7300/mock/5d130b34bbc69c047c619b06/jianshu/check_captcha', {
+              ticket: res.ticket
+            })
+              .then((response) => {
+                // 若人机验证成功
+                if (response.data.success) {
+                  console.log('success');
+                  // handleVerificationDisableChange(true);
+                  // setTimeout(handleVerificationDisableChange(false), 1000);
+                }
+                // 若人机验证失败
+                else {
+                  console.log('false');
+                }
+              });
         }
     }
   }
@@ -27,7 +44,7 @@ class ReBox extends PureComponent {
       nickname, phone,verification, password, 
       handleRegister, handleNicknameChange, handleNicknameBlur,
       handlePhoneChange, handlePhoneFocus, handlePhoneBlur,
-      handleVerificationChange,
+      handleVerificationValueChange,
       handlePasswordChange, handlePasswordFocus, handlePasswordBlur
     } = this.props;
 
@@ -90,8 +107,8 @@ class ReBox extends PureComponent {
             type="text"
             name="verification"
             placeholder="手机验证码"
-            value={verification}
-            onChange={handleVerificationChange}
+            value={verification.get('value')}
+            onChange={handleVerificationValueChange}
           />
           <button 
             className={phone.getIn(['validateResult', 'status']) ? null : 'disable'}
@@ -181,10 +198,14 @@ const mapDispatchToProps = (dispatch) => ({
   handlePhoneBlur(e) {
     dispatch(actionCreators.blurPhone());
   },
-  handleVerificationChange(e) {
-    dispatch(actionCreators.changeVerification(e.target.value));
-  },
 
+  handleVerificationValueChange(e) {
+    dispatch(actionCreators.changeVerificationValue(e.target.value));
+  },
+  handleVerificationDisableChange(disable) {
+    dispatch(actionCreators.changeVerificationDisable(disable));
+  },
+  
   handlePasswordChange(e) {
     dispatch(actionCreators.changePassword(e.target.value));
   },

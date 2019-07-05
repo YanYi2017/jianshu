@@ -112,9 +112,14 @@ export const blurPhone = () => ({
   type: actionTypes.BLUR_PHONE
 });
 
-export const changeVerification = verification => ({
-  type: actionTypes.CHANGE_VERIFICATION,
-  verification
+export const changeVerificationValue = value => ({
+  type: actionTypes.CHANGE_VERIFICATION_VALUE,
+  value
+});
+
+export const changeVerificationDisable = value => ({
+  type: actionTypes.CHANGE_VERIFICATION_DISABLE,
+  value
 });
 
 export const changePassword = passwordValue => {
