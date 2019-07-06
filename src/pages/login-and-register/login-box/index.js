@@ -2,35 +2,22 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { actionCreators } from './store';
 
+import UserAccountInput from './containers/UserAccountInput';
+import UserPasswordInput from './containers/UserPasswordInput';
+
 import {
-  LoginInput, UserName, UserPassword, SubmitButton, Others, SupportButton,
+  StyledLoginBox, SubmitButton, Others, SupportButton,
   MoreSignWrapper, MoreSignWay
 } from './style';
 
 class LoginBox extends PureComponent {
   render() {
-    const { account, password, handleLogin, handleAccountChange, handlePasswordChange } = this.props;
+    const { account, password, handleLogin } = this.props;
 
     return (
-      <LoginInput>
-        <UserName className="text-input">
-          <span className="iconfont ic-account">&#xe81f;</span>
-          <input 
-            type="text"
-            name="account"
-            placeholder="手机号或邮箱"
-            onBlur={handleAccountChange}
-          />
-        </UserName>
-        <UserPassword className="text-input">
-          <span className="iconfont ic-password">&#xe619;</span>
-          <input 
-            type="password"
-            name="password" 
-            placeholder="密码"
-            onBlur={handlePasswordChange}
-          />
-        </UserPassword>
+      <StyledLoginBox>
+        <UserAccountInput />
+        <UserPasswordInput />
         <Others>
           <label>
             <input type="checkbox" name="remember_me" />
@@ -64,7 +51,7 @@ class LoginBox extends PureComponent {
             </li>
           </MoreSignWay>
         </MoreSignWrapper>
-      </LoginInput>
+      </StyledLoginBox>
     );
   }
 }
@@ -81,12 +68,6 @@ const mapDispatchToProps = (dispatch) => ({
     } else {
       alert('手机号码/邮箱地址或密码不能为空');
     }
-  },
-  handleAccountChange(e) {
-    dispatch(actionCreators.changeAccount(e.target.value));
-  },
-  handlePasswordChange(e) {
-    dispatch(actionCreators.changePassword(e.target.value));
   }
 });
 

@@ -1,13 +1,16 @@
 import styled from 'styled-components';
 
-export const LoginInput = styled.form`
+export const StyledLoginBox = styled.form`
   .text-input input {
     width: 100%; height: 50px;
     padding: 4px 12px 4px 35px;
     background: hsla(0,0%,71%,.1);
     outline: none;
   }
-  .ic-account, .ic-password {
+  `;
+
+export const StyledIcon = styled.span`
+  &.ic-account, &.ic-password {
     position: absolute;
     margin-top: 13px; margin-left: 9px;
     font-size: 20px;
@@ -15,19 +18,33 @@ export const LoginInput = styled.form`
   }
 `;
 
-export const UserName = styled.div`
-  input {
-    border: 1px solid #c8c8c8;
-    border-radius: 4px 4px 0 0;
-    border-bottom: none;
-  }
-`;
+export const StyledInput = styled.input`
+  width: 100%; height: 50px;
+  padding: 4px 12px 4px 35px;
+  background: hsla(0,0%,71%,.1);
+  outline: none;
+  border: 1px solid #c8c8c8;
 
-export const UserPassword = styled.div`
-  input {
-    border: 1px solid #c8c8c8;
-    border-radius: 0 0 4px 4px;
-  }
+  // 根据传入的position参数值来生成不同的radius和botton
+  border-radius: ${props => {
+    switch (props.position) {
+      case 'top':
+        return '4px 4px 0 0';
+      case 'middle':
+        return '0';
+      case 'bottom':
+        return '0 0 4px 4px';
+      default:
+        return '4px';
+    }
+  }}
+  border-bottom: ${props => {
+    switch (props.position) {
+      case 'top':
+      case 'middle':
+        return 'none';
+    }
+  }}
 `;
 
 export const Others = styled.div`
