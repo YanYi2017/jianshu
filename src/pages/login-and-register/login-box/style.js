@@ -1,14 +1,5 @@
 import styled from 'styled-components';
 
-export const StyledLoginBox = styled.form`
-  .text-input input {
-    width: 100%; height: 50px;
-    padding: 4px 12px 4px 35px;
-    background: hsla(0,0%,71%,.1);
-    outline: none;
-  }
-  `;
-
 export const StyledIcon = styled.span`
   &.ic-account, &.ic-password {
     position: absolute;
@@ -37,14 +28,16 @@ export const StyledInput = styled.input`
       default:
         return '4px';
     }
-  }}
+  }};
   border-bottom: ${props => {
     switch (props.position) {
       case 'top':
       case 'middle':
         return 'none';
+      default:
+        return null;
     }
-  }}
+  }};
 `;
 
 export const StyledOthers = styled.div`
@@ -76,7 +69,7 @@ export const SupportButton = styled.button`
 export const StyledSubmitButton = styled.button`
   display: block;
   margin-top: 20px;
-  margin-bottom: 20p;
+  margin-bottom: 20px;
   padding: 9px 18px;
   width: 100%;
   border: none;
