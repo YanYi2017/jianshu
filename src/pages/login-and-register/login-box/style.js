@@ -47,7 +47,7 @@ export const StyledInput = styled.input`
   }}
 `;
 
-export const Others = styled.div`
+export const StyledOthers = styled.div`
   margin: 15px 0;
   font-size: 15px;
   color: #969696;

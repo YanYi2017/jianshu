@@ -2,11 +2,13 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { actionCreators } from './store';
 
+import Others from './components/Others';
+
 import UserAccountInput from './containers/UserAccountInput';
 import UserPasswordInput from './containers/UserPasswordInput';
 
 import {
-  StyledLoginBox, SubmitButton, Others, SupportButton,
+  StyledLoginBox, SubmitButton, SupportButton,
   MoreSignWrapper, MoreSignWay
 } from './style';
 
@@ -18,13 +20,7 @@ class LoginBox extends PureComponent {
       <StyledLoginBox>
         <UserAccountInput />
         <UserPasswordInput />
-        <Others>
-          <label>
-            <input type="checkbox" name="remember_me" />
-            <span>记住我</span>
-          </label>
-          <SupportButton type="button">登录遇到问题？</SupportButton>
-        </Others>
+        <Others />
         <SubmitButton type="button" onClick={() => handleLogin(account, password)}>登录</SubmitButton>
         <MoreSignWrapper>
           <h6>社交账号登录</h6>
