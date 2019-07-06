@@ -88,7 +88,7 @@ export const StyledSubmitButton = styled.button`
   cursor: pointer;
 `;
 
-export const MoreSignWrapper = styled.div`
+export const StyledMoreSignWay = styled.div`
   margin-top: 50px;
   text-align: center;
   h6 {
@@ -112,7 +112,7 @@ export const MoreSignWrapper = styled.div`
   }
 `;
 
-export const MoreSignWay = styled.ul`
+export const SignWays = styled.ul`
   li {
     display: inline-block;
     margin: 0 5px;
