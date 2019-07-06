@@ -25,26 +25,7 @@ export const changeAccount = account => ({
   account
 });
 
-export const changePassword = passwordValue => {
-  return (dispatch) => {
-    const password = {
-      value: passwordValue,
-      focused: true,
-      validateResult: {
-        status: false,
-        msg: ''
-      }
-    };
-
-    if (password.value.length < 6) {
-      password.validateResult.msg = '密码不能少于6个字符';
-    } else {
-      password.validateResult.status = true;
-    }
-
-    dispatch({
-      type: actionTypes.CHANGE_PASSWORD,
-      password
-    });
-  };
-}
+export const changePassword = password => ({
+  type: actionTypes.CHANGE_PASSWORD,
+  password
+})

@@ -4,14 +4,7 @@ import * as actionTypes from './actionTypes';
 const defaultState = fromJS({
   loginStatus: false,
   account: '',
-  password: {
-    value: '',
-    focused: false,
-    validateResult: {
-      status: false,
-      msg: ''
-    }
-  }
+  password: ''
 });
 
 const reducer = (state = defaultState, action) => {

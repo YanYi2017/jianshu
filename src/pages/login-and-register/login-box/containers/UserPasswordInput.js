@@ -5,20 +5,25 @@ import { actionCreators } from '../store';
 import Input from '../components/Input';
 import Icon from '../components/Icon';
 
-function UserPasswordInput({ handlePasswordChange }) {
+function UserPasswordInput({ value, handlePasswordChange }) {
   return (
     <div>
       <Icon type="password" />
       <Input
         type="password"
         name="password"
+        value={value}
         placeholder="密码"
         position="bottom"
-        onBlur={handlePasswordChange}
+        onChange={handlePasswordChange}
       />
     </div>
   );
 }
+
+const mapStateToProps = (state) => ({
+  value: state.getIn(['loginReducer', 'password'])
+});
 
 const mapDispatchToProps = (dispatch) => ({
   handlePasswordChange(e) {
@@ -26,4 +31,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export default connect(null, mapDispatchToProps)(UserPasswordInput);
+export default connect(mapStateToProps, mapDispatchToProps)(UserPasswordInput);
