@@ -6,9 +6,10 @@ import Others from './components/Others';
 
 import UserAccountInput from './containers/UserAccountInput';
 import UserPasswordInput from './containers/UserPasswordInput';
+import SubmitButton from './containers/SubmitButton';
 
 import {
-  StyledLoginBox, SubmitButton, SupportButton,
+  StyledLoginBox,
   MoreSignWrapper, MoreSignWay
 } from './style';
 
@@ -21,7 +22,7 @@ class LoginBox extends PureComponent {
         <UserAccountInput />
         <UserPasswordInput />
         <Others />
-        <SubmitButton type="button" onClick={() => handleLogin(account, password)}>登录</SubmitButton>
+        <SubmitButton />
         <MoreSignWrapper>
           <h6>社交账号登录</h6>
           <MoreSignWay>
@@ -52,19 +53,4 @@ class LoginBox extends PureComponent {
   }
 }
 
-const mapStateToProps = (state) => ({
-  account: state.getIn(['loginReducer', 'account']),
-  password: state.getIn(['loginReducer', 'password'])
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  handleLogin(account, password) {
-    if (account && password) {
-      dispatch(actionCreators.login(account, password));
-    } else {
-      alert('手机号码/邮箱地址或密码不能为空');
-    }
-  }
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoginBox);
+export default connect()(LoginBox);

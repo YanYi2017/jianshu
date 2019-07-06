@@ -73,7 +73,7 @@ export const SupportButton = styled.button`
   cursor: pointer;
 `;
 
-export const SubmitButton = styled.button`
+export const StyledSubmitButton = styled.button`
   display: block;
   margin-top: 20px;
   margin-bottom: 20p;
