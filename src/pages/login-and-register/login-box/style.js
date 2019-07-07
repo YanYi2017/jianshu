@@ -55,15 +55,42 @@ export const StyledOthers = styled.div`
   }
 `;
 
-export const SupportButton = styled.button`
+export const StyledLoginSupport = styled.div`
   float: right;
+`;
+
+export const StyledSupportButton = styled.button`
+  padding: 0;
+  color: #999;
+  font-size: 14px;
+  cursor: pointer;
   background: none;
   border: none;
-  color: #999;
-  padding: 0;
-  font-size: 14px;
   outline: none;
-  cursor: pointer;
+  :hover {
+    color: #333;
+  }
+`;
+
+export const StyledSupportList = styled.ul`
+  display: ${props => props.showSupportList ? 'block' : 'none'};
+  position: absolute;
+  margin-top: 3px; margin-left: -90px;
+  padding: 5px 0;
+  line-height: 20px;
+  font-size: 14px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
+  background: #fff;
+  li:hover {
+    background: #f5f5f5;
+  }
+  a {
+    display: block;
+    padding: 10px 20px;
+  }
 `;
 
 export const StyledSubmitButton = styled.button`

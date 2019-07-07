@@ -4,7 +4,8 @@ import * as actionTypes from './actionTypes';
 const defaultState = fromJS({
   loginStatus: false,
   account: '',
-  password: ''
+  password: '',
+  showSupportList: true
 });
 
 const reducer = (state = defaultState, action) => {
