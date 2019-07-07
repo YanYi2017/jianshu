@@ -5,7 +5,7 @@ const defaultState = fromJS({
   loginStatus: false,
   account: '',
   password: '',
-  showSupportList: true
+  supportListIsShow: false
 });
 
 const reducer = (state = defaultState, action) => {
@@ -16,6 +16,10 @@ const reducer = (state = defaultState, action) => {
       return state.set('account', fromJS(action.account))
     case actionTypes.CHANGE_PASSWORD:
       return state.set('password', fromJS(action.password))
+    case actionTypes.SHOW_SUPPORT_LIST:
+      return state.set('supportListIsShow', fromJS(true))
+    case actionTypes.HIDE_SUPPORT_LIST:
+      return state.set('supportListIsShow', fromJS(false))
     default:
       return state;
   }

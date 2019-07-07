@@ -1,7 +1,7 @@
 import React from 'react';
 
 import SupportList from '../containers/SupportList';
-import SupportButton from './SupportButton';
+import SupportButton from '../containers/SupportButton';
 
 import { StyledLoginSupport } from '../style';
 

@@ -73,7 +73,8 @@ export const StyledSupportButton = styled.button`
 `;
 
 export const StyledSupportList = styled.ul`
-  display: ${props => props.showSupportList ? 'block' : 'none'};
+  // 根据传入的supportListShow判断是否显示
+  display: ${props => props.supportListIsShow ? 'block' : 'none'};
   position: absolute;
   margin-top: 3px; margin-left: -90px;
   padding: 5px 0;

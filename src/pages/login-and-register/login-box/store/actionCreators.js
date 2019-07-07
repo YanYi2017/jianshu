@@ -28,4 +28,12 @@ export const changeAccount = account => ({
 export const changePassword = password => ({
   type: actionTypes.CHANGE_PASSWORD,
   password
-})
+});
+
+export const showSupportList = () => ({
+  type: actionTypes.SHOW_SUPPORT_LIST
+});
+
+export const hideSupportList = () => ({
+  type: actionTypes.HIDE_SUPPORT_LIST
+});
