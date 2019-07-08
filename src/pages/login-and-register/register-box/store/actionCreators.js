@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as actionTypes from './actionTypes';
 
-import { validate } from '../../../../util';
+import _util from '../../../../util';
 
 const changeNicknameAction = (nickname) => ({
   type: actionTypes.CHANGE_NICKNAME,
@@ -44,7 +44,7 @@ export const changePhone = phoneValue => {
     };
 
     // 验证输入的手机格式
-    if (!validate(phone.value, 'phone')) {
+    if (!_util.validate(phone.value, 'phone')) {
       if (phone.value) {
         phone.validateResult.msg = '手机号码格式不正确，请重新输入';
       } else {
@@ -122,12 +122,12 @@ const validateNickname = async function (value) {
     msg: ''
   };
   // 非空验证
-  if (!validate(value, 'required')) {
+  if (!_util.validate(value, 'required')) {
     result.msg = '请输入昵称';
     return result;
   }
   // 验证格式
-  if (!validate(value, 'nickname')) {
+  if (!_util.validate(value, 'nickname')) {
     result.msg = '昵称 昵称格式不正确，需要是2-15个字符，只能包含英文中文数字和下划线，不能包含空格。';
     return result;
   }

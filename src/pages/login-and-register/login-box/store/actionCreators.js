@@ -1,22 +1,26 @@
 import axios from 'axios';
 import * as actionTypes from './actionTypes';
 
-const changeLogin = () => ({
-  type: actionTypes.CHANGE_LOGIN,
-  loginStatus: true
-});
+import _util from '../../../../util';
 
 export const login = (account, password) => {
   return (dispatch) => {
-    axios.get(`/api/login.json?account=${account}&password=${password}`)
+    axios.post(_util.getServerURL('/login'), {
+      account,
+      password
+    })
       .then((res) => {
-        const success = res.data.success;
+        const { success, msg } = res.data;
         if (success) {
-          dispatch(changeLogin());
+          dispatch({
+            type: actionTypes.CHANGE_LOGIN,
+            loginStatus: true
+          });
         } else {
-          alert('登录失败');
+          alert(msg);
         }
-      });
+      })
+      .catch((err) => alert(err));
   };
 };
 
