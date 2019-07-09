@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ErrorTip = styled.span`
+export const StyledSideErrorTip = styled.span`
   position: absolute;
   margin-top: 7px; margin-left: 13px;
   font-size: 14px;

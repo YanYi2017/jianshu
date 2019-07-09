@@ -8,7 +8,7 @@ import axios from 'axios';
 import { NicknameInput } from './containers';
 
 import {
-  ErrorTip,
+  StyledSideErrorTip,
   RegisterInput, Nickname, MobilePhone, Verification, UserPassword, SubmitButton, RegisterMsg,
   MoreSignWrapper, MoreSignWay
 } from './style';
@@ -67,7 +67,7 @@ class ReBox extends PureComponent {
           />
           {
             (!phone.get('focused') && phone.getIn(['validateResult', 'msg'])) ? (
-              <ErrorTip>
+              <StyledSideErrorTip>
                 <div className="errorTip-arrow errorTip-arrow-border"></div>
                 <div className="errorTip-arrow errorTip-arrow-bg"></div>
                 <div className="errorTip-inner">
@@ -76,7 +76,7 @@ class ReBox extends PureComponent {
                     {phone.getIn(['validateResult', 'msg'])}
                   </span>
                 </div>
-              </ErrorTip>
+              </StyledSideErrorTip>
             ) : null
           }
         </MobilePhone>
@@ -111,7 +111,7 @@ class ReBox extends PureComponent {
           />
           {
             (!password.get('focused') && password.getIn(['validateResult', 'msg'])) ? (
-                <ErrorTip>
+                <StyledSideErrorTip>
                   <div className="errorTip-arrow errorTip-arrow-border"></div>
                   <div className="errorTip-arrow errorTip-arrow-bg"></div>
                   <div className="errorTip-inner">
@@ -120,7 +120,7 @@ class ReBox extends PureComponent {
                       {password.getIn(['validateResult', 'msg'])}
                     </span>
                   </div>
-                </ErrorTip>
+                </StyledSideErrorTip>
             ) : null
           }
         </UserPassword>

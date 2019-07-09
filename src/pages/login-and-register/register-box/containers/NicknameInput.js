@@ -2,10 +2,9 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 
 import { actionCreators } from '../store';
-
 import { Input, Icon } from '../../common';
+import { SideErrorTip } from '../components';
 
-import { ErrorTip } from '../style';
 
 class NicknameInput extends PureComponent {
   render() {
@@ -23,18 +22,9 @@ class NicknameInput extends PureComponent {
           onBlur={handleNicknameBlur}
         />
         {
-          nickname.getIn(['validateResult', 'msg']) ? (
-            <ErrorTip>
-              <div className="errorTip-arrow errorTip-arrow-border"></div>
-              <div className="errorTip-arrow errorTip-arrow-bg"></div>
-              <div className="errorTip-inner">
-                <span className="iconfont ic-error">&#xe63f;</span>
-                <span className="err-msg">
-                  {nickname.getIn(['validateResult', 'msg'])}
-                </span>
-              </div>
-            </ErrorTip>
-          ) : null
+          nickname.getIn(['validateResult', 'msg']) && (
+            <SideErrorTip errMsg={nickname.getIn(['validateResult', 'msg'])} />
+          )
         }
       </div>
     );
