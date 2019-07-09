@@ -5,6 +5,8 @@ import { actionCreators } from './store';
 
 import axios from 'axios';
 
+import { NicknameInput } from './containers';
+
 import {
   ErrorTip,
   RegisterInput, Nickname, MobilePhone, Verification, UserPassword, SubmitButton, RegisterMsg,
@@ -50,31 +52,8 @@ class ReBox extends PureComponent {
 
     return (
       <RegisterInput>
-        <Nickname>
-          <span className="iconfont ic-account">&#xe81f;</span>
-          <input
-            type="text"
-            name="nickname"
-            placeholder="你的昵称"
-            value={nickname.get('value')}
-            onChange={handleNicknameChange}
-            onBlur={handleNicknameBlur}
-          />
-          {
-            nickname.getIn(['validateResult', 'msg']) ? (
-              <ErrorTip>
-                <div className="errorTip-arrow errorTip-arrow-border"></div>
-                <div className="errorTip-arrow errorTip-arrow-bg"></div>
-                <div className="errorTip-inner">
-                  <span className="iconfont ic-error">&#xe63f;</span>
-                  <span className="err-msg">
-                    {nickname.getIn(['validateResult', 'msg'])}
-                  </span>
-                </div>
-              </ErrorTip>
-            ) : null
-          }
-        </Nickname>
+        <NicknameInput />
+
         <MobilePhone>
           <span className="iconfont ic-phone">&#xe60d;</span>
           <input 
@@ -173,7 +152,6 @@ class ReBox extends PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  nickname: state.getIn(['registerReducer', 'nickname']),
   phone: state.getIn(['registerReducer', 'phone']),
   verification: state.getIn(['registerReducer', 'verification']),
   password: state.getIn(['registerReducer', 'password'])
@@ -183,12 +161,7 @@ const mapDispatchToProps = (dispatch) => ({
   handleRegister(nickname, phone, verification, password) {
 
   },
-  handleNicknameChange(e) {
-    dispatch(actionCreators.changeNickname(e.target.value));
-  },
-  handleNicknameBlur(e) {
-    dispatch(actionCreators.testNickname(e.target.value));
-  },
+
   handlePhoneChange(e) {
     dispatch(actionCreators.changePhone(e.target.value));
   },

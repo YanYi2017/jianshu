@@ -54,15 +54,6 @@ export const RegisterInput = styled.div`
   }
 `;
 
-export const Nickname = styled.div`
-  input {
-    border: 1px solid #c8c8c8;
-    border-radius: 4px 4px 0 0;
-    border-bottom: none;
-  }
-`;
-
-
 export const MobilePhone = styled.div`
   input {
     border: 1px solid #c8c8c8;

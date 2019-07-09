@@ -15,7 +15,7 @@ function Icon({ type }) {
 }
 
 Icon.propTypes = {
-  type: PropTypes.oneOf(['user', 'password'])
+  type: PropTypes.oneOf(['user', 'password']).isRequired
 };
 
 export default Icon;
