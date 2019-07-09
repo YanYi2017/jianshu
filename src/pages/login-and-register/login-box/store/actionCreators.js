@@ -34,12 +34,9 @@ export const changePassword = password => ({
   password
 });
 
-export const showSupportList = () => ({
-  type: actionTypes.SHOW_SUPPORT_LIST
-});
-
-export const hideSupportList = () => ({
-  type: actionTypes.HIDE_SUPPORT_LIST
+export const toggleSupportList = (isShow) => ({
+  type: actionTypes.TOGGLE_SUPPORT_LIST,
+  isShow
 });
 
 export const changeErrTip = (errMsg) => ({

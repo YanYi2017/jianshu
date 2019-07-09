@@ -52,7 +52,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   hideSupportList(e, node) {
     if (node && !node.contains(e.target)) {
-      dispatch(actionCreators.hideSupportList());
+      dispatch(actionCreators.toggleSupportList(false));
     }
   }
 });

@@ -19,7 +19,7 @@ function SupportButton({ showSupportList }) {
 
 const mapDispatchToProps = (dispatch) => ({
   showSupportList() {
-    dispatch(actionCreators.showSupportList());
+    dispatch(actionCreators.toggleSupportList(true));
   }
 });
 

@@ -20,10 +20,8 @@ const reducer = (state = defaultState, action) => {
       return state.set('account', fromJS(action.account));
     case actionTypes.CHANGE_PASSWORD:
       return state.set('password', fromJS(action.password));
-    case actionTypes.SHOW_SUPPORT_LIST:
-      return state.set('supportListIsShow', fromJS(true));
-    case actionTypes.HIDE_SUPPORT_LIST:
-      return state.set('supportListIsShow', fromJS(false));
+    case actionTypes.TOGGLE_SUPPORT_LIST:
+      return state.set('supportListIsShow', fromJS(action.isShow));
     case actionTypes.CHANGE_ERR_TIP:
       return state.set('errTip', fromJS({isShow: true, errMsg: action.errMsg}));
     case actionTypes.TOGGLE_ERR_TIP:
