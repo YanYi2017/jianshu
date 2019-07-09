@@ -54,13 +54,6 @@ export const RegisterInput = styled.div`
   }
 `;
 
-export const MobilePhone = styled.div`
-  input {
-    border: 1px solid #c8c8c8;
-    border-radius: 0;
-    border-bottom: none;
-  }
-`;
 
 export const Verification = styled.div`
   position: relative;

@@ -87,7 +87,7 @@ export const StyledErrorTip = styled.div`
 `;
 
 export const StyledIcon = styled.span`
-  &.ic-account, &.ic-password {
+  &.ic-account, &.ic-password, &.ic-phone, &.ic-verification {
     position: absolute;
     margin-top: 13px; margin-left: 9px;
     font-size: 20px;

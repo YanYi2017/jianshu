@@ -5,7 +5,7 @@ import { actionCreators } from './store';
 
 import axios from 'axios';
 
-import { NicknameInput } from './containers';
+import { NicknameInput, MobilePhoneInput } from './containers';
 
 import {
   StyledSideErrorTip,
@@ -53,33 +53,8 @@ class ReBox extends PureComponent {
     return (
       <RegisterInput>
         <NicknameInput />
+        <MobilePhoneInput />
 
-        <MobilePhone>
-          <span className="iconfont ic-phone">&#xe60d;</span>
-          <input 
-            type="text"
-            name="phone" 
-            placeholder="手机号"
-            value={phone.get('value')}
-            onChange={handlePhoneChange}
-            onFocus={handlePhoneFocus}
-            onBlur={handlePhoneBlur}
-          />
-          {
-            (!phone.get('focused') && phone.getIn(['validateResult', 'msg'])) ? (
-              <StyledSideErrorTip>
-                <div className="errorTip-arrow errorTip-arrow-border"></div>
-                <div className="errorTip-arrow errorTip-arrow-bg"></div>
-                <div className="errorTip-inner">
-                  <span className="iconfont ic-error">&#xe63f;</span>
-                  <span className="err-msg">
-                    {phone.getIn(['validateResult', 'msg'])}
-                  </span>
-                </div>
-              </StyledSideErrorTip>
-            ) : null
-          }
-        </MobilePhone>
         <Verification>
           <span className="iconfont ic-verification">&#xe743;</span>
           <input 
@@ -160,16 +135,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   handleRegister(nickname, phone, verification, password) {
 
-  },
-
-  handlePhoneChange(e) {
-    dispatch(actionCreators.changePhone(e.target.value));
-  },
-  handlePhoneFocus(e) {
-    dispatch(actionCreators.focusPhone());
-  },
-  handlePhoneBlur(e) {
-    dispatch(actionCreators.blurPhone());
   },
 
   handleVerificationValueChange(e) {

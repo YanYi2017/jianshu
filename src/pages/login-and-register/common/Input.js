@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { StyledInput } from '../style';
 
-function Input({ type, name, value, placeholder, position, onChange, onBlur }) {
+function Input({ type, name, value, placeholder, position, onChange, onFocus, onBlur }) {
   return (
     <StyledInput
       type={type}
@@ -12,6 +12,7 @@ function Input({ type, name, value, placeholder, position, onChange, onBlur }) {
       placeholder={placeholder}
       position={position}
       onChange={onChange}
+      onFocus={onFocus}
       onBlur={onBlur}
     />
   );
@@ -24,7 +25,8 @@ Input.propTypes = {
   placeholder: PropTypes.string.isRequired,
   position: PropTypes.oneOf(['top', 'middle', 'bottom']).isRequired,
   onChange: PropTypes.func,
-  onChange: PropTypes.func
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func
 }
 
 export default Input;
