@@ -33,15 +33,21 @@ class SubmitButton extends PureComponent {
           handleErrTip('手机号码/邮箱或密码不能为空')
         }
       }
-
     }
+
+    new window.TencentCaptcha(document.getElementById('Captcha'));
+
+  }
+
+  componentWillUnmount() {
+    delete window.callback;
   }
 
   render() {
     return (
       <StyledSubmitButton
         type="button"
-        id="TencentCaptcha"
+        id="Captcha"
         data-appid="2083658602"
         data-cbfn="callback"
       >

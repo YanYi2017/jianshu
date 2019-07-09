@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 export const OuterWrapper = styled.div`
   overflow: hidden;  //创建块状格式化上下文，以避免父子元素的margin合并
