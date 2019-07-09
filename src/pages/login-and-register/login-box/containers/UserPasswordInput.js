@@ -2,8 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { actionCreators } from '../store';
-import Input from '../components/Input';
-import Icon from '../components/Icon';
+import { Icon, Input } from '../../common';
 
 function UserPasswordInput({ value, handlePasswordChange }) {
   return (
