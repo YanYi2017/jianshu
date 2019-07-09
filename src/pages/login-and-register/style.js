@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const OuterWrapper = styled.div`
   overflow: hidden;  //创建块状格式化上下文，以避免父子元素的margin合并
@@ -16,6 +16,7 @@ export const Logo = styled.div`
 `;
 
 export const InnerBox = styled.div`
+  position: relative;
   width: 400px;
   margin: 110px auto;
   padding: 50px 50px 30px 50px;
@@ -43,5 +44,45 @@ export const Title = styled.div`
   .active {
     color: #ea6f5a;
     border-bottom: 2px solid #ea6f5a;
+  }
+`;
+
+export const StyledErrorTip = styled.div`
+  position: fixed;
+  overflow: hidden;
+  top: 60px;
+
+  &.alert-enter {
+    height: 0px;
+  }
+  &.alert-enter-active {
+    height: 40px;
+    transition: height 0.5s linear;
+  }
+  &.alert-enter-done {
+    height: 40px;
+  }
+  &.alert-exit {
+    height: 40px;
+  }
+  &.alert-exit-active {
+    height: 0;
+    transition: height 0.5s linear;
+  }
+  &.alert-exit-done {
+    height: 0;
+  }
+
+  div {
+    width: 300px;
+    margin: auto;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid red;
+    border-radius: 5px;
+    font-size: 14px; font-weight: 600;
+    color: red;
+    background: #fff;
+    opacity: 0.8;
   }
 `;

@@ -5,21 +5,29 @@ const defaultState = fromJS({
   loginStatus: false,
   account: '',
   password: '',
-  supportListIsShow: false
+  supportListIsShow: false,
+  errTip: {
+    isShow: false,
+    errMsg: ''
+  }
 });
 
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
     case actionTypes.CHANGE_LOGIN:
-      return state.set('loginStatus', fromJS(action.loginStatus))
+      return state.set('loginStatus', fromJS(action.loginStatus));
     case actionTypes.CHANGE_ACCOUNT:
-      return state.set('account', fromJS(action.account))
+      return state.set('account', fromJS(action.account));
     case actionTypes.CHANGE_PASSWORD:
-      return state.set('password', fromJS(action.password))
+      return state.set('password', fromJS(action.password));
     case actionTypes.SHOW_SUPPORT_LIST:
-      return state.set('supportListIsShow', fromJS(true))
+      return state.set('supportListIsShow', fromJS(true));
     case actionTypes.HIDE_SUPPORT_LIST:
-      return state.set('supportListIsShow', fromJS(false))
+      return state.set('supportListIsShow', fromJS(false));
+    case actionTypes.CHANGE_ERR_TIP:
+      return state.set('errTip', fromJS({isShow: true, errMsg: action.errMsg}));
+    case actionTypes.TOGGLE_ERR_TIP:
+      return state.setIn(['errTip', 'isShow'], fromJS(action.isShow));
     default:
       return state;
   }

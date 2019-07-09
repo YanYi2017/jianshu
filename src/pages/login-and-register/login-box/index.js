@@ -6,11 +6,13 @@ import MoreSignWay from './components/MoreSignWay';
 import UserAccountInput from './containers/UserAccountInput';
 import UserPasswordInput from './containers/UserPasswordInput';
 import SubmitButton from './containers/SubmitButton';
+import ErrorTip from './containers/ErrorTip';
 
 function LoginBox() {
   return (
     <Fragment>
       <form>
+        <ErrorTip />
         <UserAccountInput />
         <UserPasswordInput />
         <Others />

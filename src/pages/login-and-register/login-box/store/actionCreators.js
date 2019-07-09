@@ -17,10 +17,10 @@ export const login = (account, password) => {
             loginStatus: true
           });
         } else {
-          alert(msg);
+          dispatch(changeErrTip(msg));
         }
       })
-      .catch((err) => alert(err));
+      .catch((err) => dispatch(changeErrTip(err)));
   };
 };
 
@@ -40,4 +40,14 @@ export const showSupportList = () => ({
 
 export const hideSupportList = () => ({
   type: actionTypes.HIDE_SUPPORT_LIST
+});
+
+export const changeErrTip = (errMsg) => ({
+  type: actionTypes.CHANGE_ERR_TIP,
+  errMsg
+});
+
+export const toggleErrTip = (isShow) => ({
+  type: actionTypes.TOGGLE_ERR_TIP,
+  isShow
 });
