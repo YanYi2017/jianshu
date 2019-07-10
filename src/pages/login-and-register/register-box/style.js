@@ -39,22 +39,6 @@ export const StyledSideErrorTip = styled.span`
   }
 `;
 
-export const RegisterInput = styled.div`
-  input {
-    width: 100%; height: 50px;
-    padding: 4px 12px 4px 35px;
-    background: hsla(0,0%,71%,.1);
-    outline: none;
-  }
-  .ic-account, .ic-phone, .ic-verification, .ic-password {
-    position: absolute;
-    margin-top: 15px; margin-left: 7px;
-    font-size: 20px;
-    color: #969696;
-  }
-`;
-
-
 export const StyledVerificationInput = styled.div`
   input {
     padding-right: 115px;
