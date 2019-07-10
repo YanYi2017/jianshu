@@ -5,7 +5,7 @@ import { actionCreators } from './store';
 
 import axios from 'axios';
 
-import { NicknameInput, MobilePhoneInput } from './containers';
+import { NicknameInput, MobilePhoneInput, VerificationInput } from './containers';
 
 import {
   StyledSideErrorTip,
@@ -17,28 +17,6 @@ class ReBox extends PureComponent {
   componentDidMount() {
     // 处理验证码
     const { handleVerificationDisableChange } = this.props;
-
-    window.handleCaptcha = function(res){
-        // 若拼图成功
-        if(res.ret === 0){
-            // 请求服务端处理返回的验证票据
-            axios.post('http://127.0.0.1:7300/mock/5d130b34bbc69c047c619b06/jianshu/check_captcha', {
-              ticket: res.ticket
-            })
-              .then((response) => {
-                // 若人机验证成功
-                if (response.data.success) {
-                  console.log('success');
-                  // handleVerificationDisableChange(true);
-                  // setTimeout(handleVerificationDisableChange(false), 1000);
-                }
-                // 若人机验证失败
-                else {
-                  console.log('false');
-                }
-              });
-        }
-    }
   }
 
   render() {
@@ -54,25 +32,8 @@ class ReBox extends PureComponent {
       <RegisterInput>
         <NicknameInput />
         <MobilePhoneInput />
+        <VerificationInput />
 
-        <Verification>
-          <span className="iconfont ic-verification">&#xe743;</span>
-          <input 
-            type="text"
-            name="verification"
-            placeholder="手机验证码"
-            value={verification.get('value')}
-            onChange={handleVerificationValueChange}
-          />
-          <button 
-            className={phone.getIn(['validateResult', 'status']) ? null : 'disable'}
-            id="TencentCaptcha"
-            data-appid="2083658602"
-            data-cbfn="handleCaptcha"
-          >
-            发送验证码
-          </button>
-        </Verification>
         <UserPassword>
           <span className="iconfont ic-password">&#xe619;</span>
           <input 
@@ -127,8 +88,6 @@ class ReBox extends PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  phone: state.getIn(['registerReducer', 'phone']),
-  verification: state.getIn(['registerReducer', 'verification']),
   password: state.getIn(['registerReducer', 'password'])
 });
 
@@ -137,9 +96,6 @@ const mapDispatchToProps = (dispatch) => ({
 
   },
 
-  handleVerificationValueChange(e) {
-    dispatch(actionCreators.changeVerificationValue(e.target.value));
-  },
   handleVerificationDisableChange(disable) {
     dispatch(actionCreators.changeVerificationDisable(disable));
   },

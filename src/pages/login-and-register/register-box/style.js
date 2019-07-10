@@ -55,29 +55,24 @@ export const RegisterInput = styled.div`
 `;
 
 
-export const Verification = styled.div`
-  position: relative;
+export const StyledVerificationInput = styled.div`
   input {
     padding-right: 115px;
-    border: 1px solid #c8c8c8;
-    border-radius: 0;
-    border-bottom: none;
   }
-  button {
-    position: absolute;
-    top: 7px; right: 7px;
-    width: 100px; height: 36px;
-    color: #fff;
-    outline: none;
-    cursor: pointer;
-    background: #42c02e;
-    border: none;
-    border-radius: 20px;
-  }
-  .disable {
-    opacity: .5;
-    pointer-events: none;
-  }
+`;
+
+export const StyledVerificationButton = styled.button`
+  position: absolute;
+  margin-top: 8px; margin-left: -105px;
+  width: 100px; height: 36px;
+  color: #fff;
+  outline: none;
+  cursor: pointer;
+  background: #42c02e;
+  border: none;
+  border-radius: 20px;
+  opacity: ${props => props.disabled && '.5'}
+  pointer-events: ${props => props.disabled && 'none'}
 `;
 
 export const UserPassword = styled.div`
