@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { StyledRegisterMsg } from '../style';
+import { StyledRegisterMsg } from './style';
 
 function RegisterMsg() {
   return (

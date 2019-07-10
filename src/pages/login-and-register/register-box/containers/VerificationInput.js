@@ -6,7 +6,7 @@ import { actionCreators } from '../store';
 import { Input, Icon } from '../../common';
 import VerificationButton from './VerificationButton';
 
-import { StyledVerificationInput } from '../style';
+import { StyledVerificationInput } from './style';
 
 function VerificationInput({ phone, verification, handleVerificationValueChange }) {
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { MoreRegWayWrapper, StyledMoreRegWay } from '../style';
+import { MoreRegWayWrapper, StyledMoreRegWay } from './style';
 
 function MoreRegisterWay() {
   return (

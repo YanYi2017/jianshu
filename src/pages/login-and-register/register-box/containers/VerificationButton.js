@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import _util from '../../../../util';
 
-import { StyledVerificationButton } from '../style';
+import { StyledVerificationButton } from './style';
 
 class VerificationButton extends PureComponent {
   componentDidMount() {

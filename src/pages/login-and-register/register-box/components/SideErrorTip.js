@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { StyledSideErrorTip } from '../style';
+import { StyledSideErrorTip } from './style';
 
 function SideErrorTip({ errMsg }) {
   return (
