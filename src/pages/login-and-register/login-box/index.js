@@ -1,12 +1,7 @@
 import React, { Fragment } from 'react';
 
-import Others from './components/Others';
-import MoreSignWay from './components/MoreSignWay';
-
-import UserAccountInput from './containers/UserAccountInput';
-import UserPasswordInput from './containers/UserPasswordInput';
-import SubmitButton from './containers/SubmitButton';
-import ErrorTip from './containers/ErrorTip';
+import {Others, MoreSignWay} from './components';
+import {UserAccountInput, UserPasswordInput,SubmitButton,ErrorTip} from './containers';
 
 function LoginBox() {
   return (

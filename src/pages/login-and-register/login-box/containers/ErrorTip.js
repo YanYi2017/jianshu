@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import FlashErrorTip from '../../common/FlashErrorTip';
+import { FlashErrorTip } from '../../common';
 import { actionCreators } from '../store';
 
 const mapStateToProps = (state) => ({
