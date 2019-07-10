@@ -90,7 +90,7 @@ export const StyledSubmitButton = styled.button`
   cursor: pointer;
 `;
 
-export const RegisterMsg = styled.div`
+export const StyledRegisterMsg = styled.div`
   margin: 10px 0;
   text-align: center;
   font-size: 12px;

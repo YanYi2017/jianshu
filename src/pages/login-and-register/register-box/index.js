@@ -5,10 +5,12 @@ import { actionCreators } from './store';
 
 import axios from 'axios';
 
+import { RegisterMsg } from './components';
+
 import { NicknameInput, MobilePhoneInput, VerificationInput, PasswordInput, SubmitButton } from './containers';
 
 import {
-  RegisterInput, RegisterMsg,
+  RegisterInput,
   MoreSignWrapper, MoreSignWay
 } from './style';
 
@@ -34,12 +36,8 @@ class ReBox extends PureComponent {
         <VerificationInput />
         <PasswordInput />
         <SubmitButton />
-        <RegisterMsg>
-          <p>点击 “注册” 即表示您同意并愿意遵守简书</p>
-          <p>
-            <Link>用户协议</Link>和<Link>隐私政策</Link>
-          </p>
-        </RegisterMsg>
+        <RegisterMsg />
+
         <MoreSignWrapper>
           <h6>社交账号直接注册</h6>
           <MoreSignWay>
