@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { StyledMoreSignWay, SignWays } from '../style';
+import { StyledMoreSignWay, SignWays } from './style';
 
 function MoreSignWay() {
   return (

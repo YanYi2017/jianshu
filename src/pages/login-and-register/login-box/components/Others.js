@@ -2,7 +2,7 @@ import React from 'react';
 
 import LoginSupport from './LoginSupport';
 
-import { StyledOthers } from '../style';
+import { StyledOthers } from './style';
 
 function Others() {
   return (

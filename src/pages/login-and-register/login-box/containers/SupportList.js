@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import { actionCreators } from '../store';
 
-import { StyledSupportList } from '../style';
+import { StyledSupportList } from './style';
 
 class SupportList extends PureComponent {
   constructor(props) {

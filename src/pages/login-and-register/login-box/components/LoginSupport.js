@@ -3,7 +3,7 @@ import React from 'react';
 import SupportList from '../containers/SupportList';
 import SupportButton from '../containers/SupportButton';
 
-import { StyledLoginSupport } from '../style';
+import { StyledLoginSupport } from './style';
 
 function LoginSupport() {
   return (

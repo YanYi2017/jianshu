@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { actionCreators } from '../store';
 
-import { StyledSupportButton } from '../style';
+import { StyledSupportButton } from './style';
 
 function SupportButton({ showSupportList }) {
   return (

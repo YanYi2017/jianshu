@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import _util from '../../../../util';
 import { actionCreators } from '../store';
-import { StyledSubmitButton } from '../style';
+import { StyledSubmitButton } from './style';
 
 class SubmitButton extends PureComponent {
   componentDidMount() {
