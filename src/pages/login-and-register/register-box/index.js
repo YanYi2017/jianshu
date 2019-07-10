@@ -5,7 +5,7 @@ import { actionCreators } from './store';
 
 import axios from 'axios';
 
-import { RegisterMsg } from './components';
+import { RegisterMsg, MoreRegisterWay } from './components';
 
 import { NicknameInput, MobilePhoneInput, VerificationInput, PasswordInput, SubmitButton } from './containers';
 
@@ -37,22 +37,7 @@ class ReBox extends PureComponent {
         <PasswordInput />
         <SubmitButton />
         <RegisterMsg />
-
-        <MoreSignWrapper>
-          <h6>社交账号直接注册</h6>
-          <MoreSignWay>
-            <li>
-              <a href='https://www.weibo.com/' target="_blank" rel="noopener noreferrer">
-                <span className="iconfont ic-wechat">&#xe694;</span>
-              </a>
-            </li>
-            <li>
-              <a href='https://www.weibo.com/' target="_blank" rel="noopener noreferrer">
-                <span className="iconfont ic-qq">&#xe608;</span>
-              </a>
-            </li>
-          </MoreSignWay>
-        </MoreSignWrapper>
+        <MoreRegisterWay />
       </RegisterInput>
     );
   }

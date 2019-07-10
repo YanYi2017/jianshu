@@ -101,7 +101,7 @@ export const StyledRegisterMsg = styled.div`
   }
 `;
 
-export const MoreSignWrapper = styled.div`
+export const MoreRegWayWrapper = styled.div`
   margin-top: 50px;
   text-align: center;
   h6 {
@@ -126,7 +126,7 @@ export const MoreSignWrapper = styled.div`
   }
 `;
 
-export const MoreSignWay = styled.ul`
+export const StyledMoreRegWay = styled.ul`
   li {
     display: inline-block;
     margin: 0 5px;
