@@ -5,7 +5,7 @@ import { actionCreators } from './store';
 
 import axios from 'axios';
 
-import { NicknameInput, MobilePhoneInput, VerificationInput } from './containers';
+import { NicknameInput, MobilePhoneInput, VerificationInput, PasswordInput } from './containers';
 
 import {
   StyledSideErrorTip,
@@ -33,33 +33,8 @@ class ReBox extends PureComponent {
         <NicknameInput />
         <MobilePhoneInput />
         <VerificationInput />
+        <PasswordInput />
 
-        <UserPassword>
-          <span className="iconfont ic-password">&#xe619;</span>
-          <input 
-            type="password"
-            name="password" 
-            placeholder="设置密码"
-            value={password.get('result')}
-            onChange={handlePasswordChange}
-            onFocus={handlePasswordFocus}
-            onBlur={handlePasswordBlur}
-          />
-          {
-            (!password.get('focused') && password.getIn(['validateResult', 'msg'])) ? (
-                <StyledSideErrorTip>
-                  <div className="errorTip-arrow errorTip-arrow-border"></div>
-                  <div className="errorTip-arrow errorTip-arrow-bg"></div>
-                  <div className="errorTip-inner">
-                    <span className="iconfont ic-error">&#xe63f;</span>
-                    <span className="err-msg">
-                      {password.getIn(['validateResult', 'msg'])}
-                    </span>
-                  </div>
-                </StyledSideErrorTip>
-            ) : null
-          }
-        </UserPassword>
         <SubmitButton type="button" onClick={() => handleRegister(nickname, password)}>注册</SubmitButton>
         <RegisterMsg>
           <p>点击 “注册” 即表示您同意并愿意遵守简书</p>
@@ -88,7 +63,6 @@ class ReBox extends PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  password: state.getIn(['registerReducer', 'password'])
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -99,16 +73,7 @@ const mapDispatchToProps = (dispatch) => ({
   handleVerificationDisableChange(disable) {
     dispatch(actionCreators.changeVerificationDisable(disable));
   },
-  
-  handlePasswordChange(e) {
-    dispatch(actionCreators.changePassword(e.target.value));
-  },
-  handlePasswordFocus() {
-    dispatch(actionCreators.focusPassword());
-  },
-  handlePasswordBlur() {
-    dispatch(actionCreators.blurPassword());
-  }
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReBox);

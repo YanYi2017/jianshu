@@ -1,5 +1,6 @@
 import NicknameInput from './NicknameInput';
 import MobilePhoneInput from './MobilePhoneInput';
 import VerificationInput from './VerificationInput';
+import PasswordInput from './PasswordInput';
 
-export { NicknameInput, MobilePhoneInput, VerificationInput };
+export { NicknameInput, MobilePhoneInput, VerificationInput, PasswordInput };
