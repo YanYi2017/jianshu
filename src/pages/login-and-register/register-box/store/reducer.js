@@ -4,6 +4,7 @@ import * as actionTypes from './actionTypes';
 const defaultState = fromJS({
   nickname: {
     value: '',
+    isFocused: false,
     validateResult: {
       status: false,
       msg: ''
@@ -37,26 +38,28 @@ const defaultState = fromJS({
 
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
-    case actionTypes.CHANGE_NICKNAME:
-      return state.set('nickname', fromJS(action.nickname))
+    case actionTypes.CHANGE_NICKNAME_VALUE:
+      return state.setIn(['nickname', 'value'], fromJS(action.value));
+    case actionTypes.TOGGLE_NICKNAME_FOCUS:
+      return state.setIn(['nickname', 'isFocused'], fromJS(action.isFocused));
     case actionTypes.CHANGE_NICKNAME_VALIDATERESULT:
-      return state.setIn(['nickname', 'validateResult'], fromJS(action.validateResult))
+      return state.setIn(['nickname', 'validateResult'], fromJS(action.validateResult));
     case actionTypes.CHANGE_PHONE:
-      return state.set('phone', fromJS(action.phone))
+      return state.set('phone', fromJS(action.phone));
     case actionTypes.FOCUS_PHONE:
-      return state.setIn(['phone', 'focused'], fromJS(true))
+      return state.setIn(['phone', 'focused'], fromJS(true));
     case actionTypes.BLUR_PHONE:
-      return state.setIn(['phone', 'focused'], fromJS(false))
+      return state.setIn(['phone', 'focused'], fromJS(false));
     case actionTypes.CHANGE_VERIFICATION_VALUE:
-      return state.setIn(['verification', 'value'], fromJS(action.value))
+      return state.setIn(['verification', 'value'], fromJS(action.value));
     case actionTypes.CHANGE_VERIFICATION_DISABLE:
-      return state.setIn(['verification', 'buttonDisable'], fromJS(action.value))
+      return state.setIn(['verification', 'buttonDisable'], fromJS(action.value));
     case actionTypes.CHANGE_PASSWORD:
-      return state.set('password', fromJS(action.password))
+      return state.set('password', fromJS(action.password));
     case actionTypes.FOCUS_PASSWORD:
-      return state.setIn(['password', 'focused'], fromJS(true))
+      return state.setIn(['password', 'focused'], fromJS(true));
     case actionTypes.BLUR_PASSWORD:
-      return state.setIn(['password', 'focused'], fromJS(false))
+      return state.setIn(['password', 'focused'], fromJS(false));
     default:
       return state;
   }

@@ -3,23 +3,15 @@ import * as actionTypes from './actionTypes';
 
 import _util from '../../../../util';
 
-const changeNicknameAction = (nickname) => ({
-  type: actionTypes.CHANGE_NICKNAME,
-  nickname
+export const changeNicknameValue = value => ({
+  type: actionTypes.CHANGE_NICKNAME_VALUE,
+  value
 });
 
-export const changeNickname = nicknameValue => {
-  return (dispatch) => {
-    const nickname = {
-      value: nicknameValue.trim(),
-      validateResult: {
-        status: false,
-        msg: ''
-      }
-    };
-    dispatch(changeNicknameAction(nickname));
-  };
-};
+export const toggleNicknameFocus = (isFocused) => ({
+  type: actionTypes.TOGGLE_NICKNAME_FOCUS,
+  isFocused
+});
 
 export const testNickname = nicknameValue => {
   return (dispatch) => {
@@ -134,16 +126,15 @@ const validateNickname = async function (value) {
   // 验证昵称是否已存在
   try {
     // 使用await等待异步验证结果
-    const res = await axios.post('http://127.0.0.1:7300/mock/5d130b34bbc69c047c619b06/jianshu/check_nickname', {
+    const res = await axios.post(_util.getServerURL('/check_nickname'), {
       nickname: value
     });
     // 若昵称已存在
     if (!res.data.success) {
-      result.msg = '昵称 昵称已被使用，换一个吧';
+      result.msg = res.data.msg;
       return result;
     }
   } catch (err) {
-    console.error(err);
     result.msg = '出错了，请刷新后重试';
     return result;
   }
