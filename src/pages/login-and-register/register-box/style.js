@@ -75,14 +75,7 @@ export const StyledVerificationButton = styled.button`
   pointer-events: ${props => props.disabled && 'none'}
 `;
 
-export const UserPassword = styled.div`
-  input {
-    border: 1px solid #c8c8c8;
-    border-radius: 0 0 4px 4px;
-  }
-`;
-
-export const SubmitButton = styled.button`
+export const StyledSubmitButton = styled.button`
   display: block;
   margin-top: 20px;
   margin-bottom: 20p;

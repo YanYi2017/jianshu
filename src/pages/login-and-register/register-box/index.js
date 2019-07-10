@@ -5,11 +5,10 @@ import { actionCreators } from './store';
 
 import axios from 'axios';
 
-import { NicknameInput, MobilePhoneInput, VerificationInput, PasswordInput } from './containers';
+import { NicknameInput, MobilePhoneInput, VerificationInput, PasswordInput, SubmitButton } from './containers';
 
 import {
-  StyledSideErrorTip,
-  RegisterInput, Nickname, MobilePhone, Verification, UserPassword, SubmitButton, RegisterMsg,
+  RegisterInput, RegisterMsg,
   MoreSignWrapper, MoreSignWay
 } from './style';
 
@@ -34,8 +33,7 @@ class ReBox extends PureComponent {
         <MobilePhoneInput />
         <VerificationInput />
         <PasswordInput />
-
-        <SubmitButton type="button" onClick={() => handleRegister(nickname, password)}>注册</SubmitButton>
+        <SubmitButton />
         <RegisterMsg>
           <p>点击 “注册” 即表示您同意并愿意遵守简书</p>
           <p>
@@ -66,10 +64,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  handleRegister(nickname, phone, verification, password) {
-
-  },
-
   handleVerificationDisableChange(disable) {
     dispatch(actionCreators.changeVerificationDisable(disable));
   },
