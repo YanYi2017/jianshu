@@ -3,6 +3,7 @@ import * as actionTypes from './actionTypes';
 
 import _util from '../../../../util';
 
+// 昵称相关action
 export const changeNicknameValue = value => ({
   type: actionTypes.CHANGE_NICKNAME_VALUE,
   value
@@ -24,6 +25,7 @@ export const changeNicknameValidateResult = nicknameValue => {
   };
 };
 
+// 手机号相关action
 export const changePhoneValue = (value) => ({
   type: actionTypes.CHANGE_PHONE_VALUE,
   value
@@ -44,9 +46,25 @@ export const togglePhoneFocus = (isFocused) => ({
   isFocused
 });
 
+// 验证码相关action
 export const changeVerificationValue = value => ({
   type: actionTypes.CHANGE_VERIFICATION_VALUE,
   value
+});
+
+export const changeVerificationVelidateResult = value => {
+  return dispatch => {
+    const validateResult = validateVerification(value);
+    dispatch({
+      type: actionTypes.CHANGE_VERIFICATION_VALIDATE_RESULT,
+      validateResult
+    });
+  }
+};
+
+export const toggleVerificationFocus = isFocused => ({
+  type: actionTypes.TOGGLE_VERIFICATION_FOCUS,
+  isFocused
 });
 
 export const changeVerificationDisable = value => ({
@@ -54,6 +72,7 @@ export const changeVerificationDisable = value => ({
   value
 });
 
+// 密码相关action
 export const changePassword = passwordValue => {
   return (dispatch) => {
     const password = {
@@ -90,7 +109,7 @@ export const blurPassword = () => (
   }
 );
 
-// 验证昵称，返回值为Promise
+// 检验昵称，返回值为Promise
 const validateNickname = async function (value) {
   const result = {
     status: false,
@@ -126,7 +145,7 @@ const validateNickname = async function (value) {
   return result;
 };
 
-// 验证手机号
+// 检验手机号
 const validatePhone = (value) => {
   const result = {
     status: false,
@@ -145,4 +164,20 @@ const validatePhone = (value) => {
 
   result.status = true;
   return result;
-}
+};
+
+// 检验验证码
+const validateVerification = value => {
+  const result = {
+    status: false,
+    msg: ''
+  };
+
+  if (!_util.validate(value, 'required')) {
+    result.msg = '请输入验证码';
+    return result;
+  }
+
+  result.status = true;
+  return result;
+};

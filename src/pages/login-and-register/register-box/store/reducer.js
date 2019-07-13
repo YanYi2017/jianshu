@@ -1,4 +1,4 @@
-import { fromJS } from 'immutable'; 
+import { fromJS } from 'immutable';
 import * as actionTypes from './actionTypes';
 
 const defaultState = fromJS({
@@ -20,6 +20,7 @@ const defaultState = fromJS({
   },
   verification: {
     value: '',
+    isFocused: false,
     buttonDisable: false,
     validateResult: {
       status: false,
@@ -51,11 +52,16 @@ const reducer = (state = defaultState, action) => {
       return state.setIn(['phone', 'validateResult'], fromJS(action.validateResult));
     case actionTypes.TOGGLE_PHONE_FOCUS:
       return state.setIn(['phone', 'isFocused'], fromJS(action.isFocused));
-      
+
     case actionTypes.CHANGE_VERIFICATION_VALUE:
       return state.setIn(['verification', 'value'], fromJS(action.value));
     case actionTypes.CHANGE_VERIFICATION_DISABLE:
       return state.setIn(['verification', 'buttonDisable'], fromJS(action.value));
+    case actionTypes.CHANGE_VERIFICATION_VALIDATE_RESULT:
+      return state.setIn(['verification', 'validateResult'], fromJS(action.validateResult));
+    case actionTypes.TOGGLE_VERIFICATION_FOCUS:
+      return state.setIn(['verification', 'isFocused'], fromJS(action.isFocused));
+
     case actionTypes.CHANGE_PASSWORD:
       return state.set('password', fromJS(action.password));
     case actionTypes.FOCUS_PASSWORD:

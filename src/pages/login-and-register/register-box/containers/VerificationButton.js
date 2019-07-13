@@ -15,17 +15,16 @@ class VerificationButton extends PureComponent {
         axios.post(_util.getServerURL('/check_captcha'), {
           ticket: res.ticket
         })
-          .then((response) => {
-            // 若人机验证成功
+          .then(response => {
             if (response.data.success) {
               console.log('success');
-              // handleVerificationDisableChange(true);
-              // setTimeout(handleVerificationDisableChange(false), 1000);
             }
-            // 若人机验证失败
             else {
-              console.log('false');
+              alert('人机验证失败，请重试');
             }
+          })
+          .catch(err => {
+            alert('人机验证失败，请重试');
           });
       }
     }
