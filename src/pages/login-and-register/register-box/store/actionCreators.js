@@ -17,48 +17,31 @@ export const changeNicknameValidateResult = nicknameValue => {
   return (dispatch) => {
     validateNickname(nicknameValue).then((validateResult) => {
       dispatch({
-        type: actionTypes.CHANGE_NICKNAME_VALIDATERESULT,
+        type: actionTypes.CHANGE_NICKNAME_VALIDATE_RESULT,
         validateResult
       });
     });
   };
 };
 
-export const changePhone = phoneValue => {
-  return (dispatch) => {
-    const phone = {
-      value: phoneValue,
-      focused: true,
-      validateResult: {
-        status: false,
-        msg: ''
-      }
-    };
-
-    // 验证输入的手机格式
-    if (!_util.validate(phone.value, 'phone')) {
-      if (phone.value) {
-        phone.validateResult.msg = '手机号码格式不正确，请重新输入';
-      } else {
-        phone.validateResult.msg = '请输入手机号';
-      }
-    } else {
-      phone.validateResult.status = true;
-    }
-
-    dispatch({
-      type: actionTypes.CHANGE_PHONE,
-      phone
-    });
-  }
-};
-
-export const focusPhone = () => ({
-  type: actionTypes.FOCUS_PHONE
+export const changePhoneValue = (value) => ({
+  type: actionTypes.CHANGE_PHONE_VALUE,
+  value
 });
 
-export const blurPhone = () => ({
-  type: actionTypes.BLUR_PHONE
+export const changePhoneValidateResult = (value) => {
+  return (dispatch) => {
+    const validateResult = validatePhone(value);
+    dispatch({
+      type: actionTypes.CHANGE_PHONE_VALIDATE_RESULT,
+      validateResult
+    });
+  }
+}
+
+export const togglePhoneFocus = (isFocused) => ({
+  type: actionTypes.TOGGLE_PHONE_FOCUS,
+  isFocused
 });
 
 export const changeVerificationValue = value => ({
@@ -142,3 +125,24 @@ const validateNickname = async function (value) {
   result.status = true;
   return result;
 };
+
+// 验证手机号
+const validatePhone = (value) => {
+  const result = {
+    status: false,
+    msg: ''
+  };
+
+  if (!_util.validate(value, 'required')) {
+    result.msg = '请输入手机号';
+    return result;
+  }
+
+  if (!_util.validate(value, 'phone')) {
+    result.msg = '手机号码格式不正确，请重新输入';
+    return result;
+  }
+
+  result.status = true;
+  return result;
+}

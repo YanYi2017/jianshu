@@ -1,51 +1,56 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { actionCreators } from '../store';
 import { Input, Icon } from '../../common';
 import { SideErrorTip } from '../components';
 
-
-class MobilePhoneInput extends PureComponent {
-  render() {
-    const { phone, handlePhoneChange, handlePhoneFocus, handlePhoneBlur } = this.props;
-
-    return (
-      <div>
-        <Icon type='phone' />
-        <Input
-          type="text"
-          name="phone"
-          value={phone.get('value')}
-          placeholder="手机号"
-          position='middle'
-          onChange={handlePhoneChange}
-          onFocus={handlePhoneFocus}
-          onBlur={handlePhoneBlur}
-        />
-        {
-          !phone.get('focused')
+function MobilePhoneInput({ phone, handleChange, handleFocus, handleBlur }) {
+  return (
+    <div>
+      <Icon type='phone' />
+      <Input
+        type="text"
+        name="phone"
+        value={phone.get('value')}
+        placeholder="手机号"
+        position='middle'
+        onChange={handleChange}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+      />
+      {
+        !phone.get('isFocused')
           && phone.getIn(['validateResult', 'msg'])
           && <SideErrorTip errMsg={phone.getIn(['validateResult', 'msg'])} />
-        }
-      </div>
-    );
-  }
+      }
+    </div>
+  );
 }
 
 const mapStateToProps = (state) => ({
   phone: state.getIn(['registerReducer', 'phone'])
 });
+
 const mapDispatchToProps = (dispatch) => ({
-  handlePhoneChange(e) {
-    dispatch(actionCreators.changePhone(e.target.value));
+  handleChange(e) {
+    dispatch(actionCreators.changePhoneValidateResult(e.target.value));
+    dispatch(actionCreators.changePhoneValue(e.target.value));
   },
-  handlePhoneFocus(e) {
-    dispatch(actionCreators.focusPhone());
+  handleFocus(e) {
+    dispatch(actionCreators.togglePhoneFocus(true));
   },
-  handlePhoneBlur(e) {
-    dispatch(actionCreators.blurPhone());
+  handleBlur(e) {
+    dispatch(actionCreators.togglePhoneFocus(false));
   }
 });
+
+MobilePhoneInput.propTypes = {
+  phone: PropTypes.object.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  handleFocus: PropTypes.func.isRequired,
+  handleBlur: PropTypes.func.isRequired
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(MobilePhoneInput);

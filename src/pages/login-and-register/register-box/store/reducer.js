@@ -12,7 +12,7 @@ const defaultState = fromJS({
   },
   phone: {
     value: '',
-    focused: false,
+    isFocused: false,
     validateResult: {
       status: false,
       msg: ''
@@ -42,14 +42,16 @@ const reducer = (state = defaultState, action) => {
       return state.setIn(['nickname', 'value'], fromJS(action.value));
     case actionTypes.TOGGLE_NICKNAME_FOCUS:
       return state.setIn(['nickname', 'isFocused'], fromJS(action.isFocused));
-    case actionTypes.CHANGE_NICKNAME_VALIDATERESULT:
+    case actionTypes.CHANGE_NICKNAME_VALIDATE_RESULT:
       return state.setIn(['nickname', 'validateResult'], fromJS(action.validateResult));
-    case actionTypes.CHANGE_PHONE:
-      return state.set('phone', fromJS(action.phone));
-    case actionTypes.FOCUS_PHONE:
-      return state.setIn(['phone', 'focused'], fromJS(true));
-    case actionTypes.BLUR_PHONE:
-      return state.setIn(['phone', 'focused'], fromJS(false));
+
+    case actionTypes.CHANGE_PHONE_VALUE:
+      return state.setIn(['phone', 'value'], fromJS(action.value));
+    case actionTypes.CHANGE_PHONE_VALIDATE_RESULT:
+      return state.setIn(['phone', 'validateResult'], fromJS(action.validateResult));
+    case actionTypes.TOGGLE_PHONE_FOCUS:
+      return state.setIn(['phone', 'isFocused'], fromJS(action.isFocused));
+      
     case actionTypes.CHANGE_VERIFICATION_VALUE:
       return state.setIn(['verification', 'value'], fromJS(action.value));
     case actionTypes.CHANGE_VERIFICATION_DISABLE:
