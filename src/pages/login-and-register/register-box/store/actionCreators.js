@@ -13,7 +13,7 @@ export const toggleNicknameFocus = (isFocused) => ({
   isFocused
 });
 
-export const testNickname = nicknameValue => {
+export const changeNicknameValidateResult = nicknameValue => {
   return (dispatch) => {
     validateNickname(nicknameValue).then((validateResult) => {
       dispatch({
