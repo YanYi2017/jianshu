@@ -10,7 +10,7 @@ import { actionCreators } from '../store';
 
 class VerificationButton extends PureComponent {
   componentDidMount() {
-    const { handleCountdown } = this.props;
+    const { handleCountdown, handleErrTip } = this.props;
 
     window.handleCaptcha = (res) => {
       // 若拼图成功
@@ -26,12 +26,12 @@ class VerificationButton extends PureComponent {
               this.timerId = window.setInterval(this.tick, 1000);
             }
             else {
-              alert('人机验证失败，请重试');
+              handleErrTip('人机验证失败，请重试');
             }
           })
           .catch(err => {
-            alert(err);
-            alert('人机验证失败，请重试');
+            console.log(err);
+            handleErrTip('人机验证失败，请重试');
           });
       }
     }
@@ -81,6 +81,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   handleCountdown(countdown) {
     dispatch(actionCreators.changeCountdown(countdown));
+  },
+  handleErrTip(errMsg) {
+    dispatch(actionCreators.changeErrTip(errMsg));
   }
 });
 

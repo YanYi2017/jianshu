@@ -2,6 +2,10 @@ import { fromJS } from 'immutable';
 import * as actionTypes from './actionTypes';
 
 const defaultState = fromJS({
+  errTip: {
+    isShow: false,
+    errMsg: ''
+  },
   nickname: {
     value: '',
     isFocused: false,
@@ -39,6 +43,11 @@ const defaultState = fromJS({
 
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
+    case actionTypes.CHANGE_ERR_TIP:
+      return state.set('errTip', fromJS({ isShow: true, errMsg: action.errMsg }));
+    case actionTypes.TOGGLE_ERR_TIP:
+      return state.setIn(['errTip', 'isShow'], fromJS(action.isShow));
+
     case actionTypes.CHANGE_NICKNAME_VALUE:
       return state.setIn(['nickname', 'value'], fromJS(action.value));
     case actionTypes.TOGGLE_NICKNAME_FOCUS:
@@ -70,8 +79,8 @@ const reducer = (state = defaultState, action) => {
       return state.setIn(['password', 'isFocused'], fromJS(action.isFocused));
     case actionTypes.CHANGE_PASSWORD_VALIDATE_RESULT:
       return state.setIn(['password', 'validateResult'], fromJS(action.validateResult));
-
-      default:
+  
+    default:
       return state;
   }
 };

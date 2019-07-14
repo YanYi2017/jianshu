@@ -1,11 +1,12 @@
 import React from 'react';
 
 import { RegisterMsg, MoreRegisterWay } from './components';
-import { NicknameInput, MobilePhoneInput, VerificationInput, PasswordInput, SubmitButton } from './containers';
+import { ErrorTip, NicknameInput, MobilePhoneInput, VerificationInput, PasswordInput, SubmitButton } from './containers';
 
 function RegisterBox() {
   return (
     <div>
+      <ErrorTip />
       <NicknameInput />
       <MobilePhoneInput />
       <VerificationInput />

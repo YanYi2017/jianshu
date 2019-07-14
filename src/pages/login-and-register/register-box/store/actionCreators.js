@@ -3,6 +3,17 @@ import * as actionTypes from './actionTypes';
 
 import _util from '../../../../util';
 
+// 顶端错误提示框相关action
+export const changeErrTip = (errMsg) => ({
+  type: actionTypes.CHANGE_ERR_TIP,
+  errMsg
+});
+
+export const toggleErrTip = (isShow) => ({
+  type: actionTypes.TOGGLE_ERR_TIP,
+  isShow
+});
+
 // 昵称相关action
 export const changeNicknameValue = value => ({
   type: actionTypes.CHANGE_NICKNAME_VALUE,
@@ -16,12 +27,17 @@ export const toggleNicknameFocus = (isFocused) => ({
 
 export const changeNicknameValidateResult = nicknameValue => {
   return (dispatch) => {
-    validateNickname(nicknameValue).then((validateResult) => {
-      dispatch({
-        type: actionTypes.CHANGE_NICKNAME_VALIDATE_RESULT,
-        validateResult
+    validateNickname(nicknameValue)
+      .then(validateResult => {
+        dispatch({
+          type: actionTypes.CHANGE_NICKNAME_VALIDATE_RESULT,
+          validateResult
+        });
+      })
+      .catch(err => {
+        console.log(err);
+        dispatch(changeErrTip('检查昵称失败，请重试'));
       });
-    });
   };
 };
 

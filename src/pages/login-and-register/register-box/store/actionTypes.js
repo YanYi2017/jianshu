@@ -1,3 +1,6 @@
+export const CHANGE_ERR_TIP = 'register/CHANGE_ERR_TIP';
+export const TOGGLE_ERR_TIP = 'register/TOGGLE_ERR_TIP';
+
 export const CHANGE_NICKNAME_VALUE = 'register/CHANGE_NICKNAME_VALUE';
 export const TOGGLE_NICKNAME_FOCUS = 'register/TOGGLE_NICKNAME_FOCUS';
 export const CHANGE_NICKNAME_VALIDATE_RESULT = 'register/CHANGE_NICKNAME_VALIDATERESULT';
