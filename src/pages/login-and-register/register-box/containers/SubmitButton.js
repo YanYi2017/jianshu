@@ -1,41 +1,31 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router';
 
 import { StyledSubmitButton } from './style'
-
 import { actionCreators } from '../store';
-import { Input, Icon } from '../../common';
-import { SideErrorTip } from '../components';
 
-function SubmitButton({ nickname, phone, verification, password, handleRegister }) {
+function SubmitButton({ history, handleClick }) {
   return (
     <StyledSubmitButton
       type="button"
-      onClick={() => handleRegister(nickname, phone, verification, password)}
+      onClick={() => handleClick(history)}
     >
       注册
     </StyledSubmitButton>
   );
 }
 
-const mapStateToProps = (state) => ({
-  nickname: state.getIn(['registerReducer', 'nickname']),
-  password: state.getIn(['registerReducer', 'password'])
-});
-
 const mapDispatchToProps = (dispatch) => ({
-  handleRegister(nickname, phone, verification, password) {
-    console.log('register');
-  },
+  handleClick(history) {
+    dispatch(actionCreators.register(history));
+  }
 });
 
 SubmitButton.propTypes = {
-  nickname: PropTypes.object.isRequired,
-  phone: PropTypes.object.isRequired,
-  verification: PropTypes.object.isRequired,
-  password: PropTypes.object.isRequired,
-  handleRegister: PropTypes.func.isRequired
+  history: PropTypes.object.isRequired,
+  handleClick: PropTypes.func.isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SubmitButton);
+export default withRouter(connect(null, mapDispatchToProps)(SubmitButton));

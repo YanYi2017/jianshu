@@ -115,6 +115,32 @@ export const togglePasswordFocus = isFocused => ({
   isFocused
 });
 
+// 注册相关action
+export const register = (history) => {
+  return (dispatch, getState) => {
+    const form = getState().getIn(['registerReducer']).toJS();
+    const validateResult = validateForm(form);
+
+    if (validateResult.status) {
+      axios.post(_util.getServerURL('/register'), form)
+        .then(res => {
+          if (res.data.success) {
+            history.push('/login');   // 跳转到登录页
+          } else {
+            dispatch(changeErrTip('注册失败'));
+          }
+        })
+        .catch(err => {
+          dispatch(changeErrTip('注册失败'));
+          console.log(err);
+        })
+    } else {
+      dispatch(changeErrTip(validateResult.msg));
+    }
+  }
+};
+
+
 // 检验昵称，返回值为Promise
 const validateNickname = async function (value) {
   const result = {
@@ -202,6 +228,35 @@ const validatePassword = value => {
 
   if (!_util.validate(value, 'password')) {
     result.msg = '密码格式不正确，需要是6-12个字符，只能包含英文和数字';
+    return result;
+  }
+
+  result.status = true;
+  return result;
+};
+
+// 注册前检验表单数据
+const validateForm = form => {
+  const { nickname, phone, verification, password } = form;
+  const result = {
+    status: false,
+    msg: ''
+  };
+
+  if (!nickname.validateResult.status) {
+    result.msg = '昵称格式不正确，请重新输入';
+    return result;
+  }
+  if (!phone.validateResult.status) {
+    result.msg = '手机号格式不正确，请重新输入';
+    return result;
+  }
+  if (!verification.validateResult.status) {
+    result.msg = '验证码不能为空';
+    return result;
+  }
+  if (!password.validateResult.status) {
+    result.msg = '密码格式不正确，请重新输入';
     return result;
   }
 
