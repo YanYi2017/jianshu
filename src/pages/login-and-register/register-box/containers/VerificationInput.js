@@ -24,7 +24,7 @@ function VerificationInput({ phone, verification, handleChange, handleFocus, han
           onFocus={handleFocus}
           onBlur={handleBlur}
         />
-        <VerificationButton disabled={phone.getIn(['validateResult', 'status']) ? false : true} />
+        <VerificationButton />
         { // 当昵称输入框失焦且有需要提示的信息时，显示侧边提示框
           !verification.get('isFocused')
           && verification.getIn(['validateResult', 'msg'])

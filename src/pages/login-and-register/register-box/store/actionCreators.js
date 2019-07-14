@@ -72,6 +72,11 @@ export const changeVerificationDisable = value => ({
   value
 });
 
+export const changeCountdown = countdown => ({
+  type: actionTypes.CHANGE_COUNTDOWN,
+  countdown
+});
+
 // 密码相关action
 export const changePassword = passwordValue => {
   return (dispatch) => {

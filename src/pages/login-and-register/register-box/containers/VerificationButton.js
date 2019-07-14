@@ -1,14 +1,18 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
 import _util from '../../../../util';
 
 import { StyledVerificationButton } from './style';
+import { actionCreators } from '../store';
 
 class VerificationButton extends PureComponent {
   componentDidMount() {
-    window.handleCaptcha = function (res) {
+    const { handleCountdown } = this.props;
+
+    window.handleCaptcha = (res) => {
       // 若拼图成功
       if (res.ret === 0) {
         // 请求服务端处理返回的验证票据
@@ -17,26 +21,44 @@ class VerificationButton extends PureComponent {
         })
           .then(response => {
             if (response.data.success) {
-              console.log('success');
+              // 发送验证码按钮20s内不能点击
+              handleCountdown(20);
+              this.timerId = window.setInterval(this.tick, 1000);
             }
             else {
               alert('人机验证失败，请重试');
             }
           })
           .catch(err => {
+            alert(err);
             alert('人机验证失败，请重试');
           });
       }
     }
     new window.TencentCaptcha(document.getElementById('Captcha'));
+
   }
+
+  tick = () => {
+    let countdown = this.props.countdown;
+    const { handleCountdown } = this.props;
+    if (countdown > 0) {
+      countdown -= 1;
+      handleCountdown(countdown);
+    } else {
+      clearTimeout(this.timerId);
+    }
+  };
 
   componentWillUnmount() {
     delete window.handleCaptcha;
+    clearTimeout(this.timerId);
   }
 
   render() {
-    const { disabled } = this.props;
+    const { phone, countdown } = this.props;
+    const disabled = countdown > 0 || !phone.getIn(['validateResult', 'status']);
+    const innerText = countdown > 0 ? `重新发送(${countdown}s)` : '发送验证码';
 
     return (
       <StyledVerificationButton
@@ -45,14 +67,27 @@ class VerificationButton extends PureComponent {
         data-appid="2083658602"
         data-cbfn="handleCaptcha"
       >
-        发送验证码
+        {innerText}
       </StyledVerificationButton>
     );
   }
 }
 
+const mapStateToProps = state => ({
+  phone: state.getIn(['registerReducer', 'phone']),
+  countdown: state.getIn(['registerReducer', 'countdown'])
+});
+
+const mapDispatchToProps = dispatch => ({
+  handleCountdown(countdown) {
+    dispatch(actionCreators.changeCountdown(countdown));
+  }
+});
+
 VerificationButton.propTypes = {
-  disabled: PropTypes.bool.isRequired
+  phone: PropTypes.object.isRequired,
+  countdown: PropTypes.number.isRequired,
+  handleCountdown: PropTypes.func.isRequired
 };
 
-export default VerificationButton;
+export default connect(mapStateToProps, mapDispatchToProps)(VerificationButton);

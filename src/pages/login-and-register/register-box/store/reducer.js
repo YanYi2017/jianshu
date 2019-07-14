@@ -21,12 +21,12 @@ const defaultState = fromJS({
   verification: {
     value: '',
     isFocused: false,
-    buttonDisable: false,
     validateResult: {
       status: false,
       msg: ''
     }
   },
+  countdown: 0,
   password: {
     value: '',
     focused: false,
@@ -61,6 +61,8 @@ const reducer = (state = defaultState, action) => {
       return state.setIn(['verification', 'validateResult'], fromJS(action.validateResult));
     case actionTypes.TOGGLE_VERIFICATION_FOCUS:
       return state.setIn(['verification', 'isFocused'], fromJS(action.isFocused));
+    case actionTypes.CHANGE_COUNTDOWN:
+      return state.set('countdown', fromJS(action.countdown));
 
     case actionTypes.CHANGE_PASSWORD:
       return state.set('password', fromJS(action.password));
