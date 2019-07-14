@@ -13,7 +13,7 @@ function PasswordInput({ password, handlePasswordChange, handlePasswordFocus, ha
       <Input
         type="password"
         name="password"
-        value={password.get('result')}
+        value={password.get('value')}
         placeholder="设置密码"
         position="bottom"
         onChange={handlePasswordChange}
