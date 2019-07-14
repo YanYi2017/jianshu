@@ -29,7 +29,7 @@ const defaultState = fromJS({
   countdown: 0,
   password: {
     value: '',
-    focused: false,
+    isFocused: false,
     validateResult: {
       status: false,
       msg: ''
@@ -64,13 +64,14 @@ const reducer = (state = defaultState, action) => {
     case actionTypes.CHANGE_COUNTDOWN:
       return state.set('countdown', fromJS(action.countdown));
 
-    case actionTypes.CHANGE_PASSWORD:
-      return state.set('password', fromJS(action.password));
-    case actionTypes.FOCUS_PASSWORD:
-      return state.setIn(['password', 'focused'], fromJS(true));
-    case actionTypes.BLUR_PASSWORD:
-      return state.setIn(['password', 'focused'], fromJS(false));
-    default:
+    case actionTypes.CHANGE_PASSWORD_VALUE:
+      return state.setIn(['password', 'value'], fromJS(action.value));
+    case actionTypes.TOGGLE_PASSWORD_FOCUS:
+      return state.setIn(['password', 'isFocused'], fromJS(action.isFocused));
+    case actionTypes.CHANGE_PASSWORD_VALIDATE_RESULT:
+      return state.setIn(['password', 'validateResult'], fromJS(action.validateResult));
+
+      default:
       return state;
   }
 };

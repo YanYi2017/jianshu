@@ -21,8 +21,9 @@ function PasswordInput({ password, handlePasswordChange, handlePasswordFocus, ha
         onBlur={handlePasswordBlur}
       />
       {
-        (!password.get('focused') && password.getIn(['validateResult', 'msg']))
-        && <SideErrorTip errMsg={password.getIn(['validateResult', 'msg'])} />
+        (!password.get('isFocused')
+          && password.getIn(['validateResult', 'msg']))
+          && <SideErrorTip errMsg={password.getIn(['validateResult', 'msg'])} />
       }
     </div>
   );
@@ -33,13 +34,14 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = (dispatch) => ({
   handlePasswordChange(e) {
-    dispatch(actionCreators.changePassword(e.target.value));
+    dispatch(actionCreators.changePasswordValue(e.target.value));
   },
-  handlePasswordFocus() {
-    dispatch(actionCreators.focusPassword());
+  handlePasswordFocus(e) {
+    dispatch(actionCreators.togglePasswordFocus(true));
   },
-  handlePasswordBlur() {
-    dispatch(actionCreators.blurPassword());
+  handlePasswordBlur(e) {
+    dispatch(actionCreators.changePasswordValidateResult(e.target.value));
+    dispatch(actionCreators.togglePasswordFocus(false));
   }
 });
 

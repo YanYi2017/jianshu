@@ -78,41 +78,26 @@ export const changeCountdown = countdown => ({
 });
 
 // 密码相关action
-export const changePassword = passwordValue => {
+
+export const changePasswordValue = value => ({
+  type: actionTypes.CHANGE_PASSWORD_VALUE,
+  value
+});
+
+export const changePasswordValidateResult = value => {
   return (dispatch) => {
-    const password = {
-      value: passwordValue,
-      focused: true,
-      validateResult: {
-        status: false,
-        msg: ''
-      }
-    };
-
-    if (password.value.length < 6) {
-      password.validateResult.msg = '密码不能少于6个字符';
-    } else {
-      password.validateResult.status = true;
-    }
-
+    const validateResult = validatePassword(value);
     dispatch({
-      type: actionTypes.CHANGE_PASSWORD,
-      password
+      type: actionTypes.CHANGE_PASSWORD_VALIDATE_RESULT,
+      validateResult
     });
-  };
-}
-
-export const focusPassword = () => (
-  {
-    type: actionTypes.FOCUS_PASSWORD
   }
-);
+};
 
-export const blurPassword = () => (
-  {
-    type: actionTypes.BLUR_PASSWORD
-  }
-);
+export const togglePasswordFocus = isFocused => ({
+  type: actionTypes.TOGGLE_PASSWORD_FOCUS,
+  isFocused
+});
 
 // 检验昵称，返回值为Promise
 const validateNickname = async function (value) {
@@ -180,6 +165,27 @@ const validateVerification = value => {
 
   if (!_util.validate(value, 'required')) {
     result.msg = '请输入验证码';
+    return result;
+  }
+
+  result.status = true;
+  return result;
+};
+
+// 检验密码
+const validatePassword = value => {
+  const result = {
+    status: false,
+    msg: ''
+  };
+
+  if (!_util.validate(value, 'required')) {
+    result.msg = '请输入密码';
+    return result;
+  }
+
+  if (!_util.validate(value, 'password')) {
+    result.msg = '密码格式不正确，需要是6-12个字符，只能包含英文和数字';
     return result;
   }
 

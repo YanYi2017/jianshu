@@ -12,7 +12,9 @@ const _util = {
   validate(value, type) {
     const valueTrimmed = value.trim();
 
-    const nicknameRegExp = /^[\u4E00-\u9FA5A-za-z0-9_]{2,15}$/;
+    const nicknameRegExp = /^[\u4E00-\u9FA5A-Za-z0-9_]{2,15}$/;
+    const phoneRegExp = /^1\d{10}$/;
+    const passwordRegExp = /^[A-Za-z0-9]{6,12}$/;
 
     // 非空验证
     if ('required' === type) {
@@ -26,7 +28,12 @@ const _util = {
 
     // 手机号验证
     if ('phone' === type) {
-      return /^1\d{10}$/.test(value);
+      return phoneRegExp.test(value);
+    }
+
+    // 密码验证
+    if ('password' === type) {
+      return passwordRegExp.test(value);
     }
   }
 };
