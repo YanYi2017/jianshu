@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import logoPic from '../../statics/logo.png';
-
 export const HeaderWrapper = styled.header`
   position: fixed;
   left: 0; right: 0;
@@ -14,13 +12,6 @@ export const HeaderWrapper = styled.header`
 export const WidthLimit = styled.div`
   min-width: 768px; max-width: 1440px;
   margin: 0 auto;
-`;
-
-export const Logo = styled.div`
-  float:left;
-  width: 100px; height: 58px;
-  background: url(${logoPic});
-  background-size: contain;
 `;
 
 export const Nav = styled.div`

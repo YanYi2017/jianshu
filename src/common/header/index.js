@@ -1,15 +1,16 @@
 import React, { PureComponent } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { actionCreators } from './store';
 import { actionCreators as loginActionCreators } from '../../pages/login-and-register/login-box/store';
 
 import { CSSTransition } from 'react-transition-group';
 
+import { Left } from './components';
+
 import {
   HeaderWrapper,
   WidthLimit,
-  Logo,
   Nav,
   NavItem,
   SearchWrapper,
@@ -27,9 +28,7 @@ class Header extends PureComponent {
     return (
       <HeaderWrapper>
         <WidthLimit>
-          <Link to="/">
-            <Logo />
-          </Link>
+          <Left />
           <Addition>
             <Button className='writing'>
               <span className="iconfont">&#xe616;</span>
@@ -52,10 +51,10 @@ class Header extends PureComponent {
               loginStatus ? (
                 <NavItem className='right' onClick={handleLogout}>退出</NavItem>
               ) : (
-                <Link to="/login">
-                  <NavItem className='right'>登录</NavItem>
-                </Link>
-              )
+                  <Link to="/login">
+                    <NavItem className='right'>登录</NavItem>
+                  </Link>
+                )
             }
             <NavItem className='right'>
               <span className="iconfont">&#xe607;</span>
