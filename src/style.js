@@ -64,4 +64,15 @@ export const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
+
+  /* 大小不定元素垂直居中 */
+  .dib_vm::after {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+  .vm {
+    vertical-align: middle;
+  }
 `;

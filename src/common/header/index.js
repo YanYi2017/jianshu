@@ -7,6 +7,7 @@ import { actionCreators as loginActionCreators } from '../../pages/login-and-reg
 import { CSSTransition } from 'react-transition-group';
 
 import { Left, Right } from './components';
+import { Middle } from './containers';
 
 import {
   HeaderWrapper,
@@ -30,39 +31,40 @@ class Header extends PureComponent {
         <WidthLimit>
           <Left />
           <Right />
-          <Nav>
-            <Link to="/">
-              <NavItem className='left homepage'>
-                <span className="iconfont">&#xe64e;</span>
-                <span>首页</span>
-              </NavItem>
-            </Link>
-            <NavItem className='left'>
-              <span className="iconfont">&#xe62d;</span>
-              <span>下载App</span>
-            </NavItem>
-            <SearchWrapper>
-              <CSSTransition
-                in={focused}
-                timeout={500}
-                classNames='focused'
-              >
-                <NavSearch
-                  placeholder='搜索'
-                  onFocus={() => handleInputFocus(list)}
-                  onBlur={handleInputBlur}
-                />
-              </CSSTransition>
-              <CSSTransition
-                in={focused}
-                timeout={50}
-                classNames='focused'
-              >
-                <span className='iconfont ic-search'>&#xe653;</span>
-              </CSSTransition>
-              {this.getListArea()}
-            </SearchWrapper>
-          </Nav>
+          <Middle />
+  {/* <Nav>
+      <Link to="/">
+        <NavItem className='left homepage'>
+          <span className="iconfont">&#xe64e;</span>
+          <span>首页</span>
+        </NavItem>
+      </Link>
+      <NavItem className='left'>
+        <span className="iconfont">&#xe62d;</span>
+        <span>下载App</span>
+      </NavItem>
+      <SearchWrapper>
+        <CSSTransition
+          in={focused}
+          timeout={500}
+          classNames='focused'
+        >
+          <NavSearch
+            placeholder='搜索'
+            onFocus={() => handleInputFocus(list)}
+            onBlur={handleInputBlur}
+          />
+        </CSSTransition>
+        <CSSTransition
+          in={focused}
+          timeout={50}
+          classNames='focused'
+        >
+          <span className='iconfont ic-search'>&#xe653;</span>
+        </CSSTransition>
+        {this.getListArea()}
+      </SearchWrapper>
+    </Nav> */}
         </WidthLimit>
       </HeaderWrapper>
     );
