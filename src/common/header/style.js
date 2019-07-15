@@ -11,6 +11,7 @@ export const HeaderWrapper = styled.header`
 
 export const WidthLimit = styled.div`
   min-width: 768px; max-width: 1440px;
+  height: 58px;
   margin: 0 auto;
 `;
 
@@ -143,31 +144,5 @@ export const SearchTrendingTag = styled.ul`
   & li a:hover {
     color: #333;
     border-color: #b4b4b4;
-  }
-`;
-
-export const Addition = styled.div`
-  float: right; 
-  height:58px;
-`;
-
-export const Button = styled.a`
-  float:right;
-  margin: 9px 5px 0 15px;
-  padding: 6px 12px;
-  width: 80px; height: 38px;
-  line-height: 26px;
-  font-size: 15px;
-  text-align: center;
-  border: 1px solid #ea6f5a;
-  border-radius: 20px;
-  &.writing {
-    width: 100px;
-    background: #ea6f5a;
-    color: #fff;  
-  }
-  &.register {
-    background: transparent;
-    color: #ea6f5a;
   }
 `;

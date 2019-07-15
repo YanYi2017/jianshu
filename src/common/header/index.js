@@ -6,7 +6,7 @@ import { actionCreators as loginActionCreators } from '../../pages/login-and-reg
 
 import { CSSTransition } from 'react-transition-group';
 
-import { Left } from './components';
+import { Left, Right } from './components';
 
 import {
   HeaderWrapper,
@@ -29,13 +29,7 @@ class Header extends PureComponent {
       <HeaderWrapper>
         <WidthLimit>
           <Left />
-          <Addition>
-            <Button className='writing'>
-              <span className="iconfont">&#xe616;</span>
-              <span>写文章</span>
-            </Button>
-            <Button className='register'>注册</Button>
-          </Addition>
+          <Right />
           <Nav>
             <Link to="/">
               <NavItem className='left homepage'>
@@ -46,18 +40,6 @@ class Header extends PureComponent {
             <NavItem className='left'>
               <span className="iconfont">&#xe62d;</span>
               <span>下载App</span>
-            </NavItem>
-            {
-              loginStatus ? (
-                <NavItem className='right' onClick={handleLogout}>退出</NavItem>
-              ) : (
-                  <Link to="/login">
-                    <NavItem className='right'>登录</NavItem>
-                  </Link>
-                )
-            }
-            <NavItem className='right'>
-              <span className="iconfont">&#xe607;</span>
             </NavItem>
             <SearchWrapper>
               <CSSTransition

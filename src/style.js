@@ -56,6 +56,10 @@ export const GlobalStyle = createGlobalStyle`
     color: #333;
   }
 
+  body {
+    font-family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+  }
+
   /* 设置盒模型 */ 
   * {
     box-sizing: border-box;
