@@ -8,12 +8,14 @@ const changeList = (list) => ({
   totalPage: fromJS(Math.ceil(list.length / 10))
 });
 
-export const searchFocus = () => ({
-  type: actionTypes.SEARCH_FOCUS
+export const changeSearchInput = (input) => ({
+  type: actionTypes.CHANGE_SEARCH_INPUT,
+  input
 });
 
-export const searchBlur = () => ({
-  type: actionTypes.SEARCH_BLUR
+export const toggleFocus = (isFocused) => ({
+  type: actionTypes.TOGGLE_FOCUS,
+  isFocused
 });
 
 export const mouseEnter = () => ({

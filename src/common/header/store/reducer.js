@@ -3,7 +3,8 @@ import { fromJS } from 'immutable';
 import * as actionTypes from './actionTypes';
 
 const defaultState = fromJS({
-  focused: false,
+  searchInput: '',
+  isFocused: false,
   mouseIn: false,
   list: [],
   page: 1,
@@ -12,10 +13,10 @@ const defaultState = fromJS({
 
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
-    case actionTypes.SEARCH_FOCUS:
-      return state.set('focused', true);
-    case actionTypes.SEARCH_BLUR:
-      return state.set('focused', false);
+    case actionTypes.CHANGE_SEARCH_INPUT:
+      return state.set('searchInput', action.input);
+    case actionTypes.TOGGLE_FOCUS:
+      return state.set('isFocused', action.isFocused);
     case actionTypes.CHANGE_LIST:
       return state.merge({
         list: action.list,

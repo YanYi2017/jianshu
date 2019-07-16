@@ -44,14 +44,41 @@ export const StyledInput = styled.input`
   border-radius: 19px;
   font-size: 14px;
   background: #eee;
+  
   ::placeholder {
     color: #999;
+  }
+
+  &.focused-enter {
+    width: 240px;
+  }
+  &.focused-enter-active {
+    width: 320px;
+    transition: 500ms ease-in;
+  }
+  &.focused-enter-done {
+    width: 320px;
+  }
+  &.focused-exit {
+    width: 320px;
+  }
+  &.focused-exit-active {
+    width: 240px;
+    transition: 500ms ease-in;
+  }
+  &.focused-exit-done {
+    width: 240px;
   }
 `;
 
 export const StyledIcon = styled.span`
-  margin-left: -38px;
+  margin-left: -36px;
   padding: 10px;
   border-radius: 20px;
   color: #969696;
+
+  &.focused-enter-done {
+    background: #969696;
+    color: #fff;
+  }
 `;
