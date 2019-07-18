@@ -6,15 +6,24 @@ import { StyledMiddle, StyledHomepage, StyledDownload } from './style.js';
 function Middle() {
   return (
     <StyledMiddle>
-      <StyledHomepage to="/">
-        <span className="iconfont">&#xe632;</span>
-        <span>首页</span>
-      </StyledHomepage>
-      <StyledDownload>
-        <span className="iconfont">&#xe643;</span>
-        <span>下载App</span>
-      </StyledDownload>
-      <SearchInput />
+      <ul>
+        <li>
+          <StyledHomepage to="/" className="dib_vm">
+            <span className="iconfont vm">&#xe632;</span>
+            <span className="menu-text vm">首页</span>
+          </StyledHomepage>
+        </li>
+        <li>
+          <StyledDownload className="dib_vm">
+            <span className="iconfont vm">&#xe643;</span>
+            <span className="menu-text vm">下载App</span>
+          </StyledDownload>
+        </li>
+        <li>
+          <SearchInput />
+        </li>
+      </ul>
+
     </StyledMiddle>
   );
 }
