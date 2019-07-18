@@ -5,6 +5,7 @@ import * as actionTypes from './actionTypes';
 const defaultState = fromJS({
   searchInput: '',
   isFocused: false,
+  isShowed: false,
   mouseIn: false,
   list: [],
   page: 1,
@@ -14,9 +15,11 @@ const defaultState = fromJS({
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
     case actionTypes.CHANGE_SEARCH_INPUT:
-      return state.set('searchInput', action.input);
+      return state.set('searchInput', fromJS(action.input));
     case actionTypes.TOGGLE_FOCUS:
-      return state.set('isFocused', action.isFocused);
+      return state.set('isFocused', fromJS(action.isFocused));
+    case actionTypes.TOGGLE_LIST:
+      return state.set('isShowed', fromJS(!state.get('isShowed')));
     case actionTypes.CHANGE_LIST:
       return state.merge({
         list: action.list,

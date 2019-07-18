@@ -1,31 +1,26 @@
 import React from 'react';
-import SearchInput from './SearchInput';
+import { connect } from 'react-redux';
 
-import { StyledMiddle, StyledHomepage, StyledDownload } from './style.js';
+import { actionCreators } from '../store';
+import { MenuButton, NavList } from '../components';
+import { StyledMiddle } from './style';
 
-function Middle() {
+function Middle({ isShowed, handleClick }) {
   return (
-    <StyledMiddle>
-      <ul>
-        <li>
-          <StyledHomepage to="/" className="dib_vm">
-            <span className="iconfont vm">&#xe632;</span>
-            <span className="menu-text vm">首页</span>
-          </StyledHomepage>
-        </li>
-        <li>
-          <StyledDownload className="dib_vm">
-            <span className="iconfont vm">&#xe643;</span>
-            <span className="menu-text vm">下载App</span>
-          </StyledDownload>
-        </li>
-        <li>
-          <SearchInput />
-        </li>
-      </ul>
-
+    <StyledMiddle className="dib_vm">
+      <MenuButton onClick={handleClick} />
+      <NavList isShowed={isShowed} />
     </StyledMiddle>
   );
 }
 
-export default Middle;
+const mapStateToProps = (state) => ({
+  isShowed: state.getIn(['headerReducer', 'isShowed'])
+});
+const mapDispatchToProps = (dispatch) => ({
+  handleClick() {
+    dispatch(actionCreators.toggleList());
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Middle);

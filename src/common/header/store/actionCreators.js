@@ -18,6 +18,10 @@ export const toggleFocus = (isFocused) => ({
   isFocused
 });
 
+export const toggleList = () => ({
+  type: actionTypes.TOGGLE_LIST
+});
+
 export const mouseEnter = () => ({
   type: actionTypes.MOUSE_ENTER
 });

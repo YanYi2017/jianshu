@@ -1,3 +1,4 @@
 import Middle from './Middle';
+import SearchInput from './SearchInput';
 
-export { Middle };
+export { Middle, SearchInput };

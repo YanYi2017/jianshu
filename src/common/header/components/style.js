@@ -98,3 +98,79 @@ export const StyledMode = styled(StyledDiv)`
     color: #969696;
   }
 `;
+
+export const StyledMenuButton = styled(StyledButton)`
+  display: none;
+  border: 1px solid rgb(221, 221,221);
+  border-radius: 4px;
+  padding: 10px;
+  color: #777;
+  
+  :hover { background: #eee; }
+  @media (min-width: 320px) and (max-width: 870px) {
+    display: inline;
+  }
+`;
+
+export const StyledNavList = styled.ul`
+  float: left;
+  height: 100%;
+  padding: 0 15px;
+
+  li { float: left; height: 100%; }
+
+  @media (min-width: 320px) and (max-width: 870px) {
+    display: none;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    height: auto;
+    overflow: hidden;
+    background: #fff;
+
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+
+    li { float: none; height: 58px; }
+    li + li { border-top: 1px solid #f0f0f0; }
+
+    &.showed-enter { height: 0; display: block; }
+    &.showed-enter-active { 
+      height: 175px;
+      display: block;
+      transition: all 500ms ease-in;
+    }
+    &.showed-enter-done { display: block; height: 175px; }
+    &.showed-exit { display: block; height: 175px; }
+    &.showed-exit-active {
+      display: block;
+      height: 0;
+      transition: all 500ms ease-in;
+    }
+    &.showed-exit-done { display: none; height: 0; }
+  }
+`;
+
+export const StyledMiddleLink = styled(Link)`
+  display: block;
+  height: 100%;
+  padding: 0 15px;
+  .iconfont { font-size: 20px; }
+  .menu-text { display: none; }
+  :hover {
+    background: #f5f5f5;
+  }
+  @media(min-width: 1440px) {
+    .menu-text { display: inline; }
+    .iconfont { margin-right: 5px; }
+  }
+  @media(min-width: 1081px) and (max-width: 1439px) {
+    .menu-text { display: inline; }
+    .iconfont { display: none; }
+  }
+  @media(min-width: 320px) and (max-width: 870px) {
+    display: block;
+    text-align: center;
+    .iconfont { display: none; }
+    .menu-text { display: inline; }
+  }
+`;

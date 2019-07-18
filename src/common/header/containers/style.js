@@ -4,55 +4,6 @@ import { Link } from 'react-router-dom';
 export const StyledMiddle = styled.div`
   width: 960px; height: 100%;
   margin: 0 auto;
-  ul { float: left; height: 100%; padding: 0 15px; }
-  li { float: left; height: 100%; }
-
-  @media (min-width: 320px) and (max-width: 870px) {
-    ul {
-      position: absolute;
-      top: 100%; left: 0; right: 0;
-      height: auto;
-      background: #fff;
-    }
-    li {
-      float: none;
-      border-bottom: 1px solid #f0f0f0;
-      height: 58px;
-    }
-  }
-`;
-
-export const StyledLink = styled(Link)`
-  display: block;
-  height: 100%;
-  padding: 0 15px;
-  .iconfont { font-size: 20px; }
-  .menu-text { display: none; }
-
-  @media(min-width: 1440px) {
-    .menu-text { display: inline; }
-    .iconfont { margin-right: 5px; } 
-  }
-  @media(min-width: 1081px) and (max-width: 1439px) {
-    .menu-text { display: inline; }
-    .iconfont { display: none; }
-  }
-  @media(min-width: 320px) and (max-width: 870px) {
-    display: block;
-    text-align: center;
-    .iconfont { display: none; }
-    .menu-text { display: inline; }
-  }
-`;
-
-export const StyledHomepage = styled(StyledLink)`
-  color: #ea6f5a;
-`;
-
-export const StyledDownload = styled(StyledLink)`
-  :hover {
-    background: #f5f5f5;
-  }
 `;
 
 export const StyledSearchInput = styled.div`
