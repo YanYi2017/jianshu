@@ -65,6 +65,14 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  /* 重置按钮样式 */
+  button {
+    background: none;
+    outline: none;
+    border: 1px solid;
+    cursor: pointer;
+  }
+
   /* 大小不定元素垂直居中 */
   .dib_vm::after {
     content: '';

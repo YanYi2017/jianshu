@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 
 import { StyledNavList } from './style';
 import NavLink from './NavLink';
-import { SearchInput } from '../containers';
+import { SearchInput, SearchTrending } from '../containers';
 
 function NavList({ isShowed }) {
   return (
     <CSSTransition
       in={isShowed}
-      timeout={1000}
+      timeout={300}
       classNames="showed"
     >
       <StyledNavList>
@@ -22,6 +22,7 @@ function NavList({ isShowed }) {
         </li>
         <li>
           <SearchInput />
+          <SearchTrending />
         </li>
       </StyledNavList>
     </CSSTransition>

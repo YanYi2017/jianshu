@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 export const StyledMiddle = styled.div`
   width: 960px; height: 100%;
@@ -87,5 +86,22 @@ export const StyledIcon = styled.span`
   &.focused-enter-done {
     background: #969696;
     color: #fff;
+  }
+`;
+
+export const StyledSearchTrending = styled.div`
+  position: absolute;
+  width: 250px;
+  padding: 20px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .2);
+  border-radius: 4px;
+  background: #fff;
+  &::before {
+    content: '';
+    position: absolute;
+    margin-top: -44px;
+    width: 0; height: 0;
+    border: 12px solid transparent;
+    border-bottom-color: #fff;
   }
 `;

@@ -53,7 +53,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 SearchInput.propTypes = {
-  searchInput: PropTypes.bool.isRequired,
+  searchInput: PropTypes.string.isRequired,
   isFocused: PropTypes.bool.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleFocus: PropTypes.func.isRequired,

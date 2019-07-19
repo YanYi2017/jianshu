@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export const Logo = styled(Link)`
   float:left;
   width: 100px; height: 100%;
-  img {
+  & > img {
     width: 100%; height: 100%;
   }
 `;
@@ -39,14 +39,14 @@ export const StyledButton = styled.button`
 
 export const StyledWriter = styled(StyledDiv)`
   margin-right: 10px;
-  a {
+  & > a {
     width: 100px;
     background: #ea6f5a;
     border: 1px solid transparent;
     color: #fff;
   }
 
-  a: hover {
+  & > a: hover {
     background: #ec6149;
   }
 
@@ -58,11 +58,11 @@ export const StyledWriter = styled(StyledDiv)`
 `;
 
 export const StyledRegister = styled(StyledDiv)`
-  a {
+  & > a {
     border: 1px solid rgba(236,97,73,.7);
     color: #ea6f5a;
   }
-  a:hover {
+  & > a:hover {
     color: #ec6149;
     border-color: #ec6149;
     background-color: rgba(236,97,73,.05);
@@ -70,7 +70,7 @@ export const StyledRegister = styled(StyledDiv)`
 `;
 
 export const StyledLogin = styled(StyledDiv)`
-  a {
+  & > a {
     width: 56px;
     color: #969696;
   }
@@ -78,7 +78,7 @@ export const StyledLogin = styled(StyledDiv)`
 
 export const StyledDiamond = styled(StyledDiv)`
   width: 80px;
-  button {
+  & > button {
     position: absolute;
     width: 80px; height: 30px;
     top: 0; right: 0; bottom: 0; left: 0;
@@ -92,7 +92,7 @@ export const StyledDiamond = styled(StyledDiv)`
 export const StyledMode = styled(StyledDiv)`
   width: 45px;
   
-  button {
+  & > button {
     width: 100%; height: 100%;
     font-size: 28px;
     color: #969696;
@@ -117,36 +117,48 @@ export const StyledNavList = styled.ul`
   height: 100%;
   padding: 0 15px;
 
-  li { float: left; height: 100%; }
+  & > li { float: left; height: 100%; }
 
   @media (min-width: 320px) and (max-width: 870px) {
     display: none;
     position: absolute;
     top: 100%; left: 0; right: 0;
     height: auto;
-    overflow: hidden;
     background: #fff;
 
     border-top: 1px solid #f0f0f0;
     border-bottom: 1px solid #f0f0f0;
 
-    li { float: none; height: 58px; }
-    li + li { border-top: 1px solid #f0f0f0; }
+    & > li { float: none; height: 58px; }
+    & > li + li { border-top: 1px solid #f0f0f0; }
 
     &.showed-enter { height: 0; display: block; }
-    &.showed-enter-active { 
+    &.showed-enter-active {
+      overflow: hidden; 
       height: 175px;
       display: block;
-      transition: all 500ms ease-in;
+      transition: all 300ms ease-out;
     }
-    &.showed-enter-done { display: block; height: 175px; }
-    &.showed-exit { display: block; height: 175px; }
+    &.showed-enter-done {
+      overflow: visible;
+      display: block;
+      height: 175px;
+    }
+    &.showed-exit {
+      overflow: hidden;
+      display: block;
+      height: 175px;
+    }
     &.showed-exit-active {
+      overflow: hidden;
       display: block;
       height: 0;
-      transition: all 500ms ease-in;
+      transition: all 300ms ease-out;
     }
-    &.showed-exit-done { display: none; height: 0; }
+    &.showed-exit-done {
+      overflow: visible;
+      display: none; height: 0;
+    }
   }
 `;
 
@@ -172,5 +184,49 @@ export const StyledMiddleLink = styled(Link)`
     text-align: center;
     .iconfont { display: none; }
     .menu-text { display: inline; }
+  }
+`;
+
+export const StyledTrendingHeader = styled.div`
+  overflow:hidden;
+  line-height: 20px;
+  margin-bottom: 10px;
+  & > span {
+    float: left;
+    font-size: 14px;
+    color: #969696;
+  }
+  & > button {
+    float: right;
+    border: none;
+    font-size: 13px;
+    color: #969696;
+  }
+  & > button:hover {
+    color: #2f2f2f;
+  }
+  .ic-search-change {
+    display: inline-block;
+    margin-right: 4px;
+    transition: all 0.2s ease;
+  }
+`;
+
+export const StyledTrendingTags = styled.ul`
+  & > li {
+    display: inline-block;
+    margin-right: 10px;
+    line-height: 28px;
+  }
+  & > li > a {
+    padding: 2px 6px;
+    font-size: 12px;
+    color: #787878;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+  }
+  & > li > a:hover {
+    color: #333;
+    border-color: #b4b4b4;
   }
 `;

@@ -1,12 +1,6 @@
-import * as actionTypes from './actionTypes';
-import { fromJS } from 'immutable';
 import axios from 'axios';
-
-const changeList = (list) => ({
-  type: actionTypes.CHANGE_LIST,
-  list: fromJS(list),
-  totalPage: fromJS(Math.ceil(list.length / 10))
-});
+import * as actionTypes from './actionTypes';
+import _util from '../../../util';
 
 export const changeSearchInput = (input) => ({
   type: actionTypes.CHANGE_SEARCH_INPUT,
@@ -22,27 +16,41 @@ export const toggleList = () => ({
   type: actionTypes.TOGGLE_LIST
 });
 
-export const mouseEnter = () => ({
-  type: actionTypes.MOUSE_ENTER
+export const toggleMouseIn = (mouseIn) => ({
+  type: actionTypes.TOGGLE_MOUSE_IN,
+  mouseIn
 });
 
-export const mouseLeave = () => ({
-  type: actionTypes.MOUSE_LEAVE
-});
-
-export const changePage = (page) => ({
-  type: actionTypes.CHANGE_PAGE,
-  page
-});
+export const changePage = () => {
+  return (dispatch, getState) => {
+    let { page, totalPage } = getState().get('headerReducer').toJS();
+    if (page < totalPage) {
+      dispatch({
+        type: actionTypes.CHANGE_PAGE,
+        page: ++page
+      });
+    } else {
+      dispatch({
+        type: actionTypes.CHANGE_PAGE,
+        page: 1
+      });
+    }
+  }
+};
 
 export const getSearchTrendingList = () => {
   return (dispatch) => {
-    axios.get('/api/searchTrending.json')
-      .then((res) => {
-        dispatch(changeList(res.data.data));
+    axios.get(_util.getServerURL('/trending_search'))
+      .then(res => {
+        const list = res.data.data;
+        dispatch({
+          type: actionTypes.CHANGE_TRENDING_LIST,
+          totalPage: Math.ceil(list.length / 10),
+          list
+        });
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(err => {
+        alert(err);
       });
   };
 };

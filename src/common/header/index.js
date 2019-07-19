@@ -16,7 +16,6 @@ import {
   NavItem,
   SearchWrapper,
   NavSearch,
-  SearchTrending,
   SearchTrendingHeader,
   SearchTrendingTag,
   Addition,
@@ -70,53 +69,53 @@ class Header extends PureComponent {
     );
   }
 
-  getListArea() {
-    const { focused, list, mouseIn, page, totalPage, handleMouseEnter, handleMouseLeave, handleChangePage } = this.props;
+//   getListArea() {
+//     const { focused, list, mouseIn, page, totalPage, handleMouseEnter, handleMouseLeave, handleChangePage } = this.props;
 
-    const newList = list.toJS();
-    const pageList = [];
-    for (let i = (page - 1) * 10; i < page * 10; i++) {
-      if (newList[i]) {
-        pageList.push(
-          <li key={newList[i]}>
-            <Link to={encodeURI(`/search?q=${newList[i]}`)}>
-              {newList[i]}
-            </Link>
-          </li>
-        );
-      }
-    }
+//     const newList = list.toJS();
+//     const pageList = [];
+//     for (let i = (page - 1) * 10; i < page * 10; i++) {
+//       if (newList[i]) {
+//         pageList.push(
+//           <li key={newList[i]}>
+//             <Link to={encodeURI(`/search?q=${newList[i]}`)}>
+//               {newList[i]}
+//             </Link>
+//           </li>
+//         );
+//       }
+//     }
 
-    if (focused || mouseIn) {
-      return (
-        <SearchTrending
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          <SearchTrendingHeader>
-            <span>热门搜索</span>
-            <a
-              onClick={() => handleChangePage(page, totalPage, this.spin)}
-            >
-              <span
-                ref={(spin) => { this.spin = spin }}
-                className='iconfont ic-search-change'
-                style={{ transform: 'rotate(90deg)' }}
-              >
-                &#xe61b;
-              </span>
-              <span>换一批</span>
-            </a>
-          </SearchTrendingHeader>
-          <SearchTrendingTag>
-            {pageList}
-          </SearchTrendingTag>
-        </SearchTrending>
-      );
-    } else {
-      return null;
-    }
-  };
+//     if (focused || mouseIn) {
+//       return (
+//         <SearchTrending
+//           onMouseEnter={handleMouseEnter}
+//           onMouseLeave={handleMouseLeave}
+//         >
+//           <SearchTrendingHeader>
+//             <span>热门搜索</span>
+//             <a
+//               onClick={() => handleChangePage(page, totalPage, this.spin)}
+//             >
+//               <span
+//                 ref={(spin) => { this.spin = spin }}
+//                 className='iconfont ic-search-change'
+//                 style={{ transform: 'rotate(90deg)' }}
+//               >
+//                 &#xe61b;
+//               </span>
+//               <span>换一批</span>
+//             </a>
+//           </SearchTrendingHeader>
+//           <SearchTrendingTag>
+//             {pageList}
+//           </SearchTrendingTag>
+//         </SearchTrending>
+//       );
+//     } else {
+//       return null;
+//     }
+//   };
 }
 
 

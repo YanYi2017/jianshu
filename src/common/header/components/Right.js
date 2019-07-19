@@ -7,7 +7,7 @@ function Right() {
   return (
     <StyledRight>
       <StyledWriter>
-        <StyledLink>
+        <StyledLink to="#">
           <span className="iconfont">&#xe616;</span>
           <span>写文章</span>
         </StyledLink>
