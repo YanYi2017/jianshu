@@ -30,13 +30,6 @@ export const StyledLink = styled(Link)`
   user-select: none;
 `;
 
-export const StyledButton = styled.button`
-  border: none;
-  background: none;
-  outline: none;
-  cursor: pointer;
-`;
-
 export const StyledWriter = styled(StyledDiv)`
   margin-right: 10px;
   & > a {
@@ -83,6 +76,7 @@ export const StyledDiamond = styled(StyledDiv)`
     width: 80px; height: 30px;
     top: 0; right: 0; bottom: 0; left: 0;
     margin: auto;
+    border: none;
   }
   img {
     height: 25px;
@@ -93,13 +87,49 @@ export const StyledMode = styled(StyledDiv)`
   width: 45px;
   
   & > button {
+    border: none;
     width: 100%; height: 100%;
     font-size: 28px;
     color: #969696;
   }
+  & > ul {
+    position: absolute;
+    margin-left: -170px;
+    min-width: 235px;
+    color: #969696;
+    background: #fff;
+    border-radius: 4px;
+    font-size: 14px;
+    box-shadow: 0 0 8px 4px rgba(0,0,0,.1);
+    li { padding: 20px; }
+
+    li:first-child {
+      border-bottom: 1px solid #f0f0f0;
+      div {
+        display: inline-block;
+        width: 50%;
+        text-align: center;
+        .iconfont { font-size: 17px; margin-right: 3px; }
+      }
+      div:first-child { padding-right: 10px; }
+      div:last-child { padding-left: 10px; }
+    }
+    li:last-child {
+      div:first-child { margin-bottom: 10px; }
+    }
+
+    ::before {
+      position: absolute;
+      margin-top: -10px; margin-left: 180px;
+      content: '';
+      border: 10px solid transparent;
+      border-top: none;
+      border-bottom-color: #fff;
+    }
+  }
 `;
 
-export const StyledMenuButton = styled(StyledButton)`
+export const StyledMenuButton = styled.button`
   display: none;
   border: 1px solid rgb(221, 221,221);
   border-radius: 4px;

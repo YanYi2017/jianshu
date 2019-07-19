@@ -1,7 +1,9 @@
 import React from 'react';
-import diamondPic from '../../../statics/diamond.png';
 
-import { StyledRight, StyledWriter, StyledRegister, StyledLogin, StyledLink, StyledDiamond, StyledMode, StyledButton } from './style';
+import diamondPic from '../../../statics/diamond.png';
+import Mode from './Mode';
+import { StyledRight, StyledWriter, StyledRegister, StyledLogin, StyledLink, StyledDiamond } from './style';
+
 
 function Right() {
   return (
@@ -19,15 +21,11 @@ function Right() {
         <StyledLink to='/login'>登录</StyledLink>
       </StyledLogin>
       <StyledDiamond>
-        <StyledButton>
+        <button>
           <img src={diamondPic} alt="diamond"/>
-        </StyledButton>
+        </button>
       </StyledDiamond>
-      <StyledMode>
-        <StyledButton>
-          <span className="iconfont">&#xe698;</span>
-        </StyledButton>
-      </StyledMode>
+      <Mode />
     </StyledRight>
   );
 }
