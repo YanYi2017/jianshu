@@ -166,10 +166,11 @@ export const StyledMiddleLink = styled(Link)`
   display: block;
   height: 100%;
   padding: 0 15px;
+  color: ${props => props.currentURL === props.to && '#ea6f5a'};
   .iconfont { font-size: 20px; }
   .menu-text { display: none; }
   :hover {
-    background: #f5f5f5;
+    background: ${props => props.currentURL !== props.to && '#f5f5f5'};
   }
   @media(min-width: 1440px) {
     .menu-text { display: inline; }

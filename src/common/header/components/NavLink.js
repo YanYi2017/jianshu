@@ -1,10 +1,12 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { StyledMiddleLink } from './style';
 
-function NavLink({ to, iconCode, text  }) {
+function NavLink({ match, to, iconCode, text  }) {
+  const currentURL = match.url;
   return (
-    <StyledMiddleLink to={to} className="dib_vm">
+    <StyledMiddleLink currentURL={currentURL} to={to} className="dib_vm">
       <span className="iconfont vm">{iconCode}</span>
       <span className="menu-text vm">{text}</span>
     </StyledMiddleLink>
@@ -17,4 +19,4 @@ NavLink.propTypes = {
   text: PropTypes.string.isRequired
 };
 
-export default NavLink;
+export default withRouter(NavLink);
