@@ -1,7 +1,7 @@
 import React from 'react';
 
 import diamondPic from '../../../statics/diamond.png';
-import Mode from './Mode';
+import { Mode } from '../containers';
 import { StyledRight, StyledWriter, StyledRegister, StyledLogin, StyledLink, StyledDiamond } from './style';
 
 
@@ -22,7 +22,7 @@ function Right() {
       </StyledLogin>
       <StyledDiamond>
         <button>
-          <img src={diamondPic} alt="diamond"/>
+          <img src={diamondPic} alt="diamond" />
         </button>
       </StyledDiamond>
       <Mode />

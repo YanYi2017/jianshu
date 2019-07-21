@@ -105,3 +105,49 @@ export const StyledSearchTrending = styled.div`
     border-bottom-color: #fff;
   }
 `;
+
+export const StyledMode = styled.div`
+  float: right;
+  width: 45px; height: 100%;  
+  
+  & > button {
+    border: none;
+    width: 100%; height: 100%;
+    font-size: 28px;
+    color: #969696;
+  }
+  & > ul {
+    position: absolute;
+    margin-left: -170px;
+    color: #969696;
+    background: #fff;
+    border-radius: 4px;
+    font-size: 14px;
+    box-shadow: 0 0 8px 4px rgba(0,0,0,.1);
+    li { padding: 20px 25px; }
+
+    li:first-child {
+      border-bottom: 1px solid #f0f0f0;
+      div {
+        display: inline-block;
+        width: 50%;
+        text-align: center;
+        .iconfont { font-size: 17px; margin-right: 3px; }
+      }
+      div:first-child { padding-right: 10px; }
+      div:last-child { padding-left: 10px; }
+    }
+    li:last-child {
+      div:first-child { margin-bottom: 10px; }
+    }
+
+    ::before {
+      position: absolute;
+      margin-top: -10px; margin-left: 180px;
+      content: '';
+      border: 10px solid transparent;
+      border-top: none;
+      border-bottom-color: #fff;
+    }
+  }
+`;
