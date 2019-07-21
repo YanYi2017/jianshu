@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { color, borderColor, boxBackgroundColor, linkColor } from '../../common/style';
 
 export const HomeWrapper = styled.div`
   overflow: hidden;
@@ -61,7 +62,7 @@ export const ArticleListWrapper = styled.ul`
     min-height: 140px;
     margin: 0 0 15px 0;
     padding: 15px 2px 20px 0;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid ${borderColor};
   }
   & li > a {
     position: absolute;
@@ -168,7 +169,7 @@ export const RecommendedAuthorsWrapper = styled.div`
   }
   .avatar img {
     width: 100%; height: 100%;
-    border: 1px solid #ddd;
+    border: 1px solid ${borderColor};
     border-radius: 50%;
   }
   .follow {
@@ -184,6 +185,7 @@ export const RecommendedAuthorsWrapper = styled.div`
     line-height: 20px;
     padding-top: 5px;
     font-size: 14px;
+    color: ${color};
   }
   p {
     margin-top: 2px;
@@ -195,10 +197,10 @@ export const RecommendedAuthorsWrapper = styled.div`
     padding: 7px;
     line-height: 18px;
     text-align: center;
-    border: 1px solid #dcdcdc;
+    border: 1px solid ${borderColor};
     border-radius: 4px;
-    color: #787878;
-    background: #f7f7f7;
+    color: ${linkColor};
+    background: ${boxBackgroundColor};
   }
 `;
 
@@ -206,10 +208,11 @@ export const BackTop = styled.button`
   position: fixed;
   right: 40px; bottom: 40px;
   width: 52px; height: 52px;
-  border: 1px solid #dcdcdc;
-  background: transparent;
   outline: none;
   padding: 0;
   z-index: 1040;
   cursor: pointer;
+  color: ${color};
+  border: 1px solid ${borderColor};
+  background: ${boxBackgroundColor};
 `;

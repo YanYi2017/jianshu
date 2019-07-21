@@ -1,15 +1,17 @@
 import styled from 'styled-components';
+import { boxBackgroundColor } from '../../../../common/style';
+import { linkColor, hoveredLinkColor, hoveredBoxBackgroundColor } from '../../../../common/style';
 
 export const StyledSupportButton = styled.button`
   padding: 0;
-  color: #999;
+  color: ${linkColor};
   font-size: 14px;
   cursor: pointer;
   background: none;
   border: none;
   outline: none;
   :hover {
-    color: #333;
+    color: ${hoveredLinkColor};
   }
 `;
 
@@ -25,13 +27,14 @@ export const StyledSupportList = styled.ul`
   border-radius: 4px;
   z-index: 1000;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
-  background: #fff;
+  background: ${boxBackgroundColor};
   li:hover {
-    background: #f5f5f5;
+    background: ${hoveredBoxBackgroundColor};
   }
   a {
     display: block;
     padding: 10px 20px;
+    color: ${linkColor};
   }
 `;
 

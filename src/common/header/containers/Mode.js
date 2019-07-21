@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { Button, SwitchButton } from '../common';
-import { constants, actionCreators } from '../store';
+import { actionCreators } from '../store';
+import * as constants from '../../constants';
 import { StyledMode } from './style';
 
 function Mode({ nightMode, fontFamily, fontType, changeNightMode, changeFontFamily, changeFontType}) {

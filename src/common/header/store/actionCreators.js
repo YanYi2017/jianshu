@@ -1,23 +1,23 @@
 import axios from 'axios';
-import * as constants from './constants';
+import * as actionTypes from './actionTypes';
 import _util from '../../../util';
 
 export const changeSearchInput = (input) => ({
-  type: constants.CHANGE_SEARCH_INPUT,
+  type: actionTypes.CHANGE_SEARCH_INPUT,
   input
 });
 
 export const toggleFocus = (isFocused) => ({
-  type: constants.TOGGLE_FOCUS,
+  type: actionTypes.TOGGLE_FOCUS,
   isFocused
 });
 
 export const toggleList = () => ({
-  type: constants.TOGGLE_LIST
+  type: actionTypes.TOGGLE_LIST
 });
 
 export const toggleMouseIn = (mouseIn) => ({
-  type: constants.TOGGLE_MOUSE_IN,
+  type: actionTypes.TOGGLE_MOUSE_IN,
   mouseIn
 });
 
@@ -26,12 +26,12 @@ export const changePage = () => {
     let { page, totalPage } = getState().get('headerReducer').toJS();
     if (page < totalPage) {
       dispatch({
-        type: constants.CHANGE_PAGE,
+        type: actionTypes.CHANGE_PAGE,
         page: ++page
       });
     } else {
       dispatch({
-        type: constants.CHANGE_PAGE,
+        type: actionTypes.CHANGE_PAGE,
         page: 1
       });
     }
@@ -44,7 +44,7 @@ export const getSearchTrendingList = () => {
       .then(res => {
         const list = res.data.data;
         dispatch({
-          type: constants.CHANGE_TRENDING_LIST,
+          type: actionTypes.CHANGE_TRENDING_LIST,
           totalPage: Math.ceil(list.length / 10),
           list
         });
@@ -60,7 +60,7 @@ export const changeNightMode = (value) => {
     const nightMode = getState().getIn(['headerReducer', 'nightMode']);
     if (value !== nightMode) {
       dispatch({
-        type: constants.CHANGE_NIGHT_MODE,
+        type: actionTypes.CHANGE_NIGHT_MODE,
         value
       });
     }
@@ -72,7 +72,7 @@ export const changeFontFamily = (value) => {
     const fontFamily = getState().getIn(['headerReducer', 'fontFamily']);
     if (value !== fontFamily) {
       dispatch({
-        type: constants.CHANGE_FONT_FAMILY,
+        type: actionTypes.CHANGE_FONT_FAMILY,
         value
       });
     }
@@ -84,7 +84,7 @@ export const changeFontType = (value) => {
     const fontType = getState().getIn(['headerReducer', 'fontType']);
     if (value !== fontType) {
       dispatch({
-        type: constants.CHANGE_FONT_TYPE,
+        type: actionTypes.CHANGE_FONT_TYPE,
         value
       });
     }

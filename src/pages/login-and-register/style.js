@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import { color, inputBorderColor, inputBackgroundColor, boxBackgroundColor, otherBoxBackgroundColor } from '../../common/style';
 
 export const OuterWrapper = styled.div`
   overflow: hidden;  //创建块状格式化上下文，以避免父子元素的margin合并
   min-height: 750px;
-  background: #f1f1f1;
+  background: ${otherBoxBackgroundColor};
 `;
 
 export const Logo = styled.div`
@@ -19,7 +20,7 @@ export const InnerBox = styled.div`
   width: 400px;
   margin: 110px auto;
   padding: 50px 50px 30px 50px;
-  background: #fff;
+  background: ${boxBackgroundColor};
   border-radius: 4px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 `;
@@ -98,9 +99,10 @@ export const StyledIcon = styled.span`
 export const StyledInput = styled.input`
   width: 100%; height: 50px;
   padding: 4px 12px 4px 35px;
-  background: hsla(0,0%,71%,.1);
+  background: ${inputBackgroundColor};
   outline: none;
-  border: 1px solid #c8c8c8;
+  border: 1px solid ${inputBorderColor};
+  color: ${color};
 
   // 根据传入的position参数值来生成不同的radius和botton
   border-radius: ${props => {

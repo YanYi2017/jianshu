@@ -1,4 +1,74 @@
 import { createGlobalStyle } from 'styled-components';
+import theme from 'styled-theming';
+
+import * as constants from './constants';
+
+const { ON, OFF, SIM_SUN, SIM_HEI} = constants;
+
+const fontFamily = theme('fontFamily', {
+  [SIM_SUN]: 'Georgia,Times New Roman,Times,Songti SC,serif',
+  [SIM_HEI]: '-apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif'
+});
+
+export const color = theme('mode', {
+  [ON]: '#c8c8c8',
+  [OFF]: '#333'
+});
+
+export const borderColor = theme('mode', {
+  [ON]: '#2f2f2f',
+  [OFF]: '#f0f0f0'
+});
+
+export const linkColor = theme('mode', {
+  [ON]: '#969696',
+  [OFF]: '#787878'
+});
+
+export const linkBorderColor = theme('mode', {
+  [ON]: '#545454',
+  [OFF]: '#ddd'
+});
+
+export const hoveredLinkColor = theme('mode', {
+  [ON]: '#c8c8c8',
+  [OFF]: '#333'
+});
+
+export const hoveredLinkBorderColor = theme('mode', {
+  [ON]: '#a5a5a5',
+  [OFF]: '#b4b4b4'
+});
+
+export const boxBackgroundColor = theme('mode', {
+  [ON]: '#3f3f3f',
+  [OFF]: '#fff'
+});
+
+export const otherBoxBackgroundColor = theme('mode', {
+  [ON]: '#333',
+  [OFF]: '#f1f1f1'
+});
+
+export const hoveredBoxBackgroundColor = theme('mode', {
+  [ON]: '#2f2f2f',
+  [OFF]: '#f5f5f5'
+});
+
+export const buttonHoverColor = theme('mode', {
+  [ON]: '#555',
+  [OFF]: '#ddd'
+})
+
+export const inputBackgroundColor = theme('mode', {
+  [ON]: '#4f4f4f',
+  [OFF]: '#eee'
+});
+
+export const inputBorderColor = theme('mode', {
+  [ON]: '#2f2f2f',
+  [OFF]: '#c8c8c8'
+});
 
 export const GlobalStyle = createGlobalStyle`
   /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -56,10 +126,10 @@ export const GlobalStyle = createGlobalStyle`
     color: #333;
   }
 
-  body {
-    font-family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+  body, #root {
+    font-family: ${fontFamily};
+    background: ${boxBackgroundColor};
   }
-
   /* 设置盒模型 */ 
   * {
     box-sizing: border-box;

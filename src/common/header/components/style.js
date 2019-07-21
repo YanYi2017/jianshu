@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+import { color, borderColor, boxBackgroundColor, hoveredBoxBackgroundColor, buttonHoverColor, linkColor, linkBorderColor, hoveredLinkColor, hoveredLinkBorderColor } from '../../style';
+
 export const Logo = styled(Link)`
   float:left;
   width: 100px; height: 100%;
@@ -85,18 +87,19 @@ export const StyledDiamond = styled(StyledDiv)`
 
 export const StyledMenuButton = styled.button`
   display: none;
-  border: 1px solid rgb(221, 221,221);
+  border: 1px solid ${borderColor};
   border-radius: 4px;
   padding: 10px;
   color: #777;
   
-  :hover { background: #eee; }
+  :hover { background: ${buttonHoverColor}; }
   @media (min-width: 320px) and (max-width: 870px) {
     display: inline;
   }
 `;
 
 export const StyledNavList = styled.ul`
+  background: ${boxBackgroundColor};
   float: left;
   height: 100%;
   padding: 0 15px;
@@ -108,13 +111,12 @@ export const StyledNavList = styled.ul`
     position: absolute;
     top: 100%; left: 0; right: 0;
     height: auto;
-    background: #fff;
 
-    border-top: 1px solid #f0f0f0;
-    border-bottom: 1px solid #f0f0f0;
+    border-top: 1px solid ${borderColor};
+    border-bottom: 1px solid ${borderColor};
 
     & > li { float: none; height: 58px; }
-    & > li + li { border-top: 1px solid #f0f0f0; }
+    & > li + li { border-top: 1px solid ${borderColor}; }
 
     &.showed-enter { height: 0; display: block; }
     &.showed-enter-active {
@@ -150,11 +152,11 @@ export const StyledMiddleLink = styled(Link)`
   display: block;
   height: 100%;
   padding: 0 15px;
-  color: ${props => props.currentURL === props.to && '#ea6f5a'};
+  color: ${props => props.currentURL === props.to ? '#ea6f5a' : color};
   .iconfont { font-size: 20px; }
   .menu-text { display: none; }
   :hover {
-    background: ${props => props.currentURL !== props.to && '#f5f5f5'};
+    background: ${props => props.currentURL !== props.to && hoveredBoxBackgroundColor};
   }
   @media(min-width: 1440px) {
     .menu-text { display: inline; }
@@ -188,7 +190,7 @@ export const StyledTrendingHeader = styled.div`
     color: #969696;
   }
   & > button:hover {
-    color: #2f2f2f;
+    color: ${color};
   }
   .ic-search-change {
     display: inline-block;
@@ -206,12 +208,12 @@ export const StyledTrendingTags = styled.ul`
   & > li > a {
     padding: 2px 6px;
     font-size: 12px;
-    color: #787878;
-    border: 1px solid #ddd;
+    color: ${linkColor};
+    border: 1px solid ${linkBorderColor};
     border-radius: 3px;
   }
   & > li > a:hover {
-    color: #333;
-    border-color: #b4b4b4;
+    color: ${hoveredLinkColor};
+    border-color: ${hoveredLinkBorderColor};
   }
 `;

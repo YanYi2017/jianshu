@@ -1,16 +1,19 @@
 import React, { Fragment } from 'react';
+import { connect } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
 
 import Header from './common/header';
 import Home from './pages/home';
 import Detail from './pages/detail/loadable';
 import LoginAndRegister from './pages/login-and-register';
 
-import { GlobalStyle } from './style';
+import { GlobalStyle } from './common/style';
 import { GlobalIconFont } from './statics/iconfont/iconfont';
 
-function App() {
+function App({ nightMode, fontFamily }) {
   return (
+    <ThemeProvider theme={{ mode: nightMode, fontFamily: fontFamily}}>
       <Fragment>
         <GlobalStyle />
         <GlobalIconFont />
@@ -22,7 +25,13 @@ function App() {
           <Route exact path="/register" component={LoginAndRegister} />
         </BrowserRouter>
       </Fragment>
+    </ThemeProvider>
   );
 }
 
-export default App;
+const mapStateToProps = state => ({
+  fontFamily: state.getIn(['headerReducer', 'fontFamily']),
+  nightMode: state.getIn(['headerReducer', 'nightMode'])
+});
+
+export default connect(mapStateToProps)(App);

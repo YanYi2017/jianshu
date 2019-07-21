@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { color, borderColor } from '../../common/style';
 
 export const DetailWrapper = styled.div`
   width: 620px; height: 600px;
@@ -14,6 +15,7 @@ export const Header = styled.header`
   h1 {
     font-size: 34px; font-weight: 700;
     line-height: 1.3;
+    color: ${color}
   }
 `;
 
@@ -26,7 +28,7 @@ export const AuthorWrapper = styled.div`
   }
   & > a > img {
     width: 100%; heihgt: 100%;
-    border: 1px solid #ddd;
+    border: 1px solid ${borderColor};
     border-radius: 50%;
   }
 `;
@@ -38,11 +40,13 @@ export const AuthorInfo = styled.div`
   & > a {
     margin-right: 7px;
     vertical-align: middle;
+    color: ${color};
   }
   & > img {
     width:20px; height:20px;
     vertical-align: middle;
     margin-right: 7px;
+    color: ${color};
   }
   button {
     background: #42c02e;
@@ -74,10 +78,11 @@ export const Content = styled.main`
   img {
     width: 100%;
     padding-bottom: 25px;
+    color: ${color};
   }
   p {
     margin-bottom: 25px;
     line-height: 1.7;
-    color: #2f2f2f;
+    color: ${color};
   }
 `;

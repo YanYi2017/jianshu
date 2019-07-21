@@ -1,6 +1,7 @@
 import { fromJS } from 'immutable';
 
-import * as constants from './constants';
+import * as actionTypes from './actionTypes';
+import * as constants from '../../constants';
 
 const defaultState = fromJS({
   searchInput: '',
@@ -10,33 +11,33 @@ const defaultState = fromJS({
   list: [],
   page: 1,
   totalPage: 1,
-  nightMode: constants.ON,
-  fontFamily: constants.SIM_SUN,
+  nightMode: constants.OFF,
+  fontFamily: constants.SIM_HEI,
   fontType: constants.SIMPLIFIED
 });
 
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
-    case constants.CHANGE_SEARCH_INPUT:
+    case actionTypes.CHANGE_SEARCH_INPUT:
       return state.set('searchInput', fromJS(action.input));
-    case constants.TOGGLE_FOCUS:
+    case actionTypes.TOGGLE_FOCUS:
       return state.set('isFocused', fromJS(action.isFocused));
-    case constants.TOGGLE_LIST:
+    case actionTypes.TOGGLE_LIST:
       return state.set('isShowed', fromJS(!state.get('isShowed')));
-    case constants.CHANGE_TRENDING_LIST:
+    case actionTypes.CHANGE_TRENDING_LIST:
       return state.merge({
         totalPage: fromJS(action.totalPage),
         list: fromJS(action.list)
       });
-    case constants.TOGGLE_MOUSE_IN:
+    case actionTypes.TOGGLE_MOUSE_IN:
       return state.set('mouseIn', fromJS(action.mouseIn));
-    case constants.CHANGE_PAGE:
+    case actionTypes.CHANGE_PAGE:
       return state.set('page', fromJS(action.page));
-    case constants.CHANGE_NIGHT_MODE:
+    case actionTypes.CHANGE_NIGHT_MODE:
       return state.set('nightMode', fromJS(action.value));
-    case constants.CHANGE_FONT_FAMILY:
+    case actionTypes.CHANGE_FONT_FAMILY:
       return state.set('fontFamily', fromJS(action.value));
-    case constants.CHANGE_FONT_TYPE:
+    case actionTypes.CHANGE_FONT_TYPE:
       return state.set('fontType', fromJS(action.value));
     default:
       return state;
