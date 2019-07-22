@@ -10,8 +10,8 @@ class SearchTrending extends PureComponent {
     this.props.getSearchTrendingList();
   }
   render() {
-    const { list, page, mouseIn, isFocused, handleMouseEnter, handleMouseLeave, handleChangePage } = this.props;
-    if (isFocused || mouseIn) {
+    const { list, page, mouseInSearchTrending, searchInputIsFocused, handleMouseEnter, handleMouseLeave, handleChangePage } = this.props;
+    if (searchInputIsFocused || mouseInSearchTrending) {
       return (
         <StyledSearchTrending
           onMouseEnter={handleMouseEnter}
@@ -30,16 +30,16 @@ class SearchTrending extends PureComponent {
 const mapStateToProps = (state) => ({
   list: state.getIn(['headerReducer', 'list']),
   page: state.getIn(['headerReducer', 'page']),
-  isFocused: state.getIn(['headerReducer', 'isFocused']),
-  mouseIn: state.getIn(['headerReducer', 'mouseIn'])
+  searchInputIsFocused: state.getIn(['headerReducer', 'searchInputIsFocused']),
+  mouseInSearchTrending: state.getIn(['headerReducer', 'mouseInSearchTrending'])
 });
 
 const mapDispatchToProps = (dispatch) => ({
   handleMouseEnter() {
-    dispatch(actionCreators.toggleMouseIn(true));
+    dispatch(actionCreators.toggleMouseInSearchTrending(true));
   },
   handleMouseLeave() {
-    dispatch(actionCreators.toggleMouseIn(false));
+    dispatch(actionCreators.toggleMouseInSearchTrending(false));
   },
   handleChangePage(spin) {
     const rotate = Number(spin.current.style.transform.match(/[0-9]+/)[0]);

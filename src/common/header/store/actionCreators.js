@@ -7,17 +7,17 @@ export const changeSearchInput = (input) => ({
   input
 });
 
-export const toggleFocus = (isFocused) => ({
-  type: actionTypes.TOGGLE_FOCUS,
-  isFocused
+export const toggleSearchInputFocus = (searchInputIsFocused) => ({
+  type: actionTypes.TOGGLE_SEARCH_INPUT_FOCUS,
+  searchInputIsFocused
 });
 
-export const toggleList = () => ({
-  type: actionTypes.TOGGLE_LIST
+export const toggleNavList = () => ({
+  type: actionTypes.TOGGLE_NAV_LIST
 });
 
-export const toggleMouseIn = (mouseIn) => ({
-  type: actionTypes.TOGGLE_MOUSE_IN,
+export const toggleMouseInSearchTrending = (mouseIn) => ({
+  type: actionTypes.TOGGLE_MOUSE_IN_SEARCH_TRENDING,
   mouseIn
 });
 
@@ -94,4 +94,8 @@ export const changeFontType = (value) => {
 export const toggleModeList = (value) => ({
   type: actionTypes.TOGGLE_MODE_LIST,
   value
+});
+
+export const toggleAppAd = () => ({
+  type: actionTypes.TOGGLE_APP_AD
 });

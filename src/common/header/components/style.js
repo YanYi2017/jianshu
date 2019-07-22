@@ -79,9 +79,10 @@ export const StyledDiamond = styled(StyledDiv)`
     top: 0; right: 0; bottom: 0; left: 0;
     margin: auto;
     border: none;
-  }
-  img {
-    height: 25px;
+
+    img {
+      height: 25px;
+    }
   }
 `;
 
@@ -215,5 +216,44 @@ export const StyledTrendingTags = styled.ul`
   & > li > a:hover {
     color: ${hoveredLinkColor};
     border-color: ${hoveredLinkBorderColor};
+  }
+`;
+
+export const StyledDialog = styled.div`
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  & > div {
+    margin: 80px auto 0 auto;
+    padding: 40px 70px;
+    width: 380px;
+    background: ${boxBackgroundColor};
+    color: ${color};
+
+    h4 {
+      text-align: center;
+      font-size: 18px;
+      line-height: 25px;
+
+      span {
+        color: #e9634c;
+      }
+    }
+
+    div { text-align: center; padding: 15px 10px;}
+
+    img {
+      width: 190px; height: 190px;
+      margin-bottom: 5px;
+    }
+
+    button {
+      background-color: #e9634c;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      width: 190px; height: 40px;
+      font-size: 14px;
+    }
   }
 `;

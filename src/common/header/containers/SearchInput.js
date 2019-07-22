@@ -7,11 +7,11 @@ import { actionCreators } from '../store';
 
 import { StyledSearchInput, StyledInput, StyledIcon } from './style';
 
-function SearchInput({ searchInput, isFocused, handleChange, handleFocus, handleBlur }) {
+function SearchInput({ searchInput, searchInputIsFocused, handleChange, handleFocus, handleBlur }) {
   return (
     <StyledSearchInput className="dib_vm">
       <CSSTransition
-        in={isFocused}
+        in={searchInputIsFocused}
         timeout={500}
         classNames="focused"
       >
@@ -25,7 +25,7 @@ function SearchInput({ searchInput, isFocused, handleChange, handleFocus, handle
         />
       </CSSTransition>
       <CSSTransition
-        in={isFocused}
+        in={searchInputIsFocused}
         timeout={50}
         classNames='focused'
       >
@@ -37,7 +37,7 @@ function SearchInput({ searchInput, isFocused, handleChange, handleFocus, handle
 
 const mapStateToProps = (state) => ({
   searchInput: state.getIn(['headerReducer', 'searchInput']),
-  isFocused: state.getIn(['headerReducer', 'isFocused'])
+  searchInputIsFocused: state.getIn(['headerReducer', 'searchInputIsFocused'])
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -45,16 +45,16 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(actionCreators.changeSearchInput(e.target.value));
   },
   handleFocus() {
-    dispatch(actionCreators.toggleFocus(true));
+    dispatch(actionCreators.toggleSearchInputFocus(true));
   },
   handleBlur() {
-    dispatch(actionCreators.toggleFocus(false));
+    dispatch(actionCreators.toggleSearchInputFocus(false));
   }
 });
 
 SearchInput.propTypes = {
   searchInput: PropTypes.string.isRequired,
-  isFocused: PropTypes.bool.isRequired,
+  searchInputIsFocused: PropTypes.bool.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleFocus: PropTypes.func.isRequired,
   handleBlur: PropTypes.func.isRequired

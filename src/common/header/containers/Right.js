@@ -1,8 +1,8 @@
 import React from 'react';
 
-import diamondPic from '../../../statics/diamond.png';
-import { Mode } from '../containers';
-import { StyledRight, StyledWriter, StyledRegister, StyledLogin, StyledLink, StyledDiamond } from './style';
+import { Mode } from './';
+import { Diamond } from '../components';
+import { StyledRight, StyledWriter, StyledRegister, StyledLogin, StyledLink } from '../components/style';
 
 
 function Right() {
@@ -20,11 +20,7 @@ function Right() {
       <StyledLogin>
         <StyledLink to='/login'>登录</StyledLink>
       </StyledLogin>
-      <StyledDiamond>
-        <button>
-          <img src={diamondPic} alt="diamond" />
-        </button>
-      </StyledDiamond>
+      <Diamond />
       <Mode />
     </StyledRight>
   );

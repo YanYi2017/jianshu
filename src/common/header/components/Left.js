@@ -1,5 +1,5 @@
 import React from 'react';
-import logoPic from '../../../statics/logo.png';
+import logoPic from '../../../statics/img/logo.png';
 
 import { Logo } from './style';
 

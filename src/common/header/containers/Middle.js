@@ -5,21 +5,21 @@ import { actionCreators } from '../store';
 import { MenuButton, NavList } from '../components';
 import { StyledMiddle } from './style';
 
-function Middle({ isShowed, handleClick }) {
+function Middle({ navListIsShowed, handleClick }) {
   return (
     <StyledMiddle className="dib_vm">
       <MenuButton onClick={handleClick} />
-      <NavList isShowed={isShowed} />
+      <NavList isShowed={navListIsShowed} />
     </StyledMiddle>
   );
 }
 
 const mapStateToProps = (state) => ({
-  isShowed: state.getIn(['headerReducer', 'isShowed'])
+  navListIsShowed: state.getIn(['headerReducer', 'navListIsShowed'])
 });
 const mapDispatchToProps = (dispatch) => ({
   handleClick() {
-    dispatch(actionCreators.toggleList());
+    dispatch(actionCreators.toggleNavList());
   }
 });
 

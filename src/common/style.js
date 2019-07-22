@@ -143,7 +143,7 @@ export const GlobalStyle = createGlobalStyle`
     cursor: pointer;
   }
 
-  /* 大小不定元素垂直居中 */
+  /* 大小不定内联元素垂直居中 */
   .dib_vm::after {
     content: '';
     display: inline-block;

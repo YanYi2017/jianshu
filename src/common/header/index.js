@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Left, Right } from './components';
-import { Middle } from './containers';
+import { Left } from './components';
+import { Middle, Right } from './containers';
 
 import { HeaderWrapper, WidthLimit } from './style';
 
