@@ -153,11 +153,14 @@ export const StyledMiddleLink = styled(Link)`
   display: block;
   height: 100%;
   padding: 0 15px;
-  color: ${props => props.currentURL === props.to ? '#ea6f5a' : color};
+  color: ${color};
   .iconfont { font-size: 20px; }
   .menu-text { display: none; }
   :hover {
-    background: ${props => props.currentURL !== props.to && hoveredBoxBackgroundColor};
+    background: ${hoveredBoxBackgroundColor};
+  }
+  &.active { color: #ea6f5a; }
+  &.active:hover { background: none; }
   }
   @media(min-width: 1440px) {
     .menu-text { display: inline; }

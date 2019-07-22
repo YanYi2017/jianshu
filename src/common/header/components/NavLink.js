@@ -6,7 +6,7 @@ import { StyledMiddleLink } from './style';
 function NavLink({ match, to, iconCode, text  }) {
   const currentURL = match.url;
   return (
-    <StyledMiddleLink currentURL={currentURL} to={to} className="dib_vm">
+    <StyledMiddleLink to={to} className={currentURL === to ? 'dib_vm active' : 'dib_vm'}>
       <span className="iconfont vm">{iconCode}</span>
       <span className="menu-text vm">{text}</span>
     </StyledMiddleLink>
