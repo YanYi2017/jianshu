@@ -8,18 +8,6 @@ export const HomeWrapper = styled.div`
   padding-top: 80px;
 `;
 
-export const HomeLeft = styled.div`
-  float: left;
-  width: 640px;
-  padding-left: 15px;
-`;
-
-export const HomeRight = styled.div`
-  float: left;
-  width: 280px; height: 200px;
-  margin-left: 40px;
-`;
-
 export const CarouselWrapper = styled.div`
   margin-bottom: 35px;
   & img {
@@ -202,17 +190,4 @@ export const RecommendedAuthorsWrapper = styled.div`
     color: ${linkColor};
     background: ${boxBackgroundColor};
   }
-`;
-
-export const BackTop = styled.button`
-  position: fixed;
-  right: 40px; bottom: 40px;
-  width: 52px; height: 52px;
-  outline: none;
-  padding: 0;
-  z-index: 1040;
-  cursor: pointer;
-  color: ${color};
-  border: 1px solid ${borderColor};
-  background: ${boxBackgroundColor};
 `;

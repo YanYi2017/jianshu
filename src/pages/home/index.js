@@ -2,33 +2,19 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { actionCreators } from './store';
 
-import Carousel from './components/Carousel';
-import PopularTopics from './components/PopularTopics';
-import ArticleList from './components/ArticleList';
-import Board from './components/Board';
-import RecommendedAuthors from './components/RecommendedAuthors';
+import { BackToTop } from './components';
+import { Left, Right } from './containers';
 
-import { HomeWrapper, HomeLeft, HomeRight, BackTop } from './style';
+import { HomeWrapper } from './style';
 
 class Home extends PureComponent {
   render() {
     return (
       <HomeWrapper>
-        <HomeLeft>
-          <Carousel />
-          <PopularTopics />
-          <ArticleList />
-        </HomeLeft>
-        <HomeRight>
-          <Board />
-          <RecommendedAuthors />
-        </HomeRight>
+        <Left />
+        <Right />
         {
-          this.props.showBackTop ? (
-            <BackTop onClick={this.handleScrollTop}>
-              <span className="iconfont">&#xe671;</span>
-            </BackTop>
-          ) : null
+          this.props.showBackTop && <BackToTop onClik={this.handleSrollTop} />
         }
       </HomeWrapper>
     );
