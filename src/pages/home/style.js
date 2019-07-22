@@ -6,6 +6,10 @@ export const HomeWrapper = styled.div`
   width: 960px;
   margin: 0 auto;
   padding-top: 80px;
+
+  @media (max-width: 1080px) {
+    width: 750px;
+  }
 `;
 
 export const CarouselWrapper = styled.div`

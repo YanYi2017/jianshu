@@ -1,13 +1,12 @@
 import React from 'react';
-import { StyledRight } from './style';
 import { Board, RecommendedAuthors } from '../components';
 
-function Right() {
+function Right({ className }) {
   return (
-    <StyledRight>
+    <div className={className}>
       <Board />
       <RecommendedAuthors />
-    </StyledRight>
+    </div>
   );
 }
 

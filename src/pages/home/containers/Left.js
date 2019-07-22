@@ -1,12 +1,11 @@
 import React from 'react';
-import { StyledLeft } from './style';
 import { ArticleList } from '../components';
 
-function Left() {
+function Left({ className }) {
   return (
-    <StyledLeft>
+    <div className={className}>
       <ArticleList />
-    </StyledLeft>
+    </div>
   );
 }
 

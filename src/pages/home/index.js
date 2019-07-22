@@ -11,11 +11,13 @@ class Home extends PureComponent {
   render() {
     return (
       <HomeWrapper>
-        <Left />
-        <Right />
-        {
-          this.props.showBackTop && <BackToTop onClik={this.handleSrollTop} />
-        }
+        <div className="row">
+          <Left className="col-16" />
+          <Right className="col-7 col-offset-1" />
+          {
+            this.props.showBackTop && <BackToTop onClik={this.handleSrollTop} />
+          }
+        </div>
       </HomeWrapper>
     );
   }
