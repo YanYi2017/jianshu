@@ -15,20 +15,20 @@ class Home extends PureComponent {
           <Left className="col-16" />
           <Right className="col-7 col-offset-1" />
           {
-            this.props.showBackTop && <BackToTop onClik={this.handleSrollTop} />
+            this.props.showBackTop && <BackToTop onClick={this.handleScrollToTop} />
           }
         </div>
       </HomeWrapper>
     );
   }
   componentDidMount() {
-    this.props.changeHomeData();
+    this.props.getInitialHomeData();
     window.addEventListener('scroll', this.props.changeShowBackTop)
   }
   componentWillUnmount() {
     window.removeEventListener('scroll', this.props.changeShowBackTop)
   }
-  handleScrollTop() {
+  handleScrollToTop() {
     window.scrollTo(0, 0);
   }
 }
@@ -38,7 +38,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  changeHomeData() {
+  getInitialHomeData() {
     dispatch(actionCreators.getHomeInfo());
   },
   changeShowBackTop() {
