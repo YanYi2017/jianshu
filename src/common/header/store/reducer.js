@@ -8,6 +8,7 @@ const defaultState = fromJS({
   isFocused: false,
   isShowed: false,
   mouseIn: false,
+  modeListIsShowed: false,
   list: [],
   page: 1,
   totalPage: 1,
@@ -39,6 +40,8 @@ const reducer = (state = defaultState, action) => {
       return state.set('fontFamily', fromJS(action.value));
     case actionTypes.CHANGE_FONT_TYPE:
       return state.set('fontType', fromJS(action.value));
+    case actionTypes.TOGGLE_MODE_LIST:
+      return state.set('modeListIsShowed', fromJS(action.value));
     default:
       return state;
   }

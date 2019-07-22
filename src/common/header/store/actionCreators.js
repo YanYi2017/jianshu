@@ -90,3 +90,8 @@ export const changeFontType = (value) => {
     }
   }
 };
+
+export const toggleModeList = (value) => ({
+  type: actionTypes.TOGGLE_MODE_LIST,
+  value
+});

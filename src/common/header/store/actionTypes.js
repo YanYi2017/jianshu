@@ -1,9 +1,10 @@
 export const CHANGE_SEARCH_INPUT = 'header/CHANGE_SEARCH_INPUT';
 export const TOGGLE_FOCUS = 'header/TOGGLE_FOCUS';
 export const TOGGLE_LIST = 'header/TOGGLE_LIST';
-export const TOGGLE_MOUSE_IN = 'TOGGLE_MOUSE_IN';
-export const CHANGE_PAGE = 'CHANGE_PAGE';
-export const CHANGE_TRENDING_LIST = 'CHANGE_TRENDING_LIST';
-export const CHANGE_NIGHT_MODE = 'CHANGE_NIGHT_MODE';
-export const CHANGE_FONT_FAMILY = 'CHANGE_FONT_FAMILY';
-export const CHANGE_FONT_TYPE = 'CHANGE_FONT_TYPE';
+export const TOGGLE_MOUSE_IN = 'header/TOGGLE_MOUSE_IN';
+export const CHANGE_PAGE = 'header/CHANGE_PAGE';
+export const CHANGE_TRENDING_LIST = 'header/CHANGE_TRENDING_LIST';
+export const CHANGE_NIGHT_MODE = 'header/CHANGE_NIGHT_MODE';
+export const CHANGE_FONT_FAMILY = 'header/CHANGE_FONT_FAMILY';
+export const CHANGE_FONT_TYPE = 'header/CHANGE_FONT_TYPE';
+export const TOGGLE_MODE_LIST = 'header/TOGGLE_MODE_LIST';
