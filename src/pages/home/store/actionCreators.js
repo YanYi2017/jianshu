@@ -20,19 +20,22 @@ const addAtricleList = (result, nextPage) => ({
 export const getHomeInfo = () => {
   return (dispatch) => {
     axios.get(_util.getServerURL('/get_home_data'))
-      .then((res) => {
-        const result = res.data.data;
-        dispatch(changeHomeData(result));
-      });
+      .then(res => dispatch(changeHomeData(res.data.data)))
+      .catch(err => alert(err));
   }
 };
 
-export const getMoreList = (articlePage) => {
-  return (dispatch) => {
-    axios.get(`/api/homeList.json?page=${articlePage}`).then((res) => {
-      const result = res.data;
-      dispatch(addAtricleList(result, articlePage + 1));
-    });
+export const getMoreList = () => {
+  return (dispatch, getState) => {
+    const nextPage = getState().getIn(['homeReducer', 'articlePage']) + 1;
+    axios.post(_util.getServerURL('/trending_notes'), {
+      page: nextPage
+    })
+      .then(res => {
+        const result = res.data.data;
+        dispatch(addAtricleList(result, nextPage));
+      })
+      .catch(err => alert(err));
   }
 }
 

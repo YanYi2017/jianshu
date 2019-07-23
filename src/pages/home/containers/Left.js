@@ -4,12 +4,11 @@ import { connect } from 'react-redux';
 import { actionCreators } from '../store';
 import { ArticleList } from '../components';
 
-function Left({ className, articleList, articlePage, getMoreList }) {
+function Left({ className, articleList, getMoreList }) {
   return (
     <div className={className}>
       <ArticleList
         articleList={articleList}
-        articlePage={articlePage}
         getMoreList={getMoreList}
       />
     </div>
@@ -17,14 +16,12 @@ function Left({ className, articleList, articlePage, getMoreList }) {
 }
 
 const mapStateToProps = (state) => ({
-  articleList: state.getIn(['homeReducer', 'articleList']),
-  articlePage: state.getIn(['homeReducer', 'articlePage']),
+  articleList: state.getIn(['homeReducer', 'articleList'])
 });
 
 const mapDispatchToprops = (dispatch) => ({
-  getMoreList(articlePage) {
-    const action = actionCreators.getMoreList(articlePage);
-    dispatch(action);
+  getMoreList() {
+    dispatch(actionCreators.getMoreList());
   }
 });
 

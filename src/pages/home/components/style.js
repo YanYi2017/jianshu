@@ -67,7 +67,7 @@ export const StyledArticle = styled.li`
   }
 `;
 
-export const AddMore = styled.button`
+export const StyledAddMore = styled.button`
   display: block;
   width: 100%;
   margin: 30px auto 60px;
