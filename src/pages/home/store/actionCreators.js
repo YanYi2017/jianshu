@@ -20,7 +20,10 @@ const addAtricleList = (result, nextPage) => ({
 export const getHomeInfo = () => {
   return (dispatch) => {
     axios.get(_util.getServerURL('/get_home_data'))
-      .then(res => dispatch(changeHomeData(res.data.data)))
+      .then(res => {
+        dispatch(toggleLoading(false));
+        dispatch(changeHomeData(res.data.data));
+      })
       .catch(err => alert(err));
   }
 };
@@ -33,13 +36,19 @@ export const getMoreList = () => {
     })
       .then(res => {
         const result = res.data.data;
+        dispatch(toggleLoading(false));
         dispatch(addAtricleList(result, nextPage));
       })
       .catch(err => alert(err));
   }
 }
 
-export const toggleTopShow = (show) => ({
+export const toggleTopShow = show => ({
   type: actionTypes.TOGGLE_TOP_SHOW,
+  show
+});
+
+export const toggleLoading = show => ({
+  type: actionTypes.TOGGLE_LOADING,
   show
 });

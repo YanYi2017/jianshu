@@ -1,5 +1,12 @@
 import styled from 'styled-components';
+import theme from 'styled-theming';
+import { ON, OFF } from '../../../common/constants';
 import { color, borderColor, boxBackgroundColor } from '../../../common/style';
+
+const loadingBackgroundColor = theme('mode', {
+  [ON]: '#545454',
+  [OFF]: '#eaeaea'
+});
 
 export const StyledBackToTop = styled.button`
   position: fixed;
@@ -25,6 +32,7 @@ export const StyledArticle = styled.li`
   }
   img {
     width: 150px; height: 100px;
+    margin-left: 10px;
     border: 1px solid ${borderColor};
     border-radius: 4px;
   }
@@ -93,18 +101,18 @@ export const StyledLoadingArticleList = styled.li`
   .img {
     float: right;
     width: 150px; height: 100px;
-    background: #eaeaea;
+    background: ${loadingBackgroundColor};
   }
   .content { padding-right: 165px; }
   .title {
     width: 50%; height: 20px;
     margin-bottom: 15px;
-    background: #eaeaea;
+    background: ${loadingBackgroundColor};
   }
   .text {
     width: 100%; height: 16px;
     margin-bottom: 10px;
-    background: #eaeaea;
+    background: ${loadingBackgroundColor};
     animation: loading .5s ease-in-out infinite alternate;
     @keyframes loading {
       from { width: 60%; }
@@ -114,19 +122,19 @@ export const StyledLoadingArticleList = styled.li`
   .text.animation-delay {
     animation-delay: .5s; 
   }
-  .meta { font-size: 12px; height: 16px; color: #eaeaea;}
+  .meta { font-size: 12px; height: 16px; color: ${loadingBackgroundColor};}
   .read {
     display: inline-block;
     vertical-align: middle;
     width: 50px; height: 100%;
-    background: #eaeaea;
+    background: ${loadingBackgroundColor};
   }
   .ic-list-comments { vertical-align: middle; margin: 0 5px; }
   .small {
     display: inline-block;
     vertical-align: middle;
     width: 30px; height: 100%;
-    background: #eaeaea;
+    background: ${loadingBackgroundColor};
   }
   .ic-list-like { vertical-align: middle; margin: 0 5px; }
   `;

@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { actionCreators } from '../store';
 import { ArticleList } from '../components';
 
-function Left({ className, articleList, loading, getMoreList }) {
+function Left({ articleList, loading, getMoreList }) {
   return (
-    <div className={className}>
+    <div className="col-16">
       <ArticleList
         articleList={articleList}
         loading={loading}
@@ -23,6 +23,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToprops = (dispatch) => ({
   getMoreList() {
+    dispatch(actionCreators.toggleLoading(true));
     dispatch(actionCreators.getMoreList());
   }
 });

@@ -9,7 +9,7 @@ const defaultState = fromJS({
   recommendedAuthors: [],
   articlePage: 1,
   showBackTop: false,
-  loading: true
+  loading: false
 });
 
 const getInitialData = (state, action) => {
@@ -38,6 +38,8 @@ const reducer = (state = defaultState, action) => {
       return addArticleList(state, action);
     case actionTypes.TOGGLE_TOP_SHOW:
       return state.set('showBackTop', fromJS(action.show));
+    case actionTypes.TOGGLE_LOADING:
+      return state.set('loading', fromJS(action.show));
     default:
       return state
   }

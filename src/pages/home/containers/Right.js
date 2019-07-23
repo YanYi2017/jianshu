@@ -1,9 +1,9 @@
 import React from 'react';
 import { Board, RecommendedAuthors } from '../components';
 
-function Right({ className }) {
+function Right() {
   return (
-    <div className={className}>
+    <div className="col-7 col-offset-1">
       <Board />
       <RecommendedAuthors />
     </div>

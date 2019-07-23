@@ -20,23 +20,23 @@ function Article({ item }) {
             item.get('diamond') &&
             <span className="jsd-meta">
               <span className="iconfont">&#xe600;</span>
-              <span> {item.get('diamond')} </span>
+              <span>{item.get('diamond')}</span>
             </span>
           }
           <Link to={`/author/${item.get('authorID')}`}>{item.get('nickname')}</Link>
           <Link to={`/detail/${item.get('id') + '#comments'}`}>
             <span className="iconfont">&#xe609;</span>
-            <span> {item.get('comments')} </span>
+            <span>{item.get('comments')}</span>
           </Link>
           <span>
             <span className="iconfont">&#xe622;</span>
-            <span> {item.get('like')} </span>
+            <span>{item.get('like')}</span>
           </span>
           {
             item.get('reward') &&
             <span>
               <span className="iconfont">&#xe601;</span>
-              <span> 1 </span>
+              <span>{item.get('reward')}</span>
             </span>
           }
         </div>

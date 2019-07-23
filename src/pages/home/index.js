@@ -12,8 +12,8 @@ class Home extends PureComponent {
     return (
       <HomeWrapper>
         <div className="row">
-          <Left className="col-16" />
-          <Right className="col-7 col-offset-1" />
+          <Left />
+          <Right />
           {
             this.props.showBackTop && <BackToTop onClick={this.handleScrollToTop} />
           }
@@ -39,6 +39,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getInitialHomeData() {
+    dispatch(actionCreators.toggleLoading(true));
     dispatch(actionCreators.getHomeInfo());
   },
   changeShowBackTop() {

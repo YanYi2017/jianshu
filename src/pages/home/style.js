@@ -5,7 +5,7 @@ export const HomeWrapper = styled.div`
   overflow: hidden;
   width: 960px;
   margin: 0 auto;
-  padding-top: 80px;
+  padding: 80px 15px 0 15px;
 
   @media (max-width: 1080px) {
     width: 750px;
