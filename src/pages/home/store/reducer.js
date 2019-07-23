@@ -2,30 +2,31 @@ import { fromJS } from 'immutable';
 import * as actionTypes from './actionTypes';
 
 const defaultState = fromJS({
-  'popularTopics': [],
-  'morePopularTopics': {},
-  'articleList': [],
-  'boardList': [],
-  'recommendedAuthors': [],
-  'articlePage': 1,
-  'showBackTop': false
+  popularTopics: [],
+  morePopularTopics: {},
+  articleList: [],
+  boardList: [],
+  recommendedAuthors: [],
+  articlePage: 1,
+  showBackTop: false,
+  loading: true
 });
 
 const getInitialData = (state, action) => {
   return state.merge({
-    'popularTopics': fromJS(action.popularTopics),
-    'morePopularTopics': fromJS(action.morePopularTopics),
-    'articleList': fromJS(action.articleList),
-    'boardList': fromJS(action.boardList),
-    'recommendedAuthors': fromJS(action.recommendedAuthors)
+    popularTopics: fromJS(action.popularTopics),
+    morePopularTopics: fromJS(action.morePopularTopics),
+    articleList: fromJS(action.articleList),
+    boardList: fromJS(action.boardList),
+    recommendedAuthors: fromJS(action.recommendedAuthors)
   });
 };
 
 const addArticleList = (state, action) => {
   const newData = state.get('articleList').concat(fromJS(action.articleList));
   return state.merge({
-    'articleList': newData,
-    'articlePage': action.nextPage
+    articleList: newData,
+    articlePage: action.nextPage
   });
 };
 

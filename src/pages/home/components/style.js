@@ -84,3 +84,49 @@ export const StyledAddMore = styled.button`
     background: #9b9b9b;
   }
 `;
+
+export const StyledLoadingArticleList = styled.li`
+  overflow: hidden;
+  padding-top: 15px;
+  margin-bottom: 50px;
+
+  .img {
+    float: right;
+    width: 150px; height: 100px;
+    background: #eaeaea;
+  }
+  .content { padding-right: 165px; }
+  .title {
+    width: 50%; height: 20px;
+    margin-bottom: 15px;
+    background: #eaeaea;
+  }
+  .text {
+    width: 100%; height: 16px;
+    margin-bottom: 10px;
+    background: #eaeaea;
+    animation: loading .5s ease-in-out infinite alternate;
+    @keyframes loading {
+      from { width: 60%; }
+      to  { width: 100%; }
+    }
+  }
+  .text.animation-delay {
+    animation-delay: .5s; 
+  }
+  .meta { font-size: 12px; height: 16px; color: #eaeaea;}
+  .read {
+    display: inline-block;
+    vertical-align: middle;
+    width: 50px; height: 100%;
+    background: #eaeaea;
+  }
+  .ic-list-comments { vertical-align: middle; margin: 0 5px; }
+  .small {
+    display: inline-block;
+    vertical-align: middle;
+    width: 30px; height: 100%;
+    background: #eaeaea;
+  }
+  .ic-list-like { vertical-align: middle; margin: 0 5px; }
+  `;

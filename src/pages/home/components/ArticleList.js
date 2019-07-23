@@ -4,18 +4,20 @@ import PropTypes from 'prop-types';
 
 import Article from './Article';
 import AddMore from './AddMore';
+import LoadingArticleList from './LoadingArticleList';
 
-function ArticleList({ articleList, getMoreList }) {
+function ArticleList({ articleList, loading, getMoreList }) {
   return (
     <ul>
       {articleList.map((item) => <Article item={item} key={item.get('id')}/>)}
-      <AddMore getMoreList={getMoreList} />
+      {loading ? <LoadingArticleList /> : <AddMore getMoreList={getMoreList} />}
     </ul>
   );
 }
 
 ArticleList.propTypes = {
   articleList: PropTypes.instanceOf(Immutable.List).isRequired,
+  loading: PropTypes.bool.isRequired,
   getMoreList: PropTypes.func.isRequired
 };
 
