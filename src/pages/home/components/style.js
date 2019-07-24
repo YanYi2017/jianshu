@@ -137,4 +137,13 @@ export const StyledLoadingArticleList = styled.li`
     background: ${loadingBackgroundColor};
   }
   .ic-list-like { vertical-align: middle; margin: 0 5px; }
-  `;
+`;
+
+export const BoardWrapper = styled.div`
+  margin: -5px 0 20px 0;
+  & img {
+    width: 100%;;
+    margin-bottom: 6px;
+    border-radius: 4px;
+  }
+`;

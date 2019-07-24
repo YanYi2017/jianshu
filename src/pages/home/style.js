@@ -47,15 +47,6 @@ export const PopularTopicsWrapper = styled.div`
   }
 `;
 
-export const BoardWrapper = styled.div`
-  margin: -5px 0 20px 0;
-  & img {
-    width: 100%; min-height: 50px;
-    margin-bottom: 6px;
-    border-radius: 4px;
-  }
-`;
-
 export const RecommendedAuthorsWrapper = styled.div`
   font-size: 13px;
   .title {
