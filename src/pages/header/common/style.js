@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { borderColor } from '../../style';
+import { borderColor } from '../../../common/style';
 
 export const StyledSwitchButton = styled.div`
   & > button { border-left: none; width: 50%; };

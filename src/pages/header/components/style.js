@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import { color, borderColor, boxBackgroundColor, hoveredBoxBackgroundColor, buttonHoverColor, linkColor, linkBorderColor, hoveredLinkColor, hoveredLinkBorderColor } from '../../style';
+import { color, borderColor, boxBackgroundColor, hoveredBoxBackgroundColor, buttonHoverColor, linkColor, linkBorderColor, hoveredLinkColor, hoveredLinkBorderColor } from '../../../common/style';
 
 export const Logo = styled(Link)`
   float:left;
@@ -186,20 +186,6 @@ export const StyledTrendingHeader = styled.div`
     float: left;
     font-size: 14px;
     color: #969696;
-  }
-  & > button {
-    float: right;
-    border: none;
-    font-size: 13px;
-    color: #969696;
-  }
-  & > button:hover {
-    color: ${color};
-  }
-  .ic-search-change {
-    display: inline-block;
-    margin-right: 4px;
-    transition: all 0.2s ease;
   }
 `;
 

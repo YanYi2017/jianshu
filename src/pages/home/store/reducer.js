@@ -40,6 +40,8 @@ const reducer = (state = defaultState, action) => {
       return state.set('showBackTop', fromJS(action.show));
     case actionTypes.TOGGLE_LOADING:
       return state.set('loading', fromJS(action.show));
+    case actionTypes.CHANGE_RECOMMENDED_AUTHORS:
+      return state.set('recommendedAuthors', fromJS(action.users));
     default:
       return state
   }

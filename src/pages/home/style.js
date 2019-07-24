@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { color, borderColor, boxBackgroundColor, linkColor } from '../../common/style';
 
 export const HomeWrapper = styled.div`
   overflow: hidden;
@@ -44,66 +43,5 @@ export const PopularTopicsWrapper = styled.div`
     border: none;
     color: #787878;
     background: none;
-  }
-`;
-
-export const RecommendedAuthorsWrapper = styled.div`
-  font-size: 13px;
-  .title {
-    line-height: 20px;
-    font-size: 14px;
-    color: #969696;
-    margin-bottom: 15px;
-  }
-  .page-change {
-    float: right;
-    color: #969696;
-  }
-  & ul {
-    margin-bottom: 20px;
-  }
-  & li {
-    overflow: hidden;
-    margin-bottom: 15px;
-  }
-  .avatar {
-    float: left;
-    width: 48px; height: 48px;
-    margin-right: 10px;
-  }
-  .avatar img {
-    width: 100%; height: 100%;
-    border: 1px solid ${borderColor};
-    border-radius: 50%;
-  }
-  .follow {
-    float: right;
-    margin-top: 5px;
-    color: #42c02e;
-  }
-  .follow > span {
-    font-size: 17px;
-  }
-  .name {
-    display: block;
-    line-height: 20px;
-    padding-top: 5px;
-    font-size: 14px;
-    color: ${color};
-  }
-  p {
-    margin-top: 2px;
-    font-size: 12px;
-    color: #969696;
-  }
-  .find-more {
-    display: block;
-    padding: 7px;
-    line-height: 18px;
-    text-align: center;
-    border: 1px solid ${borderColor};
-    border-radius: 4px;
-    color: ${linkColor};
-    background: ${boxBackgroundColor};
   }
 `;

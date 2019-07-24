@@ -1,7 +1,7 @@
 import { fromJS } from 'immutable';
 
 import * as actionTypes from './actionTypes';
-import * as constants from '../../constants';
+import * as constants from '../../../common/constants';
 
 const defaultState = fromJS({
   searchInput: '',

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { color, borderColor, boxBackgroundColor, inputBackgroundColor } from '../../style';
+import { color, borderColor, boxBackgroundColor, inputBackgroundColor } from '../../../common/style';
 
 export const StyledMiddle = styled.div`
   width: 960px; height: 100%;

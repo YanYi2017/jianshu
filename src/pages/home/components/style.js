@@ -1,11 +1,26 @@
 import styled from 'styled-components';
 import theme from 'styled-theming';
 import { ON, OFF } from '../../../common/constants';
-import { color, borderColor, boxBackgroundColor } from '../../../common/style';
+import { color, borderColor, boxBackgroundColor, linkColor, hoveredLinkColor } from '../../../common/style';
 
 const loadingBackgroundColor = theme('mode', {
   [ON]: '#545454',
   [OFF]: '#eaeaea'
+});
+
+const findMoreColor = theme('mode', {
+  [ON]: '#c8c8c8',
+  [OFF]: '#787878'
+});
+
+const findMoreBorder = theme('mode', {
+  [ON]: '#2f2f2f',
+  [OFF]: '#dcdcdc'
+});
+
+const findMoreBackground = theme('mode', {
+  [ON]: '#4a4a4a',
+  [OFF]: '#f7f7f7'
 });
 
 export const StyledBackToTop = styled.button`
@@ -145,5 +160,72 @@ export const BoardWrapper = styled.div`
     width: 100%;;
     margin-bottom: 6px;
     border-radius: 4px;
+  }
+`;
+
+export const StyledRecommendedAuthors = styled.div`
+  font-size: 13px;
+  .title {
+    line-height: 20px;
+    font-size: 14px;
+    color: #969696;
+    margin-bottom: 15px;
+  }
+  .page-change {
+    float: right;
+    color: ${linkColor};
+    border: none;
+    :hover { color: ${hoveredLinkColor} }
+    .iconfont {
+      display: inline-block;
+      margin-right: 5px;
+      transition: all .5s ease-in;
+    }
+  }
+  & ul {
+    margin-bottom: 20px;
+  }
+  & li {
+    overflow: hidden;
+    margin-bottom: 15px;
+  }
+  .avatar {
+    float: left;
+    width: 48px; height: 48px;
+    margin-right: 10px;
+  }
+  .avatar img {
+    width: 100%; height: 100%;
+    border: 1px solid ${borderColor};
+    border-radius: 50%;
+  }
+  .follow {
+    float: right;
+    border: none;
+    margin-top: 5px;
+    color: #42c02e;
+  }
+  .follow > span { font-size: 17px; }
+  .name {
+    display: block;
+    line-height: 20px;
+    padding-top: 5px;
+    font-size: 14px;
+    color: ${color};
+  }
+  p {
+    margin-top: 2px;
+    font-size: 12px;
+    color: #969696;
+  }
+  .find-more {
+    display: block;
+    padding: 7px;
+    line-height: 18px;
+    text-align: center;
+    border: 1px solid ${findMoreBorder};
+    border-radius: 4px;
+    color: ${findMoreColor};
+    background: ${findMoreBackground};
   }
 `;

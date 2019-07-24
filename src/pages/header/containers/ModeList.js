@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 
-import * as constants from '../../constants';
+import * as constants from '../../../common/constants';
 import { Button, SwitchButton } from '../common';
 import { actionCreators } from '../store';
 import { StyledModeList } from './style';

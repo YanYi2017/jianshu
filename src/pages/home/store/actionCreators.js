@@ -52,3 +52,28 @@ export const toggleLoading = show => ({
   type: actionTypes.TOGGLE_LOADING,
   show
 });
+
+export const changeRecommendedAuthors = () => {
+  return (dispatch, getState) => {
+    const authors = getState().getIn(['homeReducer', 'recommendedAuthors']).toJS();
+    const seen_ids = authors.map(author => author.id).join('%2C');
+    const count = 5;
+    const only_unfollowed = true;
+
+    axios.get(_util.getServerURL('/recommended'), {
+      params: {
+        seen_ids,
+        count,
+        only_unfollowed
+      }
+    })
+      .then(res => {
+        const users = res.data.data.users;
+        dispatch({
+          type: actionTypes.CHANGE_RECOMMENDED_AUTHORS,
+          users
+        })
+      })
+      .catch(err => console.log(err));
+  }
+}

@@ -42,8 +42,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(actionCreators.toggleMouseInSearchTrending(false));
   },
   handleChangePage(spin) {
-    const rotate = Number(spin.current.style.transform.match(/[0-9]+/)[0]);
-    spin.current.style.transform = `rotate(${rotate + 360}deg)`;
     dispatch(actionCreators.changePage());
   },
   getSearchTrendingList() {

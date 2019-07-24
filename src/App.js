@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
-import Header from './common/header';
+import Header from './pages/header';
 import Home from './pages/home';
 import Detail from './pages/detail/loadable';
 import LoginAndRegister from './pages/login-and-register';
