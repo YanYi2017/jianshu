@@ -4,6 +4,7 @@ import * as actionTypes from './actionTypes';
 const defaultState = fromJS({
   popularTopics: [],
   morePopularTopics: {},
+  sliders: [],
   articleList: [],
   boardList: [],
   recommendedAuthors: [],
@@ -14,6 +15,7 @@ const defaultState = fromJS({
 
 const getInitialData = (state, action) => {
   return state.merge({
+    sliders: fromJS(action.sliders),
     popularTopics: fromJS(action.popularTopics),
     morePopularTopics: fromJS(action.morePopularTopics),
     articleList: fromJS(action.articleList),

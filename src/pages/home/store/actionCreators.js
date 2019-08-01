@@ -4,6 +4,7 @@ import _util from '../../../util';
 
 const changeHomeData = (result) => ({
   type: actionTypes.GET_INITIAL_DATA,
+  sliders: result.sliders,
   articleList: result.articleList,
   boardList: result.boardList,
   morePopularTopics: result.morePopularTopics,
