@@ -1,24 +1,6 @@
 import styled from 'styled-components';
 import { color, borderColor } from '../../common/style';
 
-export const DetailWrapper = styled.div`
-  width: 620px; height: 600px;
-  margin: 0 auto;
-  padding-top: 80px;
-`;
-
-export const ArticleWrapper = styled.article`
-  margin-top: 30px;
-`;
-
-export const Header = styled.header`
-  h1 {
-    font-size: 34px; font-weight: 700;
-    line-height: 1.3;
-    color: ${color}
-  }
-`;
-
 export const AuthorWrapper = styled.div`
   margin: 30px 0 40px 0;
   & > a {
@@ -27,7 +9,7 @@ export const AuthorWrapper = styled.div`
     width: 48px; height: 48px;
   }
   & > a > img {
-    width: 100%; heihgt: 100%;
+    width: 100%; height: 100%;
     border: 1px solid ${borderColor};
     border-radius: 50%;
   }
@@ -71,18 +53,5 @@ export const AuthorInfo = styled.div`
   }
   .meta .jsd-meta {
     color:#ea6f5a;
-  }
-`;
-
-export const Content = styled.main`
-  img {
-    width: 100%;
-    padding-bottom: 25px;
-    color: ${color};
-  }
-  p {
-    margin-bottom: 25px;
-    line-height: 1.7;
-    color: ${color};
   }
 `;

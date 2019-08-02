@@ -36,7 +36,7 @@ class Author extends PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  author: state.getIn(['detailReducer', 'author'])
+  author: state.getIn(['postReducer', 'author'])
 });
 
 export default connect(mapStateToProps, null)(Author);

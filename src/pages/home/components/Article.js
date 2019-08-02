@@ -8,12 +8,12 @@ function Article({ item }) {
     <StyledArticle>
       {
         item.get('imgURL') &&
-        <Link to={`/detail/${item.get('id')}`}>
+        <Link to={item.get('href')}>
           <img src={item.get('imgURL')} alt={item.get('title')} />
         </Link>
       }
       <div>
-        <Link to={`/detail/${item.get('id')}`} className="title">{item.get('title')}</Link>
+        <Link to={item.get('href')} className="title">{item.get('title')}</Link>
         <p className="abstract">{item.get('abstract')}</p>
         <div className="meta">
           {
@@ -24,7 +24,7 @@ function Article({ item }) {
             </span>
           }
           <Link to={`/author/${item.get('authorID')}`}>{item.get('nickname')}</Link>
-          <Link to={`/detail/${item.get('id') + '#comments'}`}>
+          <Link to={item.get('commentsURL')}>
             <span className="iconfont">&#xe609;</span>
             <span>{item.get('comments')}</span>
           </Link>

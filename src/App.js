@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components';
 
 import Header from './pages/header';
 import Home from './pages/home';
-import Detail from './pages/detail/loadable';
+import Post from './pages/post/loadable';
 import LoginAndRegister from './pages/login-and-register';
 
 import { GlobalStyle } from './common/style';
@@ -18,9 +18,9 @@ function App({ nightMode, fontFamily }) {
         <GlobalStyle />
         <GlobalIconFont />
         <BrowserRouter>
-          <Route exact path={["/", "/detail/:id"]} component={Header} />
+          <Route exact path={["/", "/p/:id"]} component={Header} />
           <Route exact path="/" component={Home} />
-          <Route exact path="/detail/:id" component={Detail} />
+          <Route exact path="/p/:id" component={Post} />
           <Route exact path="/login" component={LoginAndRegister} />
           <Route exact path="/register" component={LoginAndRegister} />
         </BrowserRouter>

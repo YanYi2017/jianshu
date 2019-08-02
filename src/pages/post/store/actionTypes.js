@@ -1,0 +1,1 @@
+export const GET_PARAGRAPH = 'detail/GET_PARAGRAPH';

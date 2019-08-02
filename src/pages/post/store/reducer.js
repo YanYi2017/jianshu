@@ -9,7 +9,7 @@ const defaultState = fromJS({
 
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
-    case actionTypes.GET_DETAIL:
+    case actionTypes.GET_PARAGRAPH:
       return state.merge({
         title: fromJS(action.title),
         author: fromJS(action.author),
