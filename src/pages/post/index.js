@@ -22,10 +22,39 @@ const TitleWrapper = styled.h1`
 `;
 
 const ContentWrapper = styled.main`
-  img {
-    width: 100%;
+  .image-package {
     padding-bottom: 25px;
-    color: ${color};
+    width: 700px;
+    margin-left: -40px;
+    text-align: center;
+  }
+  .image-container {
+    position: relative;
+    background-color: #eee;
+    transition: background-color .1s linear;
+    margin: 0 auto;
+  }
+  .image-view {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .image-view img {
+    display: block;
+    transition: all .15s linear;
+    opacity: 1;
+    max-width: 100%;
+    height: auto;
+    border: 0;
+  }
+  a {
+    color: #3194d0;
+  }
+  a:hover {
+    text-decoration: underline;
   }
   p {
     margin-bottom: 25px;

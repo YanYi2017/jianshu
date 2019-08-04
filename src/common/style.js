@@ -3,7 +3,7 @@ import theme from 'styled-theming';
 
 import * as constants from './constants';
 
-const { ON, OFF, SIM_SUN, SIM_HEI} = constants;
+const { ON, OFF, SIM_SUN, SIM_HEI } = constants;
 
 const fontFamily = theme('fontFamily', {
   [SIM_SUN]: 'Georgia,Times New Roman,Times,Songti SC,serif',
@@ -141,6 +141,11 @@ export const GlobalStyle = createGlobalStyle`
     outline: none;
     border: 1px solid;
     cursor: pointer;
+  }
+
+  /* 设置b和strong */
+  b, strong {
+    font-weight: 700;
   }
 
   /* 大小不定内联元素垂直居中 */
