@@ -36,13 +36,13 @@ const ContentWrapper = styled.main`
 
 class Post extends PureComponent {
   render() {
-    const { title, content } = this.props;
+    const { title, author, content } = this.props;
     return (
       <div>
         <PostWrapper>
           <div>
             <TitleWrapper>{title}</TitleWrapper>
-            <Author />
+            <Author author={author} />
             <ContentWrapper dangerouslySetInnerHTML={{ __html: content }} />
           </div>
         </PostWrapper>
@@ -57,6 +57,7 @@ class Post extends PureComponent {
 
 const mapStateToProps = (state) => ({
   title: state.getIn(['postReducer', 'title']),
+  author: state.getIn(['postReducer', 'author']),
   content: state.getIn(['postReducer', 'content'])
 });
 
