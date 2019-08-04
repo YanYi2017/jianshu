@@ -4,7 +4,8 @@ import * as actionTypes from './actionTypes.js';
 const defaultState = fromJS({
   title: '',
   author: {},
-  content: ''
+  content: '',
+  support: {}
 });
 
 const reducer = (state = defaultState, action) => {
@@ -13,7 +14,8 @@ const reducer = (state = defaultState, action) => {
       return state.merge({
         title: fromJS(action.title),
         author: fromJS(action.author),
-        content: fromJS(action.content)
+        content: fromJS(action.content),
+        support: fromJS(action.support),
       });
     default: 
       return state;

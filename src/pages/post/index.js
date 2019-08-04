@@ -4,7 +4,9 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import { actionCreators } from './store';
-import Author from './components/author';
+import Author from './components/Author';
+import Support from './components/Support';
+
 import { color } from '../../common/style';
 
 const PostWrapper = styled.div`
@@ -65,7 +67,7 @@ const ContentWrapper = styled.main`
 
 class Post extends PureComponent {
   render() {
-    const { title, author, content } = this.props;
+    const { title, author, content, support } = this.props;
     return (
       <div>
         <PostWrapper>
@@ -73,6 +75,7 @@ class Post extends PureComponent {
             <TitleWrapper>{title}</TitleWrapper>
             <Author author={author} />
             <ContentWrapper dangerouslySetInnerHTML={{ __html: content }} />
+            <Support support={support} />
           </div>
         </PostWrapper>
       </div>
@@ -87,7 +90,8 @@ class Post extends PureComponent {
 const mapStateToProps = (state) => ({
   title: state.getIn(['postReducer', 'title']),
   author: state.getIn(['postReducer', 'author']),
-  content: state.getIn(['postReducer', 'content'])
+  content: state.getIn(['postReducer', 'content']),
+  support: state.getIn(['postReducer', 'support'])
 });
 
 const mapDispatchToProps = (dispatch) => ({

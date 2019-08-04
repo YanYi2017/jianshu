@@ -2,11 +2,12 @@ import axios from 'axios';
 import * as actionTypes from './actionTypes';
 import _util from '../../../util';
 
-const changePost = (title, author, content) => ({
+const changePost = (title, author, content, support) => ({
   type: actionTypes.GET_PARAGRAPH,
   title, 
   author,
-  content
+  content,
+  support
 });
 
 export const getPost = (id) => {
@@ -18,8 +19,8 @@ export const getPost = (id) => {
     })
     .then((res) => {
       if (res.data.success) {
-        const {title, author, content} = res.data.data.article;
-        dispatch(changePost(title, author, content));
+        const {title, author, content, support} = res.data.data.article;
+        dispatch(changePost(title, author, content, support));
       } else {
         alert('请求失败，请稍后再试');
       }

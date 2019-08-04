@@ -141,6 +141,7 @@ export const GlobalStyle = createGlobalStyle`
     outline: none;
     border: 1px solid;
     cursor: pointer;
+    user-select: none;
   }
 
   /* 设置b和strong */
