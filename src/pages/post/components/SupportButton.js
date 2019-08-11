@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Wrapper = styled.button`
@@ -11,10 +12,16 @@ const Wrapper = styled.button`
   font-size: 16px;
 `;
 
-function SupportButton() {
+function SupportButton({ showModal }) {
   return (
-    <Wrapper>赞赏支持</Wrapper>
+    <Wrapper onClick={showModal}>
+      赞赏支持
+    </Wrapper>
   );
 }
+
+SupportButton.propTypes = {
+  showModal: PropTypes.func.isRequired
+};
 
 export default SupportButton;

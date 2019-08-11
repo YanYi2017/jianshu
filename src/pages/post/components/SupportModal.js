@@ -4,17 +4,25 @@ import Immutable from 'immutable';
 import styled from 'styled-components';
 import AmountGroup from './AmountGroup';
 
-const ModalWrapper = styled.div`
+const Wrapper = styled.div`
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(255, 255, 255, .7);
   z-index: 99999;
 `;
 
-const DialogWrapper = styled.div`
+const ModalMask = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(255, 255, 255, .7);
+`;
+
+const Modal = styled.div`
   position: relative;
   display: inline-block;
   width: 620px;
@@ -108,7 +116,7 @@ const PayButton = styled.button`
   margin-bottom: 20px;
 `;
 
-function SupportModal({ author }) {
+function SupportModal({ author, hideModal }) {
   const [option, setOption] = useState('option1');
   const [amount, setAmount] = useState('2');
   const [message, setMessage] = useState('');
@@ -137,9 +145,10 @@ function SupportModal({ author }) {
   };
   
   return (
-    <ModalWrapper className="dib_vm">
-      <DialogWrapper className="vm">
-        <CloseButton>×</CloseButton>
+    <Wrapper className="dib_vm">
+      <ModalMask onClick={hideModal}></ModalMask>
+      <Modal className="vm">
+        <CloseButton type="button" onClick={hideModal}>×</CloseButton>
         <FormWrapper onSubmit={handleSubmit}>
           <IntroWrapper>
             <img src={author.get('avatarURL')} alt="" />
@@ -167,13 +176,14 @@ function SupportModal({ author }) {
           </RewardInfo>
           <PayButton>立即支付</PayButton>
         </FormWrapper>
-      </DialogWrapper>
-    </ModalWrapper>
+      </Modal>
+    </Wrapper>
   );
 }
 
 SupportModal.propTypes = {
-  author: PropTypes.instanceOf(Immutable.Map).isRequired
+  author: PropTypes.instanceOf(Immutable.Map).isRequired,
+  hideModal: PropTypes.func.isRequired
 };
 
 export default SupportModal;

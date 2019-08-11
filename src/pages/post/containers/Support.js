@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Immutable from 'immutable';
 import styled from 'styled-components';
@@ -24,23 +24,28 @@ const NoticeWrapper = styled.p`
 `;
 
 function Support({ support, author }) {
+  const [show, setShow] = useState(false);
+
   return (
     <Wrapper>
       <NoticeWrapper>{support.get('notice')}</NoticeWrapper>
-      <SupportButton />
+      <SupportButton showModal={() => setShow(true)}/>
       <SupporterList support={support} />
-      <SupportModal author={author} />
+      {
+        show && <SupportModal author={author} hideModal={() => setShow(false)} />
+      }
     </Wrapper>
   );
 }
-
-Support.propTypes = {
-  support: PropTypes.instanceOf(Immutable.Map).isRequired
-};
 
 const mapStateToProps = state => ({
   support: state.getIn(['postReducer', 'support']),
   author: state.getIn(['postReducer', 'author'])
 });
+
+Support.propTypes = {
+  support: PropTypes.instanceOf(Immutable.Map).isRequired,
+  author: PropTypes.instanceOf(Immutable.Map).isRequired
+};
 
 export default connect(mapStateToProps)(Support);
