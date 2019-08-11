@@ -6,10 +6,11 @@ const Wrapper = styled.button`
   padding: 8px 25px;
   margin-bottom: 20px;
   border-radius: 20px;
-  color: #fff;
-  background: #ea6f5a;
+  border: none;
   line-height: 1.42857;
   font-size: 16px;
+  color: #fff;
+  background: #ea6f5a;
 `;
 
 function SupportButton({ showModal }) {

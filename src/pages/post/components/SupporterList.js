@@ -1,6 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
+import theme from 'styled-theming';
+import * as constants from '../../../common/constants';
+
+const {ON, OFF} = constants;
+
+const borderColor = theme('mode', {
+  [ON]: '#3f3f3f',
+  [OFF]: '#fff'
+});
 
 const Wrapper = styled.ul`
   height: 50px;
@@ -18,7 +27,7 @@ const Supporter = styled.li`
   img {
     width: 100%;
     height: 100%;
-    border: 3px solid #fff;
+    border: 3px solid ${borderColor};
     border-radius: 50%;
   }
 `;

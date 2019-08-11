@@ -2,9 +2,29 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Immutable from 'immutable';
 import styled from 'styled-components';
+import theme from 'styled-theming';
 
 import AmountGroup from './AmountGroup';
 import PayMethods from './PayMethods';
+
+import * as constants from '../../../common/constants';
+
+const {ON, OFF} = constants;
+
+const maskBackground = theme('mode', {
+  [ON]: 'rgba(63, 63, 63, .7)',
+  [OFF]: 'rgba(255, 255, 255, .7)'
+});
+
+const background = theme('mode', {
+  [ON]: '#3f3f3f',
+  [OFF]: '#fff'
+});
+
+const color = theme('mode', {
+  [ON]: '#c8c8c8',
+  [OFF]: '#fff'
+});
 
 const Wrapper = styled.div`
   position: fixed;
@@ -21,7 +41,7 @@ const ModalMask = styled.div`
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(255, 255, 255, .7);
+  background: ${maskBackground};
 `;
 
 const Modal = styled.div`
@@ -29,7 +49,7 @@ const Modal = styled.div`
   display: inline-block;
   width: 620px;
   padding: 20px;
-  background: #fff;
+  background: ${background};
   border-radius: 6px;
   box-shadow: 0 5px 25px rgba(0, 0, 0, .1);
 `;
@@ -41,7 +61,7 @@ const CloseButton = styled.button`
   border: none;
   font-size: 26px;
   font-weight: 200;
-  color: rgba(0, 0, 0, .2);
+  color: ${color};
 `;
 
 const FormWrapper = styled.form`
@@ -57,7 +77,7 @@ const FormWrapper = styled.form`
 const IntroWrapper = styled.div`
   flex: 1 100%;
   margin: 20px 0;
-  color: #333;
+  color: ${color};
   img {
     width: 36px;
     height: 36px;
@@ -89,12 +109,13 @@ const Message = styled.textarea`
   font-size: 14px;
   resize: none;
   outline: none;
+  color: ${color};
 `;
 
 const RewardInfo = styled.div`
   flex: 1 100%;
   font-size: 14px;
-  color: #333;
+  color: ${color};
   .amount {
     font-size: 28px;
     font-weight: bold;
@@ -116,6 +137,7 @@ const PayButton = styled.button`
   color: #fff;
   font-size: 16px;
   margin-bottom: 20px;
+  border: none;
 `;
 
 function SupportModal({ author, hideModal }) {
