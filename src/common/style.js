@@ -126,7 +126,7 @@ export const GlobalStyle = createGlobalStyle`
     color: #333;
   }
 
-  body, #root {
+  body, #root, textarea {
     font-family: ${fontFamily};
     background: ${boxBackgroundColor};
   }

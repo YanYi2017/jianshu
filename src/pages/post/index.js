@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import { actionCreators } from './store';
 import Author from './components/Author';
-import Support from './components/Support';
+import Support from './containers/Support';
 
 import { color } from '../../common/style';
 
@@ -67,7 +67,7 @@ const ContentWrapper = styled.main`
 
 class Post extends PureComponent {
   render() {
-    const { title, author, content, support } = this.props;
+    const { title, author, content } = this.props;
     return (
       <div>
         <PostWrapper>
@@ -75,7 +75,7 @@ class Post extends PureComponent {
             <TitleWrapper>{title}</TitleWrapper>
             <Author author={author} />
             <ContentWrapper dangerouslySetInnerHTML={{ __html: content }} />
-            <Support support={support} />
+            <Support />
           </div>
         </PostWrapper>
       </div>
@@ -90,8 +90,7 @@ class Post extends PureComponent {
 const mapStateToProps = (state) => ({
   title: state.getIn(['postReducer', 'title']),
   author: state.getIn(['postReducer', 'author']),
-  content: state.getIn(['postReducer', 'content']),
-  support: state.getIn(['postReducer', 'support'])
+  content: state.getIn(['postReducer', 'content'])
 });
 
 const mapDispatchToProps = (dispatch) => ({
