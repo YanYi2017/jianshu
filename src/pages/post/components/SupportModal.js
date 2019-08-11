@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Immutable from 'immutable';
 import styled from 'styled-components';
+
 import AmountGroup from './AmountGroup';
+import PayMethods from './PayMethods';
 
 const Wrapper = styled.div`
   position: fixed;
@@ -91,7 +93,6 @@ const Message = styled.textarea`
 
 const RewardInfo = styled.div`
   flex: 1 100%;
-  margin-bottom: 25px;
   font-size: 14px;
   color: #333;
   .amount {
@@ -109,6 +110,7 @@ const PayButton = styled.button`
   width: 116px;
   height: 40px;
   margin: auto;
+  margin-top: 25px;
   background: #ea6f5a;
   border-radius: 20px;
   color: #fff;
@@ -120,12 +122,15 @@ function SupportModal({ author, hideModal }) {
   const [option, setOption] = useState('option1');
   const [amount, setAmount] = useState('2');
   const [message, setMessage] = useState('');
+  const [payMethod, setPayMethod] = useState('wechat');
+  const [show, setShow] = useState(false);
 
   const handleSubmit = e => {
     e.preventDefault();
     console.log('option', option, typeof option);
     console.log('amount', amount, typeof amount);
     console.log('message', message, typeof message);
+    console.log('payMethod', payMethod, typeof payMethod);
   };
 
   const handleOptionChange = e => {
@@ -143,7 +148,11 @@ function SupportModal({ author, hideModal }) {
   const handleMessageChange = e => {
     setMessage(e.target.value);
   };
-  
+
+  const handleMethodChange = e => {
+    setPayMethod(e.target.value);
+  };
+
   return (
     <Wrapper className="dib_vm">
       <ModalMask onClick={hideModal}></ModalMask>
@@ -171,9 +180,20 @@ function SupportModal({ author, hideModal }) {
           />
           <RewardInfo>
             <span className="amount">￥{amount}</span>
-            <span className="pay-method"> ，用微信支付</span>
-            <button>更换</button>
+            {
+              !show && (
+                <>
+                  <span className="pay-method"> ，用微信支付</span>
+                  <button onClick={() => setShow(true)}>更换</button>
+                </>
+              )
+            }
           </RewardInfo>
+
+          {
+            show && <PayMethods checked={payMethod} changeMethod={handleMethodChange} />
+          }
+
           <PayButton>立即支付</PayButton>
         </FormWrapper>
       </Modal>
