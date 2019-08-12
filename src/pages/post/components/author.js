@@ -6,6 +6,7 @@ import Immutable from 'immutable';
 
 import Badge from './Badge';
 import Avatar from './Avatar';
+import Button from './Button';
 import { color } from '../../../common/style';
 
 const Wrapper = styled.div`
@@ -24,15 +25,13 @@ const NickNameWrapper = styled(Link)`
   color: ${color};
 `;
 
-const ButtonWrapper = styled.button`
-  background: #42c02e;
-  border-radius: 40px;
-  border: none;
-  color: #fff;
+const FollowButton = styled(Button)`
+  width: 52px;
+  height: 20px;
   font-size: 12px;
   cursor: pointer;
 
-  span {
+  span.plus {
     font-size: 15px;
     margin-right: 3px;
   }
@@ -62,9 +61,10 @@ function Author({ author }) {
           <Badge tip={author.get('badgeIconTitle')}>
             <img src={author.get('badgeIconURL')} alt={author.get('badgeIconTitle')} />
           </Badge>
-          <ButtonWrapper>
-            <span>+</span>关注
-          </ButtonWrapper>
+          <FollowButton>
+            <span className="plus">+</span>
+            <span>关注</span>
+          </FollowButton>
           <MetaWrapper className="meta">
             <span className="jsd-meta">
               <span className="iconfont">&#xe600;</span>

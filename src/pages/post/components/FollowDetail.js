@@ -6,6 +6,7 @@ import styled from 'styled-components';
 
 import Badge from './Badge';
 import Avatar from './Avatar';
+import Button from './Button';
 
 const Wrapper = styled.div`
   padding: 20px;
@@ -40,17 +41,10 @@ const Info = styled.div`
   }
 `;
 
-const FollowButton = styled.button`
+const FollowButton = styled(Button)`
   margin-top: 5px;
   width: 100px;
-  background: #42c02e;
-  color: #fff;
-  font-size: 16px;
   border-radius: 40px;
-  padding: 8px 0;
-  :hover {
-    background: #3db922;
-  }
   .plus {
     margin-right: 2px;
     font-size: 20px;

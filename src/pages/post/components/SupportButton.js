@@ -1,16 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import Button from './Button';
 
-const Wrapper = styled.button`
-  padding: 8px 25px;
+const Wrapper = styled(Button)`
+  width: 115px;
   margin-bottom: 20px;
-  border-radius: 20px;
-  border: none;
-  line-height: 1.42857;
-  font-size: 16px;
-  color: #fff;
   background: #ea6f5a;
+  :hover {
+    background: #ec6149;
+  }
 `;
 
 function SupportButton({ showModal }) {

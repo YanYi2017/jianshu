@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Button from './Button';
 
 const CommentArea = styled.textarea`
   width: 100%;
@@ -46,19 +47,6 @@ const CancleButton = styled.button`
   }
 `;
 
-const SubmitButton = styled.button`
-  width:78px;
-  height: 38px;
-  border-radius: 20px;
-  border: none;
-  font-size: 16px;
-  background: #42c02e;
-  color: #fff;
-  :hover {
-    background: #3db922;
-  }
-`;
-
 function NewCommentInput() {
   const [comment, setComment] = useState('');
   const [show, setShow] = useState(false);
@@ -77,12 +65,12 @@ function NewCommentInput() {
       {
         show && (
           <WriteFunctionBlock>
-            <EmojiButton>
+            <EmojiButton type="button">
               <span className="iconfont">&#xe674;</span>
             </EmojiButton>
             <Hint>Ctrl+Enter 发表</Hint>
             <CancleButton onClick={hideWriteFunctionBlock}>取消</CancleButton>
-            <SubmitButton>发送</SubmitButton>
+            <Button>发送</Button>
           </WriteFunctionBlock>
         )
       }
