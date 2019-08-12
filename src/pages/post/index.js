@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import { actionCreators } from './store';
-import { Author } from './components';
-import { Support, FollowDetail } from './containers';
+import { Author, FollowDetail } from './components';
+import { Support } from './containers';
 
 import { color } from '../../common/style';
 

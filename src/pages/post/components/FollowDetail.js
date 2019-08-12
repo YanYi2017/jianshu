@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import Immutable from 'immutable';
 import styled from 'styled-components';
 
-import { Badge } from '../components';
+import Badge from './Badge';
+import Avatar from './Avatar';
 
 const Wrapper = styled.div`
   padding: 20px;
@@ -19,22 +20,9 @@ const Inner = styled.div`
   min-height: 27px;
 `;
 
-const Avata = styled(Link)`
-  display: inline-block;
-  margin-right: 10px;
-  width: 48px;
-  height: 48px;
-  img {
-    width: 100%;
-    height: 100%;
-    border: 1px solid #ddd;
-    border-radius: 50%;
-  }
-`;
-
 const Info = styled.div`
   flex-grow: 1;
-  margin-top: 6px;
+  margin: 6px 0 0 10px;
   a {
     vertical-align: middle;
     font-size: 17px;
@@ -53,7 +41,6 @@ const Info = styled.div`
 `;
 
 const FollowButton = styled.button`
-  float: right;
   margin-top: 5px;
   width: 100px;
   background: #42c02e;
@@ -75,9 +62,7 @@ function FollowDetail({author}) {
     return (
       <Wrapper>
         <Inner className="dib_vm">
-          <Avata to={author.get('authorURL')}>
-            <img src={author.get('avatarURL')} alt="头像" />
-          </Avata>
+          <Avatar href={author.get('authorURL')} imgSrc={author.get('avatarURL')} imgAlt="头像" />
           <Info>
             <Link to={author.get('authorURL')}>{author.get('nickName')}</Link>
             <Badge tip={author.get('badgeIconTitle')}>

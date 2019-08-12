@@ -5,28 +5,17 @@ import { Link } from 'react-router-dom';
 import Immutable from 'immutable';
 
 import Badge from './Badge';
-import { color, borderColor } from '../../../common/style';
+import Avatar from './Avatar';
+import { color } from '../../../common/style';
 
 const Wrapper = styled.div`
+  display: flex;
   margin: 30px 0 40px 0;
 `;
 
-const AvatarWrapper = styled(Link)`
-  display: inline-block;
-  vertical-align: middle;
-  width: 48px; height: 48px;
-  
-  img {
-    width: 100%; height: 100%;
-    border: 1px solid ${borderColor};
-    border-radius: 50%;
-  }
-`;
-
 const InfoWrapper = styled.div`
-  display: inline-block;
-  vertical-align: middle;
-  margin-left: 10px;
+  flex-grow: 1;
+  margin:5px 0 0 10px;
 `;
 
 const NickNameWrapper = styled(Link)`
@@ -67,9 +56,7 @@ function Author({ author }) {
   } else {
     return (
       <Wrapper>
-        <AvatarWrapper to={author.get('authorURL')}>
-          <img src={author.get('avatarURL')} alt="avatar" />
-        </AvatarWrapper>
+        <Avatar href={author.get('authorURL')} imgSrc={author.get('avatarURL')} imgAlt="avatar" />
         <InfoWrapper>
           <NickNameWrapper to={author.get('authorURL')}>{author.get('nickName')}</NickNameWrapper>
           <Badge tip={author.get('badgeIconTitle')}>
