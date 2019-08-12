@@ -4,9 +4,7 @@ import Immutable from 'immutable';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
-import SupportButton from '../components/SupportButton';
-import SupporterList from '../components/SupporterList';
-import SupportModal from '../components/SupportModal';
+import {SupportButton, SupporterList, SupportModal} from '../components';
 
 const Wrapper = styled.div`
   min-height: 144px;

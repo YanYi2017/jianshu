@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Immutable from 'immutable';
 
+import Badge from './Badge';
 import { color, borderColor } from '../../../common/style';
 
 const Wrapper = styled.div`
@@ -32,50 +33,6 @@ const NickNameWrapper = styled(Link)`
   margin-right: 7px;
   vertical-align: middle;
   color: ${color};
-`;
-
-const BadgeWrapper = styled.span`
-  display: inline-block;
-  width:20px;
-  height:20px;
-  vertical-align: middle;
-  margin-right: 7px;
-  color: ${color};
-  img {
-    width: 100%;
-    height: 100%;
-  }
-  .hover-show {
-    display: none;
-  }
-  &:hover .hover-show {
-    display: block;
-  }
-`;
-
-const Tooltip = styled.div`
-  position: absolute;
-  font-size: 14px;
-  padding: 5px 10px;
-  margin-top: -65px;
-  margin-left: -35px;
-  line-height: 1.42857;
-`;
-
-const TooltipInner = styled.div`
-  padding: 5px 10px;
-  color: #fff;
-  background: #000;
-  border-radius: 4px;
-`;
-
-const TooltipArrow = styled.div`
-  margin-left: 30px;
-  width: 0;
-  height: 0;
-  border: 5px solid transparent;
-  border-bottom-width: 0;
-  border-top-color: #000;
 `;
 
 const ButtonWrapper = styled.button`
@@ -115,13 +72,9 @@ function Author({ author }) {
         </AvatarWrapper>
         <InfoWrapper>
           <NickNameWrapper to={author.get('authorURL')}>{author.get('nickName')}</NickNameWrapper>
-          <BadgeWrapper>
+          <Badge tip={author.get('badgeIconTitle')}>
             <img src={author.get('badgeIconURL')} alt={author.get('badgeIconTitle')} />
-            <Tooltip className="hover-show">
-              <TooltipInner>{author.get('badgeIconTitle')}</TooltipInner>
-              <TooltipArrow></TooltipArrow>
-            </Tooltip>
-          </BadgeWrapper>
+          </Badge>
           <ButtonWrapper>
             <span>+</span>关注
           </ButtonWrapper>

@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import { actionCreators } from './store';
-import Author from './components/Author';
-import Support from './containers/Support';
+import { Author } from './components';
+import { Support, FollowDetail } from './containers';
 
 import { color } from '../../common/style';
 
@@ -76,6 +76,7 @@ class Post extends PureComponent {
             <Author author={author} />
             <ContentWrapper dangerouslySetInnerHTML={{ __html: content }} />
             <Support />
+            <FollowDetail author={author} />
           </div>
         </PostWrapper>
       </div>
