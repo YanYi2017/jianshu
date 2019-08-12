@@ -15,7 +15,8 @@ const borderColor = theme('mode', {
 
 const Wrapper = styled(Link)`
   display: inline-block;
-  width: 48px; height: 48px;
+  width: 48px;
+  height: 48px;
   
   img {
     width: 100%;
@@ -25,15 +26,16 @@ const Wrapper = styled(Link)`
   }
 `;
 
-function Avatar({ href, imgSrc, imgAlt }) {
+function Avatar({ className, href, imgSrc, imgAlt }) {
   return (
-    <Wrapper to={href}>
+    <Wrapper to={href} className={className}>
       <img src={imgSrc} alt={imgAlt} />
     </Wrapper>
   );
 }
 
 Avatar.propTypes = {
+  className: PropTypes.string,
   href: PropTypes.string.isRequired,
   imgSrc: PropTypes.string.isRequired,
   imgAlt: PropTypes.string.isRequired

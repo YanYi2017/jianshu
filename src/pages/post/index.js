@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import { actionCreators } from './store';
 import { Author, FollowDetail } from './components';
-import { Support } from './containers';
+import { Support, Comment } from './containers';
 
 import { color } from '../../common/style';
 
@@ -77,6 +77,7 @@ class Post extends PureComponent {
             <ContentWrapper dangerouslySetInnerHTML={{ __html: content }} />
             <Support />
             <FollowDetail author={author} />
+            <Comment />
           </div>
         </PostWrapper>
       </div>
