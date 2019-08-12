@@ -142,6 +142,7 @@ export const GlobalStyle = createGlobalStyle`
     border: 1px solid;
     cursor: pointer;
     user-select: none;
+    color: inherit;
   }
 
   /* 设置b和strong */
