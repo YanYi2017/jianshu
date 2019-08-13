@@ -1,5 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import Immutable from 'immutable';
+
+import CommentItem from './CommentItem';
 
 const Wrapper = styled.div`
   margin-top: 30px;
@@ -37,13 +41,25 @@ const TopTitle = styled.div`
   }
 `;
 
-function CommentList() {
+const List = styled.ul`
+  margin-top: 30px;
+`;
+
+function CommentList({ comments, getComments }) {
   const [onlyAuthor, setOnlyAuthor] = useState(false);
   const [orderBy, setOrderBy] = useState('desc');
 
   const toggleOnlyAuthor = () => setOnlyAuthor(prev => !prev);
   const setAscOrder = () => setOrderBy('asc');
   const setDescOrder = () => setOrderBy('desc');
+
+  useEffect(getComments, []);
+
+  if (comments.size === 0) {
+    return null;
+  }
+  
+  const list = comments.get('comments').toJS();
 
   return (
     <Wrapper>
@@ -65,8 +81,32 @@ function CommentList() {
           按时间倒序
         </button>
       </TopTitle>
+      <List>
+        {
+          list.map(comment => {
+            const { user, floor, created_at, compiled_content, liked, likes_count } = comment;
+            return (
+              <CommentItem
+                key={user.slug}
+                href={`u/${user.slug}`}
+                imgSrc={user.avatar}
+                nickname={user.nickname}
+                floor={floor}
+                createdTime={created_at}
+                content={compiled_content}
+                liked={liked}
+                likedCount={likes_count} />
+            );
+          })
+        }
+      </List>
     </Wrapper>
   );
 }
+
+CommentList.propTypes = {
+  comments: PropTypes.instanceOf(Immutable.Map).isRequired,
+  getComments: PropTypes.func.isRequired
+};
 
 export default CommentList;

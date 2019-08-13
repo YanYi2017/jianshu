@@ -5,7 +5,8 @@ const defaultState = fromJS({
   title: '',
   author: {},
   content: '',
-  support: {}
+  support: {},
+  comments: {}
 });
 
 const reducer = (state = defaultState, action) => {
@@ -17,6 +18,8 @@ const reducer = (state = defaultState, action) => {
         content: fromJS(action.content),
         support: fromJS(action.support),
       });
+    case actionTypes.CHANGE_COMMENTS:
+      return state.set('comments', fromJS(action.comments))
     default: 
       return state;
   }

@@ -35,7 +35,21 @@ const _util = {
     if ('password' === type) {
       return passwordRegExp.test(value);
     }
+  },
+
+  // 转换日期格式
+  convertDateFormat(time) {
+    const newTime = new Date(time);
+    const year = newTime.getFullYear();
+    const month = newTime.getMonth() + 1;
+    const date = newTime.getDate();
+    const hours = newTime.getHours();
+    const minutes = newTime.getMinutes();
+    
+    // 转换为20xx.xx.xx xx:xx的样式
+    return (`${year}.${month}.${date} ${hours}:${minutes}`);
   }
+
 };
 
 export default _util;
