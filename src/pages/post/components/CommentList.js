@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Immutable from 'immutable';
 
 import CommentItem from './CommentItem';
+import Pagination from '../../../util/Pagination';
 
 const Wrapper = styled.div`
   margin-top: 30px;
@@ -58,7 +59,9 @@ function CommentList({ comments, getComments }) {
   if (comments.size === 0) {
     return null;
   }
-  
+  console.log(comments);
+  const currentPageNum = comments.get('page');
+  const totalPageNum = comments.get('total_pages');
   const list = comments.get('comments').toJS();
 
   return (
@@ -100,6 +103,11 @@ function CommentList({ comments, getComments }) {
           })
         }
       </List>
+      
+      <Pagination
+        currentPageNum={currentPageNum}
+        totalPageNum={totalPageNum}
+        onChange={i => console.log(i)} />
     </Wrapper>
   );
 }
