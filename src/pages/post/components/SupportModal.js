@@ -23,7 +23,7 @@ const background = theme('mode', {
 
 const color = theme('mode', {
   [ON]: '#c8c8c8',
-  [OFF]: '#fff'
+  [OFF]: '#333'
 });
 
 const Wrapper = styled.div`

@@ -37,7 +37,8 @@ const CustomInput = styled.input`
   font-size: 28px;
   outline: none;
   border: none;
-  color: #EA6F5A;;
+  color: #EA6F5A;
+  background: transparent;
   ::-webkit-inner-spin-button,
   ::-webkit-outer-spin-button {
     appearance: none;
