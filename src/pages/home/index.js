@@ -2,45 +2,33 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { actionCreators } from './store';
 
-import Carousel from './components/Carousel';
-import PopularTopics from './components/PopularTopics';
-import ArticleList from './components/ArticleList';
-import Board from './components/Board';
-import RecommendedAuthors from './components/RecommendedAuthors';
+import { BackToTop } from './components';
+import { Left, Right } from './containers';
 
-import { HomeWrapper, HomeLeft, HomeRight, BackTop } from './style';
+import { HomeWrapper } from './style';
 
 class Home extends PureComponent {
   render() {
     return (
       <HomeWrapper>
-        <HomeLeft>
-          <Carousel />
-          <PopularTopics />
-          <ArticleList />
-        </HomeLeft>
-        <HomeRight>
-          <Board />
-          <RecommendedAuthors />
-        </HomeRight>
-        {
-          this.props.showBackTop ? (
-            <BackTop onClick={this.handleScrollTop}>
-              <span className="iconfont">&#xe671;</span>
-            </BackTop>
-          ) : null
-        }
+        <div className="row">
+          <Left />
+          <Right />
+          {
+            this.props.showBackTop && <BackToTop onClick={this.handleScrollToTop} />
+          }
+        </div>
       </HomeWrapper>
     );
   }
   componentDidMount() {
-    this.props.changeHomeData();
+    this.props.getInitialHomeData();
     window.addEventListener('scroll', this.props.changeShowBackTop)
   }
   componentWillUnmount() {
     window.removeEventListener('scroll', this.props.changeShowBackTop)
   }
-  handleScrollTop() {
+  handleScrollToTop() {
     window.scrollTo(0, 0);
   }
 }
@@ -50,7 +38,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  changeHomeData() {
+  getInitialHomeData() {
+    dispatch(actionCreators.toggleLoading(true));
     dispatch(actionCreators.getHomeInfo());
   },
   changeShowBackTop() {

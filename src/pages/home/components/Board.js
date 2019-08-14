@@ -1,27 +1,26 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import Immutable from 'immutable';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 
-import { BoardWrapper } from '../style';
+import { BoardWrapper } from './style';
 
-class Board extends PureComponent {
-  render() {
-    return (
-      <BoardWrapper>
-        {this.props.boardList.map((item) => {
-          return (
-            <Link to={item.get('href')} key={item.get('id')}>
-              <img src={item.get('imgURL')} alt={item.get('alt')}/>
-            </Link>
-          );
-        })}
-      </BoardWrapper>
-    );
-  }
+function Board({ list }) {
+  return (
+    <BoardWrapper>
+      {list.map((item) => {
+        return (
+          <Link to={item.get('href')} key={item.get('id')}>
+            <img src={item.get('imgURL')} alt={item.get('alt')} />
+          </Link>
+        );
+      })}
+    </BoardWrapper>
+  );
 }
 
-const mapStateToProps = (state) => ({
-  boardList: state.getIn(['homeReducer', 'boardList'])
-})
+Board.propTypes = {
+  list: PropTypes.instanceOf(Immutable.List).isRequired
+};
 
-export default connect(mapStateToProps, null)(Board);
+export default Board;
