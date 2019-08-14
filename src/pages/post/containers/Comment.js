@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import Immutable from 'immutable';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
@@ -10,13 +12,23 @@ const Wrapper = styled.div`
 `;
 
 function Comment({ loginStatus, comments, getComments }) {
+  useEffect(getComments, []);
+
   return (
     <Wrapper>
       <NewComment loginStatus={loginStatus} />
-      <CommentList comments={comments} getComments={getComments} />
+      {
+        comments.size > 0 && <CommentList comments={comments} onChange={getComments} />
+      }
     </Wrapper>
   );
 }
+
+Comment.propTypes = {
+  loginStatus: PropTypes.bool.isRequired,
+  comments: PropTypes.instanceOf(Immutable.Map).isRequired,
+  getComments: PropTypes.func.isRequired
+};
 
 const mapStateToProps = state => ({
   loginStatus: state.getIn(['loginReducer', 'loginStatus']),
@@ -24,8 +36,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getComments() {
-    dispatch(actionCreators.getComments());
+  getComments(authorOnly, orderBy, currentPageNum) {
+    dispatch(actionCreators.getComments(authorOnly, orderBy, currentPageNum));
   }
 });
 

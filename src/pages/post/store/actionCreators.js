@@ -37,9 +37,15 @@ const changeComments = comments => ({
   comments
 });
 
-export const getComments = () => {
+export const getComments = (authorOnly = false, orderBy = 'desc', currentPageNum = 1) => {
   return dispatch => {
-    axios.get(_util.getServerURL('/comments'))
+    axios.get(_util.getServerURL('/comments'), {
+      params: {
+        author_only: authorOnly,
+        order_by: orderBy,
+        page: currentPageNum
+      }
+    })
       .then(res => {
         if (res.data.success) {
           dispatch(changeComments(res.data.data));
@@ -48,7 +54,6 @@ export const getComments = () => {
         }
       })
       .catch(err => {
-        console.log(err);
         alert('出错了');
       })
   };

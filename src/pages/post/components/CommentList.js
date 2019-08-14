@@ -46,28 +46,33 @@ const List = styled.ul`
   margin-top: 30px;
 `;
 
-function CommentList({ comments, getComments }) {
+function CommentList({ comments, onChange }) {
   const [onlyAuthor, setOnlyAuthor] = useState(false);
   const [orderBy, setOrderBy] = useState('desc');
+  const [currentPageNum, setCurrentPageNum] = useState(comments.get('page'));
 
-  const toggleOnlyAuthor = () => setOnlyAuthor(prev => !prev);
-  const setAscOrder = () => setOrderBy('asc');
-  const setDescOrder = () => setOrderBy('desc');
-
-  useEffect(getComments, []);
-
-  if (comments.size === 0) {
-    return null;
-  }
-  console.log(comments);
-  const currentPageNum = comments.get('page');
+  const totalCommentNum = comments.get('total_comments');
   const totalPageNum = comments.get('total_pages');
   const list = comments.get('comments').toJS();
+  
+  const toggleOnlyAuthor = () => setOnlyAuthor(prev => !prev);
+  const setAscOrder = () => {
+    setCurrentPageNum(1);
+    setOrderBy('asc')
+  };
+  const setDescOrder = () => {
+    setCurrentPageNum(1);
+    setOrderBy('desc')
+  };
+  
+  useEffect(() => {
+    onChange(onlyAuthor, orderBy, currentPageNum);
+  }, [onlyAuthor, orderBy, currentPageNum, onChange]);
 
   return (
     <Wrapper>
       <TopTitle>
-        <span>45条评论</span>
+        <span>{totalCommentNum}条评论</span>
         <button
           className={onlyAuthor ? 'btn author-only active' : 'btn author-only'}
           onClick={toggleOnlyAuthor}>
@@ -107,14 +112,14 @@ function CommentList({ comments, getComments }) {
       <Pagination
         currentPageNum={currentPageNum}
         totalPageNum={totalPageNum}
-        onChange={i => console.log(i)} />
+        onChange={i => setCurrentPageNum(i)} />
     </Wrapper>
   );
 }
 
 CommentList.propTypes = {
   comments: PropTypes.instanceOf(Immutable.Map).isRequired,
-  getComments: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
 };
 
 export default CommentList;
