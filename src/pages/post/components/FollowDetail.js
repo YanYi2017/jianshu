@@ -8,10 +8,23 @@ import Badge from './Badge';
 import Avatar from './Avatar';
 import Button from './Button';
 
+import theme from 'styled-theming';
+import { ON, OFF } from '../../../common/constants';
+
+const color = theme('mode', {
+  [ON]: '#c8c8c8',
+  [OFF]: '#333'
+});
+
+const borderColor = theme('mode', {
+  [ON]: '#2f2f2f',
+  [OFF]: '#dcdcdc'
+});
+
 const Wrapper = styled.div`
   padding: 20px;
   background: hsla(0,0%,71%,.1);
-  border: 1px solid #e1e1e1;
+  border: 1px solid ${borderColor};
   border-radius: 4px;
   font-size: 12px;
 `;
@@ -28,6 +41,7 @@ const Info = styled.div`
     vertical-align: middle;
     font-size: 17px;
     margin-right: 3px;
+    color: ${color};
   }
   img {
     vertical-align: middle;
