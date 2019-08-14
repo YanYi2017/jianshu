@@ -20,6 +20,7 @@ function Button({ children, type, className, onClick }) {
     <Wrapper
       type={type}
       className={className}
+      onClick={onClick}
     >
       {children}
     </Wrapper>
