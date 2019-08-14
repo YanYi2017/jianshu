@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Immutable from 'immutable';
 
 import CommentItem from './CommentItem';
+import CommentsLoading from './CommentsLoading';
 import Pagination from '../../../util/Pagination';
 
 import theme from 'styled-theming';
@@ -74,7 +75,7 @@ const StyledPagination = styled(Pagination)`
   }
 `;
 
-function CommentList({ comments, onChange }) {
+function CommentList({ loading, comments, onChange }) {
   const [onlyAuthor, setOnlyAuthor] = useState(false);
   const [orderBy, setOrderBy] = useState('desc');
   const [currentPageNum, setCurrentPageNum] = useState(comments.get('page'));
@@ -117,25 +118,32 @@ function CommentList({ comments, onChange }) {
           按时间倒序
         </button>
       </TopTitle>
-      <List>
-        {
-          list.map(comment => {
-            const { user, floor, created_at, compiled_content, liked, likes_count } = comment;
-            return (
-              <CommentItem
-                key={user.slug}
-                href={`u/${user.slug}`}
-                imgSrc={user.avatar}
-                nickname={user.nickname}
-                floor={floor}
-                createdTime={created_at}
-                content={compiled_content}
-                liked={liked}
-                likedCount={likes_count} />
-            );
-          })
-        }
-      </List>
+
+      {
+        loading
+          ? (<CommentsLoading />) 
+          : (
+            <List>
+              {
+                list.map(comment => {
+                  const { user, floor, created_at, compiled_content, liked, likes_count } = comment;
+                  return (
+                    <CommentItem
+                      key={user.slug}
+                      href={`u/${user.slug}`}
+                      imgSrc={user.avatar}
+                      nickname={user.nickname}
+                      floor={floor}
+                      createdTime={created_at}
+                      content={compiled_content}
+                      liked={liked}
+                      likedCount={likes_count} />
+                  );
+                })
+              }
+            </List>
+          )
+      }
       
       <StyledPagination
         currentPageNum={currentPageNum}

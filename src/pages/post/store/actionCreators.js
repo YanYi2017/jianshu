@@ -37,6 +37,11 @@ const changeComments = comments => ({
   comments
 });
 
+export const toggleLoadingComments = loadingComments => ({
+  type: actionTypes.TOGGLE_LOADING_COMMENTS,
+  loadingComments
+});
+
 export const getComments = (authorOnly = false, orderBy = 'desc', currentPageNum = 1) => {
   return dispatch => {
     axios.get(_util.getServerURL('/comments'), {
@@ -49,6 +54,7 @@ export const getComments = (authorOnly = false, orderBy = 'desc', currentPageNum
       .then(res => {
         if (res.data.success) {
           dispatch(changeComments(res.data.data));
+          dispatch(toggleLoadingComments(false));  //隐藏评论loading占位内容
         } else {
           alert('请求失败，请稍后再试');
         }

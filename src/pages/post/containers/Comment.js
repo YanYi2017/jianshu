@@ -11,14 +11,14 @@ const Wrapper = styled.div`
   margin-top: 20px;
 `;
 
-function Comment({ loginStatus, comments, getComments }) {
+function Comment({ loginStatus, loading, comments, getComments }) {
   useEffect(getComments, []);
 
   return (
     <Wrapper>
       <NewComment loginStatus={loginStatus} />
       {
-        comments.size > 0 && <CommentList comments={comments} onChange={getComments} />
+        comments.size > 0 && <CommentList loading={loading} comments={comments} onChange={getComments} />
       }
     </Wrapper>
   );
@@ -32,12 +32,14 @@ Comment.propTypes = {
 
 const mapStateToProps = state => ({
   loginStatus: state.getIn(['loginReducer', 'loginStatus']),
-  comments: state.getIn(['postReducer', 'comments'])
+  comments: state.getIn(['postReducer', 'comments']),
+  loading: state.getIn(['postReducer', 'loadingComments'])
 });
 
 const mapDispatchToProps = dispatch => ({
   getComments(authorOnly, orderBy, currentPageNum) {
     dispatch(actionCreators.getComments(authorOnly, orderBy, currentPageNum));
+    dispatch(actionCreators.toggleLoadingComments(true));   // 显示评论的loading占位内容
   }
 });
 

@@ -6,7 +6,8 @@ const defaultState = fromJS({
   author: {},
   content: '',
   support: {},
-  comments: {}
+  comments: {},
+  loadingComments: true
 });
 
 const reducer = (state = defaultState, action) => {
@@ -19,7 +20,9 @@ const reducer = (state = defaultState, action) => {
         support: fromJS(action.support),
       });
     case actionTypes.CHANGE_COMMENTS:
-      return state.set('comments', fromJS(action.comments))
+      return state.set('comments', fromJS(action.comments));
+    case actionTypes.TOGGLE_LOADING_COMMENTS:
+      return state.set('loadingComments', fromJS(action.loadingComments));
     default: 
       return state;
   }
