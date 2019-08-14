@@ -6,9 +6,32 @@ import styled from 'styled-components';
 import _util from '../../../util';
 import Avatar from './Avatar';
 
+import theme from 'styled-theming';
+import { ON, OFF } from '../../../common/constants';
+
+const borderColor = theme('mode', {
+  [ON]: '#2f2f2f',
+  [OFF]: '#f0f0f0'
+});
+
+const color = theme('mode', {
+  [ON]: '#c8c8c8',
+  [OFF]: '#333'
+});
+
+const hoveredColor = theme('mode', {
+  [ON]: '#fff',
+  [OFF]: '#2f2f2f'
+});
+
+const hoveredColor2 = theme('mode', {
+  [ON]: '#c8c8c8',
+  [OFF]: '#333'
+});
+
 const Wrapper = styled.li`
   padding: 20px 0 30px 0;
-  border-bottom: 1px solid #f0f0f0;
+  border-top: 1px solid ${borderColor};
 `;
 
 const StyledAvatar = styled(Avatar)`
@@ -22,6 +45,10 @@ const Info = styled.div`
   vertical-align: top;
   a {
     font-size: 15px;
+    color: ${color}
+  }
+  a:hover {
+    color: ${hoveredColor}
   }
   p {
     font-size: 12px;
@@ -31,6 +58,7 @@ const Info = styled.div`
 
 const Content = styled.p`
   margin: 10px 0;
+  color: ${color};
   font-size: 16px;
   line-height: 1.5;
 `;
@@ -44,7 +72,7 @@ const ToolGroup = styled.div`
       vertical-align: middle;
     }
     :hover {
-      color: #333;
+      color: ${hoveredColor2};
       .like-btn {
         color: #ec6149;
       }
@@ -71,7 +99,7 @@ function CommentItem({ href, imgSrc, nickname, floor, createdTime, content, like
           <p>{floor}楼 · {time}</p>
         </Info>
       </div>
-      <Content dangerouslySetInnerHTML={{__html: content}} />
+      <Content dangerouslySetInnerHTML={{ __html: content }} />
       <ToolGroup>
         <button>
           <span className="iconfont like-btn">&#xe60a;</span>

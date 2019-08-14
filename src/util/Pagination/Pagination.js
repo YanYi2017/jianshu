@@ -22,13 +22,13 @@ const Item = styled.li`
     }
     &.active {
       border: none;
-      background: inherit;
+      background: transparent;
       cursor: default;
     }
   }
 `;
 
-function Pagination({ currentPageNum = 1, totalPageNum = 0, pageRange = 3, onChange }) {
+function Pagination({ className, currentPageNum = 1, totalPageNum = 0, pageRange = 3, onChange }) {
   const [stateCurrent, setStateCurrent] = useState(currentPageNum);
 
   // 若传入onChange函数，则依赖外部数据，若没有传入onChange函数，则依赖内部数据
@@ -57,7 +57,7 @@ function Pagination({ currentPageNum = 1, totalPageNum = 0, pageRange = 3, onCha
   }
 
   return (
-    <Wrapper>
+    <Wrapper className={className}>
       {
         current !== 1 && (
           <Item>
@@ -81,6 +81,7 @@ function Pagination({ currentPageNum = 1, totalPageNum = 0, pageRange = 3, onCha
 }
 
 Pagination.propTypes = {
+  className: PropTypes.string,
   currentPageNum: PropTypes.number.isRequired,
   totalPageNum: PropTypes.number.isRequired,
   pageRange: PropTypes.number,

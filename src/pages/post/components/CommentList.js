@@ -6,6 +6,24 @@ import Immutable from 'immutable';
 import CommentItem from './CommentItem';
 import Pagination from '../../../util/Pagination';
 
+import theme from 'styled-theming';
+import { ON, OFF } from '../../../common/constants';
+
+const color = theme('mode', {
+  [ON]: '#c8c8c8',
+  [OFF]: '#333'
+});
+
+const borderColor = theme('mode', {
+  [ON]: '#2f2f2f',
+  [OFF]: '#ddd'
+});
+
+const hoveredBackgroundColor = theme('mode', {
+  [ON]: 'rgba(0,0,0,.05)',
+  [OFF]: '#eee'
+});
+
 const Wrapper = styled.div`
   margin-top: 30px;
 `;
@@ -15,6 +33,7 @@ const TopTitle = styled.div`
     font-size: 17px;
     font-weight: 700;
     margin-right: 10px;
+    color: ${color};
   }
   .btn {
     font-size: 12px;
@@ -22,7 +41,7 @@ const TopTitle = styled.div`
   }
   .author-only {
     font-weight: 700;
-    border: 1px solid #e1e1e1;
+    border: 1px solid ${borderColor};
     border-radius: 12px;
     &.active {
       color: #fff;
@@ -34,7 +53,7 @@ const TopTitle = styled.div`
     float: right;
     border: none;
     :hover, &.active {
-      color: #2f2f2f;
+      color: ${color};
     }
   }
   .ascending {
@@ -44,6 +63,15 @@ const TopTitle = styled.div`
 
 const List = styled.ul`
   margin-top: 30px;
+`;
+
+const StyledPagination = styled(Pagination)`
+  button {
+    border-color: ${borderColor};
+    :hover {
+      background: ${hoveredBackgroundColor};
+    }
+  }
 `;
 
 function CommentList({ comments, onChange }) {
@@ -109,7 +137,7 @@ function CommentList({ comments, onChange }) {
         }
       </List>
       
-      <Pagination
+      <StyledPagination
         currentPageNum={currentPageNum}
         totalPageNum={totalPageNum}
         onChange={i => setCurrentPageNum(i)} />

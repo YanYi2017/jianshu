@@ -5,6 +5,19 @@ import styled from 'styled-components';
 import Avatar from './Avatar';
 import NewCommentInput from './NewCommentInput';
 
+import theme from 'styled-theming';
+import { ON, OFF } from '../../../common/constants';
+
+const color = theme('mode', {
+  [ON]: '#c8c8c8',
+  [OFF]: '#333'
+});
+
+const borderColor = theme('mode', {
+  [ON]: '#2f2f2f',
+  [OFF]: '#dcdcdc'
+});
+
 const Wrapper = styled.form`
   display: flex;
 `;
@@ -24,7 +37,7 @@ const CommentArea = styled.textarea`
   height: 80px;
   padding: 10px 15px;
   font-size: 13px;
-  border: 1px solid #dcdcdc;
+  border: 1px solid ${borderColor};
   border-radius: 4px;
   background: hsla(0, 0%, 71%, .1);
   outline: none;
@@ -33,6 +46,7 @@ const CommentArea = styled.textarea`
 
 const SignInArea = styled(CommentArea)`
   text-align: center;
+  color: ${color};
   span {
     margin-left: 10px;
   }
@@ -59,7 +73,7 @@ function NewComment({ loginStatus }) {
 
       <Container>
         {
-          !loginStatus
+          loginStatus
             ? (
               <NewCommentInput />
             )

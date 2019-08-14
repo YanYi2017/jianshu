@@ -1,6 +1,8 @@
-export const ON = 'ON';
-export const OFF = 'OFF';
-export const SIM_SUN = 'SIM_SUN';
-export const SIM_HEI = 'SIM_HEI';
-export const SIMPLIFIED = 'SIMPLIFIED';
-export const TRADITIONAL = 'TRADITIONAL';
+const ON = 'ON';
+const OFF = 'OFF';
+const SIM_SUN = 'SIM_SUN';
+const SIM_HEI = 'SIM_HEI';
+const SIMPLIFIED = 'SIMPLIFIED';
+const TRADITIONAL = 'TRADITIONAL';
+
+export { ON, OFF, SIM_SUN, SIM_HEI, SIMPLIFIED, TRADITIONAL };

@@ -2,13 +2,27 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from './Button';
 
+import theme from 'styled-theming';
+import { ON, OFF } from '../../../common/constants';
+
+const color = theme('mode', {
+  [ON]: '#c8c8c8',
+  [OFF]: '#333'
+});
+
+const borderColor = theme('mode', {
+  [ON]: '#2f2f2f',
+  [OFF]: '#dcdcdc'
+});
+
 const CommentArea = styled.textarea`
   width: 100%;
   height: 80px;
   padding: 10px 15px;
   font-size: 13px;
-  border: 1px solid #dcdcdc;
+  border: 1px solid ${borderColor};
   border-radius: 4px;
+  color: ${color};
   background: hsla(0, 0%, 71%, .1);
   outline: none;
   resize: none;
